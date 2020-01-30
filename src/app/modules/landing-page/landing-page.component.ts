@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToasterService } from './../shared/services/toaster.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private toastr: ToasterService) { }
 
   ngOnInit() {
+    this.toastr.showSuccess("Iniatiated Project");
   }
 
 }
