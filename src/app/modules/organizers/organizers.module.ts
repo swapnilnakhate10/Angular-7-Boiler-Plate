@@ -3,12 +3,18 @@ import { CommonModule } from '@angular/common';
 
 import { OrganizersRoutingModule } from './organizers-routing.module';
 import { OrganizersComponent } from './organizers.component';
+import { EventsComponent } from './events/events.component';
+import { EventFormComponent } from './event-form/event-form.component';
+import { CreateEventComponent } from './create-event/create-event.component';
+import { EditEventComponent } from './edit-event/edit-event.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [OrganizersComponent],
+  declarations: [OrganizersComponent, EventsComponent, EventFormComponent, CreateEventComponent, EditEventComponent],
   imports: [
     CommonModule,
-    OrganizersRoutingModule
+    OrganizersRoutingModule,
+    SharedModule
   ]
 })
 export class OrganizersModule { }

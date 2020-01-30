@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-events',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventsComponent implements OnInit {
 
-  constructor() { }
+  events = [];
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  editEvent(eventDetails) {
+    //navigate to edit event
+    let eventId = 12;
+    this.router.navigateByUrl('/organizer/edit-event/'+eventId);
   }
 
 }

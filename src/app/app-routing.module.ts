@@ -28,6 +28,14 @@ const routes: Routes = [
     loadChildren: './modules/user-management/organizer-registration/organizer-registration.module#OrganizerRegistrationModule',
   },
   {
+    path: 'user',
+    loadChildren: './modules/users/users.module#UsersModule',
+  },
+  {
+    path: 'organizer',
+    loadChildren: './modules/organizers/organizers.module#OrganizersModule',
+  },
+  {
     path: '**',
     loadChildren: './modules/page-not-found/page-not-found.module#PageNotFoundModule',
   }

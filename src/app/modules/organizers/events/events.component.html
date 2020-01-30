@@ -1,0 +1,49 @@
+<div class="container">
+
+  <div class="right-align">
+    <button class="btn btn-primary" routerLink="/organizer/create-event">
+      Create Event
+    </button>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel-group" *ngIf="events.length >= 0">
+          <div class="panel panel-default">
+            <div class="panel-heading">Event 1</div>
+            <div class="panel-body">Short Description of event</div>
+            <div class="panel-footer">
+              <button class="btn btn-primary" (click)="editEvent(event)">Edit</button>
+              <button class="btn btn-danger">Delete</button>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">Panel Header</div>
+            <div class="panel-body">Panel Content</div>
+            <div class="panel-footer">
+                <button class="btn btn-primary">Edit</button>
+                <button class="btn btn-danger">Delete</button>
+              </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">Panel Header</div>
+            <div class="panel-body">Panel Content</div>
+            <div class="panel-footer">
+                <button class="btn btn-primary">Edit</button>
+                <button class="btn btn-danger">Delete</button>
+              </div>
+            </div>
+          <div class="panel panel-default">
+              <div class="panel-heading">Panel Header</div>
+              <div class="panel-body">Panel Content</div>
+              <div class="panel-footer">
+                  <button class="btn btn-primary">Edit</button>
+                  <button class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="events.length == 0">
+            No Event created yet.
+        </div>
+    </div>
+  </div>
+</div>
