@@ -1,3 +1,5 @@
+
 export const environment = {
-  production: true
+  production: true,
+  hackathonCore : 'http://localhost:8080/api/'
 };
