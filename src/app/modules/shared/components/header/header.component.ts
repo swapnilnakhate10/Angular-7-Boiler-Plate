@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   constructor() { 
     this.userMenu = (<any>RolesMenu).user;
     this.organiserMenu = (<any>RolesMenu).organizer;
-    this.menulist = this.userMenu;
+    this.menulist = this.organiserMenu;
   }
 
   ngOnInit() {

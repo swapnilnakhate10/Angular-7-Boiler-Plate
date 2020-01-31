@@ -1,15 +1,42 @@
-<div>
-
-<table id="customers">
-  <tr>
-    <th>Company</th>
-    <th>Contact</th>
-    <th>Country</th>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-</table>
+<div class="container">
+	<div class="panel-group">
+		<div class="panel panel-success">
+			<div class="panel-heading">Event Details:</div>
+			<div class="panel-body">
+				<form>
+					<div class="form-row">
+						<div class="form-group col-md-4">
+							<label for="teamname">Team Name:</label>
+							<label for="teamname">Code Blooded</label>
+						</div>
+						<div class="form-group col-md-4">
+						<label for="teamsize">Team-Size:</label>
+						<label for="teamsize">10</label>
+				     	</div>
+						<div class="form-group col-md-2">
+							<label for="validity">Validity:</label>
+							<label for="validity">2 Days</label>
+						</div>
+						<div class="form-group col-md-2" id="startchallange">
+							 <button class="btn btn-sm btn-success">Start Challange</button>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-12">
+						<label for="probstatement">Problem Statement:</label>
+						 <textarea readonly class="form-control" rows="20" id="probstatement"></textarea>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-12">
+							<label for="gitlink">Git-Link</label>
+							<input type="text" class="form-control" id="gitlink" readonly>
+						</div>
+					</div>
+					
+				</form>
+				
+			</div>
+		</div>
+	</div>
 </div>
