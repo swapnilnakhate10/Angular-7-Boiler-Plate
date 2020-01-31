@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-
+import { Router } from '@angular/router';
+import { ToasterService } from './../../shared/services/toaster.service';
+import { HttpService } from './../../shared/services/http.service';
+import { Success, Error } from '../../../constants/messages';
+import { UrlDetails } from '../../../constants/url-details';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,7 +18,9 @@ export class DashboardComponent implements OnInit {
   teamCreate:boolean;
   events = [];
 
-  constructor() { }
+  constructor(private router: Router,
+            private httpService: HttpService,
+            private toaster: ToasterService) { }
 
   ngOnInit() {
     this.teamForm = new FormGroup({
@@ -22,6 +28,23 @@ export class DashboardComponent implements OnInit {
                 teamIconPath: new FormControl('',Validators.required),
                 tagline: new FormControl('')
     });
+    this.getAllEventsByOrganizationId();
+  }
+
+  getAllEventsByOrganizationId() {
+    this.httpService.get(UrlDetails.events).subscribe((response) =>{
+      this.getAllEventsByOrganizationIdSuccess(response);
+    }, (error)=> {
+      this.getAllEventsByOrganizationIdError(error);
+    });
+  }
+
+  getAllEventsByOrganizationIdSuccess(response) {
+    this.events = response;
+  }
+
+  getAllEventsByOrganizationIdError(error) {
+    this.toaster.showError(Error.login);
   }
 
   onClickSubmit(data) { 
@@ -35,10 +58,6 @@ export class DashboardComponent implements OnInit {
 
   get f() {
      return this.teamForm.controls;
-  }
-  
-  getAllEvents() {
-
   }
 
 }
