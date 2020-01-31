@@ -1,0 +1,50 @@
+<div class="container">
+  Evaluating EVents
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Team Name</th>
+        <th>repoLink</th>
+        <th>coding_standards</th>
+        <th>usablity</th>
+        <th>ui_ux</th>
+        <th>functionalCompleteness</th>
+        <th>creativity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let team of teams; let i=index">
+        <th>{{team._id.name}}</th>
+        <th>{{team.repoLink ? team.repoLink : "-"}}</th>
+        <th>
+          <input type="number" class="form-control" id="coding_standards{{i}}"
+               required
+               [(ngModel)]="team.coding_standards" name="name"
+               #name="ngModel">
+        </th>
+        <th>
+          <input type="number" class="form-control" id="usablity{{i}}"
+               required
+               [(ngModel)]="team.usablity" name="name"
+               #name="ngModel">
+        </th>
+        <th>
+            <input type="number" class="form-control" id="ui_ux{{i}}"
+               required [(ngModel)]="team.ui_ux" name="name" #name="ngModel">
+        </th>
+        <th>
+            <input type="number" class="form-control" id="functionalCompleteness{{i}}"
+               required [(ngModel)]="team.functionalCompleteness" name="name" #name="ngModel">
+        </th>
+        <th>
+            <input type="number" class="form-control" id="creativity{{i}}"
+               required [(ngModel)]="team.creativity" name="name" #name="ngModel">
+        </th>
+      </tr>
+    </tbody>
+    <tfoot>
+      <button class="btn btn-primary" (click)="submitEvaluation(teams)">Submit</button>
+    </tfoot>
+  </table>
+</div>

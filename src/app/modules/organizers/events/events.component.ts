@@ -44,6 +44,11 @@ export class EventsComponent implements OnInit {
     this.router.navigateByUrl('/organizer/edit-event/'+eventId);
   }
 
+  evaluateEvent(eventDetails) {
+    let eventId = eventDetails._id;
+    this.router.navigateByUrl('/organizer/evaluate/'+eventId);
+  }
+
   cancelEvent(eventDetails) {
     let eventId = eventDetails._id;
     const updateStatus = { status : "cancelled" };
