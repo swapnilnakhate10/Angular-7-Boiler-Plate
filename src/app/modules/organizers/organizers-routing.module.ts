@@ -5,6 +5,7 @@ import { EventsComponent } from './events/events.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { EditEventComponent } from './edit-event/edit-event.component';
 import { OrganizerProfileComponent } from './organizer-profile/organizer-profile.component';
+import { EvaluateEventComponent } from './evaluate-event/evaluate-event.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
       {
         path: 'edit-event/:id',
         component : EditEventComponent
+      },
+      {
+        path: 'evaluate/:id',
+        component : EvaluateEventComponent
       },
       {
         path: 'my-profile',

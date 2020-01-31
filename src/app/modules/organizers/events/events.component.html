@@ -17,9 +17,12 @@
               <span class="btn btn-info">{{event.status | uppercase}}</span>
             </div>
             <div class="panel-body">{{event.shortDescription}}</div>
-            <div class="panel-footer">
+            <div class="panel-footer" *ngIf="event.status !== 'completed'">
               <button class="btn btn-primary btn-padding" (click)="editEvent(event)">Edit</button>
               <button class="btn btn-danger btn-padding" (click)="cancelEvent(event)">Cancel</button>
+            </div>
+            <div class="panel-footer" *ngIf="event.status === 'completed'">
+              <button class="btn btn-primary btn-padding" (click)="evaluateEvent(event)">Evaluate</button>
             </div>
           </div>
         <div *ngIf="events.length == 0">

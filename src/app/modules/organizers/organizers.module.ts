@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { FormsModule }   from '@angular/forms';
 import { OrganizersRoutingModule } from './organizers-routing.module';
 import { OrganizersComponent } from './organizers.component';
 import { EventsComponent } from './events/events.component';
@@ -12,13 +12,15 @@ import { OrganizerHeaderComponent } from './organizer-header/organizer-header.co
 import { OrganizerProfileComponent } from './organizer-profile/organizer-profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MyDatePickerModule } from 'mydatepicker';
+import { EvaluateEventComponent } from './evaluate-event/evaluate-event.component';
 
 @NgModule({
-  declarations: [OrganizersComponent, EventsComponent, EventFormComponent, CreateEventComponent, EditEventComponent, OrganizerHeaderComponent, OrganizerProfileComponent],
+  declarations: [OrganizersComponent, EventsComponent, EventFormComponent, CreateEventComponent, EditEventComponent, OrganizerHeaderComponent, OrganizerProfileComponent, EvaluateEventComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     MyDatePickerModule,
+    FormsModule,
     OrganizersRoutingModule,
     SharedModule
   ]
