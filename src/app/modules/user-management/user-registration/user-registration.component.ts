@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {HttpService} from '../../shared/services/http.service';
-import { ToasterService } from './../../shared/services/toaster.service';
 import { StorageService } from './../../shared/services/storage.service';
 import { Success, Error } from '../../../constants/messages';
 import { UrlDetails } from '../../../constants/url-details';
-
+import { Router } from "@angular/router";
+import { ToasterService } from "src/app/modules/shared/services/toaster.service";
 @Component({
   selector: 'app-user-registration',
   templateUrl: './user-registration.component.html',
@@ -16,27 +16,46 @@ export class UserRegistrationComponent implements OnInit {
   
   userForm;
   submitted:boolean;
+  roles:String[];
+  sizes:String[];
+  constructor(private httpService: HttpService, private StorageService: StorageService,
+              private toaster: ToasterService, private router: Router) { }
 
   // convenience getter for easy access to form fields
     get f() { return this.userForm.controls; }
 
-  constructor(public httpService:HttpService, private toaster: ToasterService) { }
+  onClickSubmit(data) { 
+    this.submitted = true;
+        if(this.userForm.invalid){
+          return;
+        }
+        console.log(data)
+        console.log("Form submitted")
+        
+    this.httpService.post(UrlDetails.users,data).subscribe((response) =>{
+      this.toaster.showSuccess("User registered successfully.");
+      StorageService.set("isLoggedIn",'true');
+      this.router.navigate(['/user']);
+    }, (error)=> {
+      this.toaster.showError(error.errmsg);
+    });
+    }
 
-   roles:String[];
-   sizes:String[];
+   
   ngOnInit() {
     this.submitted = false;
     this.roles = ['Developer', 'Data Scientist'];
     this.sizes = ["Small","Medium","Large","Extra-Large","Tent"];
     this.userForm = new FormGroup({
-                emailid: new FormControl('',Validators.required),
-                fullname: new FormControl('',Validators.required),
-                passwd: new FormControl('',Validators.required),
-                number: new FormControl(''),
+                email: new FormControl('',Validators.required),
+                firstName: new FormControl('',Validators.required),
+                lastName: new FormControl('',Validators.required),
+                password: new FormControl('',Validators.required),
+                contactNumber: new FormControl(''),
                 gitId: new FormControl('',Validators.required),
-                roles: new FormControl('',Validators.required),
-                path: new FormControl('',),
-                size: new FormControl('',)
+                designation: new FormControl('',Validators.required),
+                image: new FormControl('',),
+                tShirtSize: new FormControl('',)
 
     });
   }
@@ -45,11 +64,11 @@ export class UserRegistrationComponent implements OnInit {
     let userModel = '';
     this.submitted = true;
     console.log(data);
-    // this.httpService.post(UrlDetails.users, data).subscribe((response) =>{
-    //   this.loginSuccess(response);
-    // }, (error)=> {
-    //   this.loginError(error);
-    // })
+    this.httpService.post(UrlDetails.users, data).subscribe((response) =>{
+      this.loginSuccess(response);
+    }, (error)=> {
+      this.loginError(error);
+    })
   }
 
   loginSuccess(response) {

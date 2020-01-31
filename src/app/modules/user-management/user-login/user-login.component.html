@@ -1,21 +1,52 @@
 <app-header></app-header>
-<div class="container">
+<div class="switch-field">
+		<input type="radio" id="radio-one" name="switch-one" (click)="toggleLogin($event)" value="yes" checked/>
+		<label for="radio-one">UserLogin</label>
+		<input type="radio" id="radio-two" (click)="toggleLogin($event)" name="switch-one" value="no" />
+		<label for="radio-two">Organization Login</label>
+	</div>
+
+<div  *ngIf="showuserSignIn" class="container">
 	<div class="panel-group">
 		<div class="panel panel-success">
 			<div class="panel-heading">User Login</div>
 			<div class="panel-body">
-				<form action="/">
+				<form  class="form-group"  (ngSubmit)="login(userLogin.value)"  [formGroup] ="userLogin">
+					<div>
+						<label for="email">Email address:</label>
+						<input type="email" class="form-control" id="email" formControlName = "email">
+					</div>
+					<div>
+						<label for="pwd">Password:</label>
+						<input type="password" class="form-control" id="pwd" formControlName = "password">
+					</div>
+					<!--<div class="checkbox">
+						<label><input type="checkbox"> Remember me</label>
+					</div>-->
+					 <button type="submit" class="btn btn-lg btn-success" >Login</button>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+  <div   *ngIf="!showuserSignIn" class="container">
+	<div class="panel-group">
+		<div class="panel panel-success">
+			<div class="panel-heading">Organizer Login</div>
+			<div class="panel-body">
+				<form  (ngSubmit)="onOrgLogin(orgLogin.value)"  [formGroup] ="orgLogin">
 					<div class="form-group">
 						<label for="email">Email address:</label>
-						<input type="email" class="form-control" id="email">
+						<input type="email"  formControlName = "email" class="form-control" id="email">
 					</div>
 					<div class="form-group">
 						<label for="pwd">Password:</label>
-						<input type="password" class="form-control" id="pwd">
+						<input type="password" class="form-control" formControlName = "password" id="pwd">
 					</div>
-					
 					<div class="checkbox">
-						<label><input type="checkbox"> Remember me</label>
+						<label><input type="checkbox"> Remember me</label> 
 					</div>
 					 <button class="btn btn-lg btn-success">Login</button>
 				</form>
@@ -23,3 +54,4 @@
 			</div>
 		</div>
 	</div>
+  </div>
