@@ -37,8 +37,8 @@ public model: any = { date: { year: new Date().getFullYear() , month: new Date()
 
      data.startDateTime= new Date(data.startDateTime.epoc);
     data.endDateTime=new Date(data.endDateTime.epoc);
-   // data.prizes[0].rank=parseInt( data.prizes[0].rank);
-   delete data.prizes;
+   // data.prizes[0].rank=parseInt( data.prizes[0].rank); 
+    delete data.prizes; // to be added later
     this.httpService.post( UrlDetails.createEvent,data).subscribe((response) =>{
      /*  this.loginSuccess(response); */
      this.toaster.showSuccess('Success');
