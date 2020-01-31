@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="row" *ngIf="isTeamCreate">
+        <form class="form-horizontal" (ngSubmit)="register(teamForm.value)" [formGroup] = "teamForm" >
+          <fieldset>
+          <legend>Fill your Team details</legend>
+          <div class="col-lg-8">
+            <div class="form-group">
+              <label for="inputTeamName" class="col-lg-4 control-label">Team Name*</label>
+              <div class="col-lg-8">
+                <input type="text" class="form-control" required id="teamname" formControlName = "teamname" placeholder="Your Team name" >
+                <div *ngIf="submitted && f.teamname.errors" class="invalid-feedback">
+                    <div *ngIf="f.teamname.errors.required">*Name is required</div>
+                </div>
+              </div>
+            </div>
+           
+            <div class="form-group">
+              <label for="inputTagLine" class="col-lg-4 control-label">Tag Line</label>
+              <div class="col-lg-8">
+                <input type="text" class="form-control" formControlName = "tagline" placeholder="" required>
+              </div>
+            </div>
+
+                
+            <div class="form-group" >
+              <div class="col-lg-12 col-lg-offset-4">
+                <button type="reset" class="btn btn-default">Cancel</button> &nbsp;
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <img src="assets/images/team_icon.png" id="userImage" alt="user_image.png" style="width:150px;height:150px;">
+            <input type="file" class="form-control" id="inputfile" formControlName = "path" name="path" >
+          </div>
+          </fieldset>
+        </form>
+
+    
+    </div>
+    <div class="row" *ngIf="!isTeamCreate">
+        <!-->To show the list of Teams here<-->
+        <div class="col-lg-12">
+         <button class="btn btn-success" (click)="createTeam()">Add Team</button>
+         <table class="table table-striped table-hover ">
+            <thead>
+                <tr>
+                <th>S.No.</th>
+                <th>Title</th>
+                <th>Team Leader</th>
+                <th>Action</th>
+                </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let team of teams">
+      <td>{{team.id}}</td>
+      <td>{{team.title}}</td>
+      <td>{{team.team_leader}}</td>
+      <td><a href="#" class="btn btn-danger">Leave</a></td>
+    </tr>
+   
+  </tbody>
+</table> 
+    </div>
+    </div>
+    
+</div>
