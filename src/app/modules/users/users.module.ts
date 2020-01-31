@@ -8,9 +8,10 @@ import { SharedModule } from '../shared/shared.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MyTeamComponent } from './my-team/my-team.component';
 import { UsersHeaderComponent } from './users-header/users-header.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
-  declarations: [UsersComponent, DashboardComponent, MyTeamComponent, UsersHeaderComponent],
+  declarations: [UsersComponent, DashboardComponent, MyTeamComponent, UsersHeaderComponent, UserProfileComponent],
   imports: [
     CommonModule,
     SharedModule,
