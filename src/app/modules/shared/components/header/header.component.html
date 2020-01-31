@@ -1,31 +1,29 @@
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">Hackathon Exela</a>
-      </div>
-      <ul class="nav navbar-nav">
-        <li>
-          <a routerLink="/user/dashboard" routerLinkActive="active">
-            <span class="glyphicon glyphicon-user"></span> Dashboard
-          </a>
-        </li>
-        <li>
-            <a routerLink="/user/my-team" routerLinkActive="active">
-              <span class="glyphicon glyphicon-user"></span> My Team
-            </a>
-          </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          <a routerLink="/user-registration" routerLinkActive="active">
-            <span class="glyphicon glyphicon-user"></span> My Profile
-          </a>
-        </li>
-        <li>
-          <a routerLink="/" routerLinkActive="active">
-            <span class="glyphicon glyphicon-log-in"></span> Logout
-          </a>
-        </li>
-      </ul>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="/">Hackton Special</a>
     </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li *ngFor="let menu of menulist" ><a href="javascript:void(0);" routerLink="{{menu.url}}">{{ menu.text }}</a></li>
+      </ul>
+       <div *ngIf="!loginStatus; else logoutBlock">
+      <ul class="nav navbar-nav navbar-right">
+          <li><a href="javascript:void(0);" routerLink="/user-login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+  </div>
+ 
+  <ng-template #logoutBlock>
+      <ul class="nav navbar-nav navbar-right" >
+        <li><a href="javascript:void(0);" routerLink=""><span class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
+      </ul>
+  </ng-template>
+    </div>
+  </div>
 </nav>
+

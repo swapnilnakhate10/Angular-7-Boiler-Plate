@@ -1,0 +1,44 @@
+{
+    "user": [
+
+				{
+					"text": "My Profile",
+					"url": "/user-profile",
+					"icon": "fa fa-user"
+				},
+				{
+					"text": "My Team",
+					"url": "/user/my-team",
+					"icon": "fa fa-users"
+				},
+				{
+					"text": "Dashboard",
+					"url": "/user/dashboard",
+					"icon": "fa fa-dashboard"
+				}
+				,
+				{
+					"text": "Events",
+					"url": "/events",
+					"icon": "fa fa-dashboard"
+				}
+    ],
+    "organizer": [
+
+				{
+					"text": "My Profile",
+					"url": "/user-profile",
+					"icon": "fa fa-user"
+				},
+				{
+					"text": "My Events",
+					"url": "/events",
+					"icon": "fa fa-dashboard"
+				},
+				{
+					"text": "Dashboard",
+					"url": "/user/dashboard",
+					"icon": "fa fa-dashboard"
+				}
+    ]
+}

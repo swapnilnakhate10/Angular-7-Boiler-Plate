@@ -8,6 +8,7 @@ import { ToastrModule } from 'ng6-toastr-notifications';
 
 import { SharedModule } from './modules/shared/shared.module';
 import { AppComponent } from './app.component';
+import { LandingPageModule } from './modules/landing-page/landing-page.module';
 
 @NgModule({
   declarations: [
