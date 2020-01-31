@@ -10,11 +10,15 @@ import { EditEventComponent } from './edit-event/edit-event.component';
 import { SharedModule } from '../shared/shared.module';
 import { OrganizerHeaderComponent } from './organizer-header/organizer-header.component';
 import { OrganizerProfileComponent } from './organizer-profile/organizer-profile.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MyDatePickerModule } from 'mydatepicker';
 
 @NgModule({
   declarations: [OrganizersComponent, EventsComponent, EventFormComponent, CreateEventComponent, EditEventComponent, OrganizerHeaderComponent, OrganizerProfileComponent],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
+    MyDatePickerModule,
     OrganizersRoutingModule,
     SharedModule
   ]
