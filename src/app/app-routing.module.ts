@@ -33,7 +33,7 @@ const routes: Routes = [
   },
   {
     path: 'organizer',
-    loadChildren: './modules/organizers/organizers.module#OrganizersModule',
+    loadChildren: './modules/organizers/organizers.module#OrganizersModule'
   },
   {
     path: '**',
