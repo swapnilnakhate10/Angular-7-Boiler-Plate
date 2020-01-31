@@ -13,6 +13,7 @@ import { UrlDetails } from '../../../constants/url-details';
 export class EvaluateEventComponent implements OnInit {
 
   teams = [];
+  eventId: any;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -21,9 +22,9 @@ export class EvaluateEventComponent implements OnInit {
   }
 
   ngOnInit() {
-    let eventId = this.route.snapshot.paramMap.get('id');
-    console.log('Event Id : '+eventId);
-    this.getAllTeamsDetails(eventId);
+    this.eventId = this.route.snapshot.paramMap.get('id');
+    console.log('Event Id : '+this.eventId);
+    this.getAllTeamsDetails(this.eventId);
   }
 
   getAllTeamsDetails(eventId) {
@@ -43,6 +44,19 @@ export class EvaluateEventComponent implements OnInit {
   }
 
   submitEvaluation(evalutionData) {
-    console.log('evalutionData : '+ JSON.stringify(evalutionData));
+    let body = { teams : evalutionData };
+    this.httpService.put(UrlDetails.events+ this.eventId, body).subscribe((response) =>{
+      this.submitEvaluationSuccess(response);
+    }, (error)=> {
+      this.submitEvaluationError(error);
+    });
+  }
+
+  submitEvaluationSuccess(response) {
+    this.toaster.showSuccess("Submitted successfully.");
+  }
+
+  submitEvaluationError(error) {
+    this.toaster.showError("Error Submit.");
   }
 }
