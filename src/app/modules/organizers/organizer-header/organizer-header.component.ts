@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StorageService } from './../../shared/services/storage.service';
 import { Router } from '@angular/router';
+import * as RolesMenu from "../../../data/role-menu.json";
 
 @Component({
   selector: 'app-organizer-header',
@@ -9,9 +10,18 @@ import { Router } from '@angular/router';
 })
 export class OrganizerHeaderComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) { 
+    this.menulist = this.organiserMenu;
+  }
+
+  userMenu:any;
+  organiserMenu:any;
+  menulist:any;
 
   ngOnInit() {
+    this.organiserMenu = (<any>RolesMenu).organizer;
+    this.menulist = this.organiserMenu;
+    
   }
 
   logout() {

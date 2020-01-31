@@ -39,7 +39,7 @@ onSubmit(data) {
     this.httpService.post(UrlDetails.createOrganization,data).subscribe((response) =>{
       this.toaster.showSuccess("User registered successfully.");
       StorageService.set("isLoggedIn",'true');
-      this.router.navigate(['/user']);
+      this.router.navigate(['/organizer']);
     }, (error)=> {
       this.toaster.showError(error.errmsg);
     });

@@ -1,9 +1,28 @@
 {
-    "user": [
+	"common": [
+
+		{
+			"text": "About",
+			"url": "/about",
+			"icon": "fa fa-users"
+		},
+		{
+			"text": "Contact",
+			"url": "/contacts",
+			"icon": "fa fa-dashboard"
+		}
+		,
+		{
+			"text": "Events",
+			"url": "/events",
+			"icon": "fa fa-dashboard"
+		}
+	],
+	"user": [
 
 				{
 					"text": "My Profile",
-					"url": "/user-profile",
+					"url": "/user/my-profile",
 					"icon": "fa fa-user"
 				},
 				{
@@ -16,28 +35,17 @@
 					"url": "/user/dashboard",
 					"icon": "fa fa-dashboard"
 				}
-				,
-				{
-					"text": "Events",
-					"url": "/events",
-					"icon": "fa fa-dashboard"
-				}
     ],
     "organizer": [
 
 				{
 					"text": "My Profile",
-					"url": "/user-profile",
+					"url": "/organizer/my-profile",
 					"icon": "fa fa-user"
 				},
 				{
-					"text": "My Events",
-					"url": "/events",
-					"icon": "fa fa-dashboard"
-				},
-				{
 					"text": "Dashboard",
-					"url": "/user/dashboard",
+					"url": "/organizer/dashboard",
 					"icon": "fa fa-dashboard"
 				}
     ]

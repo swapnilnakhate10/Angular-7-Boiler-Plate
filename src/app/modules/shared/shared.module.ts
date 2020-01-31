@@ -10,6 +10,7 @@ import { FooterComponent } from './components/footer/footer.component';
     CommonModule,
     RouterModule
   ],
+  providers: [HeaderComponent],
   exports : [HeaderComponent, FooterComponent]
 })
 export class SharedModule { }

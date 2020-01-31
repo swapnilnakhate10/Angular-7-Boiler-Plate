@@ -73,7 +73,7 @@ export class UserRegistrationComponent implements OnInit {
 
   loginSuccess(response) {
       this.toaster.showSuccess(Success.login);
-      StorageService.set(StorageService.USER_ID, 'adwad');
+      this.router.navigate(['/user']);
   }
 
   loginError(error) {

@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angular7-boilerplate';
+  title = 'Code Blooded';
+  static API_URL="http://localhost:8888/authservice";
 }

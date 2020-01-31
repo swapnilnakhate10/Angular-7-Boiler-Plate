@@ -10,7 +10,6 @@ export class StorageService {
     // declare constants here
     public static USER_ID: string = 'user_id';
     public static USER_NAME: string = 'user_name';
-    public static LoggedIN_Role: string = 'user';
 
     public static set(key: string, value: any): void {
         if(key !== null && value !== null && key !== undefined && value !== undefined ) {

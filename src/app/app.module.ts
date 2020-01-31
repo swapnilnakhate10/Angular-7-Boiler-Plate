@@ -20,6 +20,7 @@ import { LandingPageModule } from './modules/landing-page/landing-page.module';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     HttpClientModule,
+    LandingPageModule,
     SharedModule
   ],
   providers: [],
