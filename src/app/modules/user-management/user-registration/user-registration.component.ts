@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {HttpService} from '../../shared/services/http.service';
+import { ToasterService } from './../../shared/services/toaster.service';
+import { StorageService } from './../../shared/services/storage.service';
+import { Success, Error } from '../../../constants/messages';
+import { UrlDetails } from '../../../constants/url-details';
 
 @Component({
   selector: 'app-user-registration',
@@ -15,17 +20,7 @@ export class UserRegistrationComponent implements OnInit {
   // convenience getter for easy access to form fields
     get f() { return this.userForm.controls; }
 
-
-  onClickSubmit(data) { 
-    this.submitted = true;
-        if(this.userForm.invalid){
-          return;
-        }
-        console.log(data)
-        console.log("Form submitted")
-    }
-
-  constructor() { }
+  constructor(public httpService:HttpService, private toaster: ToasterService) { }
 
    roles:String[];
    sizes:String[];
@@ -44,7 +39,27 @@ export class UserRegistrationComponent implements OnInit {
                 size: new FormControl('',)
 
     });
-    }
+  }
+
+  register(data) {
+    let userModel = '';
+    this.submitted = true;
+    console.log(data);
+    // this.httpService.post(UrlDetails.users, data).subscribe((response) =>{
+    //   this.loginSuccess(response);
+    // }, (error)=> {
+    //   this.loginError(error);
+    // })
+  }
+
+  loginSuccess(response) {
+      this.toaster.showSuccess(Success.login);
+      StorageService.set(StorageService.USER_ID, 'adwad');
+  }
+
+  loginError(error) {
+    this.toaster.showError(Error.login);
+  }
   
 }
 

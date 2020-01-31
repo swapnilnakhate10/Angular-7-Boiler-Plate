@@ -5,7 +5,7 @@
         <h3 class="panel-title">Register new user</h3>
       </div>
       <div class="panel-body">
-        <form class="form-horizontal" (ngSubmit)="onClickSubmit(userForm.value)" [formGroup] = "userForm" >
+        <form class="form-horizontal" (ngSubmit)="register(userForm.value)" [formGroup] = "userForm" >
           <fieldset>
           <legend>Fill following details</legend>
           <div class="col-lg-8">

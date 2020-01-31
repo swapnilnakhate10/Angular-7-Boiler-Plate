@@ -1,5 +1,5 @@
 
 export const environment = {
   production: false,
-  hackathonCore : 'http://localhost:8080/api/'
+  hackathonCore : 'http://sbr-devp-129:8080/api/'
 };
