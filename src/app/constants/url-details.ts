@@ -10,4 +10,6 @@ export class UrlDetails {
     public static teams: string = environment.hackathonCore + "teams/";
     public static organizers: string = environment.hackathonCore + "organizers/";
     public static prizes: string = environment.hackathonCore + "prizes/";
+    public static createOrganization: string = environment.hackathonCore + "organizers";
+    public static organizationLogin: string = environment.hackathonCore + "organizers/login";
 }
