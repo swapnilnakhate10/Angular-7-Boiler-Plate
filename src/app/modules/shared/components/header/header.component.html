@@ -14,6 +14,8 @@
       </ul>
        <div *ngIf="!loginStatus; else logoutBlock">
       <ul class="nav navbar-nav navbar-right">
+        <li><a routerLink="/landing" routerLinkActive="active"><span class="glyphicon glyphicon-user"></span> SignUp</a>
+        </li>
           <li><a href="javascript:void(0);" routerLink="/user-login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
   </div>
