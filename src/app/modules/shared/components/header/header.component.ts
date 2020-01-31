@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import * as RolesMenu from './role-menu.json';
 
 @Component({
   selector: 'app-header',
@@ -12,12 +11,22 @@ export class HeaderComponent implements OnInit {
   organiserMenu:any;
   menulist:any;
   constructor() { 
-    this.userMenu = (<any>RolesMenu).user;
-    this.organiserMenu = (<any>RolesMenu).organizer;
     this.menulist = this.userMenu;
   }
 
   ngOnInit() {
+    this.menulist = [
+      {
+					"text": "About Us",
+					"url": "/about",
+					"icon": "fa fa-user"
+				},
+				{
+					"text": "Contact Us",
+					"url": "/contact",
+					"icon": "fa fa-users"
+				}
+    ]
   }
 
 }

@@ -7,9 +7,10 @@ import { UsersComponent } from './users.component';
 import { SharedModule } from '../shared/shared.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MyTeamComponent } from './my-team/my-team.component';
+import { UsersHeaderComponent } from './users-header/users-header.component';
 
 @NgModule({
-  declarations: [UsersComponent, DashboardComponent, MyTeamComponent],
+  declarations: [UsersComponent, DashboardComponent, MyTeamComponent, UsersHeaderComponent],
   imports: [
     CommonModule,
     SharedModule,

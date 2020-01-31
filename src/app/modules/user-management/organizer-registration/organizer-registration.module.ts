@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { SharedModule } from './../../shared/shared.module';
 import { OrganizerRegistrationRoutingModule } from './organizer-registration-routing.module';
 import { OrganizerRegistrationComponent } from './organizer-registration.component';
 
@@ -8,7 +8,8 @@ import { OrganizerRegistrationComponent } from './organizer-registration.compone
   declarations: [OrganizerRegistrationComponent],
   imports: [
     CommonModule,
-    OrganizerRegistrationRoutingModule
+    OrganizerRegistrationRoutingModule,
+    SharedModule
   ]
 })
 export class OrganizerRegistrationModule { }

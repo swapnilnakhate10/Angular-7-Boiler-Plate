@@ -8,9 +8,10 @@ import { EventFormComponent } from './event-form/event-form.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { EditEventComponent } from './edit-event/edit-event.component';
 import { SharedModule } from '../shared/shared.module';
+import { OrganizerHeaderComponent } from './organizer-header/organizer-header.component';
 
 @NgModule({
-  declarations: [OrganizersComponent, EventsComponent, EventFormComponent, CreateEventComponent, EditEventComponent],
+  declarations: [OrganizersComponent, EventsComponent, EventFormComponent, CreateEventComponent, EditEventComponent, OrganizerHeaderComponent],
   imports: [
     CommonModule,
     OrganizersRoutingModule,
