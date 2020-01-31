@@ -1,144 +1,43 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-4">
-      <div class="panel panel-default">
-        <div class="panel-heading">Profile Details</div>
-        <div class="panel-body">
-          <img src="assets/images/user.png" alt="user.png" style="width:200px;height:200px">
-          <h1>John Doe</h1>
-          <span class="label label-success">Developer</span>
-          <br/>
-          <br/>
-          <button class="btn btn-primary">Edit Profile</button>
-          <h5>abc@xyz.com</h5>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-8">
-      <ul class="nav nav-tabs">
-        <li class="active"><a href="#teams" data-toggle="tab">Teams</a></li>
-        <li><a href="#events" data-toggle="tab">Events</a></li>
-      </ul>
-      <div id="myTabContent" class="tab-content">
-        <div class="tab-pane fade active in" id="teams">
-          <br/>
-          <button class="btn btn-success" > Add Team</button>
-          <table class="table table-striped table-hover ">
-            <thead>
-              <tr>
-                <th>S.No.</th>
-                <th>Title</th>
-                <th>Team-Leader</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="info">
-                <td>1</td>
-                <td>Code Blooded</td>
-                <td>Amrish Kumar</td>
-                <td><a href="#" class="btn btn-danger">Leave</a></td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>CodeZilla</td>
-                <td>Jon Doe</td>
-                <td><a href="#" class="btn btn-danger">Leave</a></td>
-              </tr>
-              <tr class="info">
-                <td>3</td>
-                <td>Runtime Terror</td>
-                <td>Kaushal Kishor</td>
-                <td><a href="#" class="btn btn-danger">Leave</a></td>
-              </tr>    
-            </tbody>
-          </table> 
-
-           <div class="">
-        <form class="form-horizontal" (ngSubmit)="onClickSubmit(teamForm.value)" [formGroup] = "teamForm" >
-          <fieldset>
-            <legend>Register New Team</legend>
-            <div class="col-lg-8">
-
-              <div class="form-group">
-                <label for="inputTeamName" class="col-lg-4 control-label">Team Name*</label>
-                <div class="col-lg-8">
-                  <input type="text" class="form-control" required id="teamname" formControlName = "teamname" placeholder="Your Team name" >
-                  <div *ngIf="submitted && f.teamname.errors" class="invalid-feedback">
-                    <div *ngIf="f.teamname.errors.required">*Team Name is required</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="inputTagLine" class="col-lg-4 control-label">Tag Line</label>
-                <div class="col-lg-8">
-                  <input type="text" class="form-control" id="tagline" formControlName = "tagline" placeholder="Your Tag line" >
-                </div>
-              </div>
-              
-              <div class="form-group">
-                 <label for="inputGroupIcon" class="col-lg-4 control-label">Select Group Icon(optional)</label>
-                <div class="col-lg-8">
-                <img src="assets/images/team_icon.png" id="userImage" alt="team_image.png" style="width:100px;height:100px;">
-                <input type="file" class="form-control" id="inputfile" formControlName = "teamIconPath" >
-                </div>
-              </div>
-
-
-              <div class="form-group" >
-                <div class="col-lg-12 col-lg-offset-4">
-                  <button type="reset" class="btn btn-default">Cancel</button> &nbsp;
-                  <button type="submit" class="btn btn-info">Submit</button>
-                </div>
-              </div>
-
+    <div class="col-md-12">
+      <div class="panel-group" *ngIf="events.length >= 0">
+          <div class="panel panel-default">
+            <div class="panel-heading">Event 1</div>
+            <div class="panel-body">Short Description of event</div>
+            <div class="panel-footer">
+              <button class="btn btn-primary" (click)="editEvent(event)">Edit</button>
+              <button class="btn btn-danger">Delete</button>
             </div>
-            <div class="col-lg-4">
-             
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">Panel Header</div>
+            <div class="panel-body">Panel Content</div>
+            <div class="panel-footer">
+                <button class="btn btn-primary">Edit</button>
+                <button class="btn btn-danger">Delete</button>
+              </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">Panel Header</div>
+            <div class="panel-body">Panel Content</div>
+            <div class="panel-footer">
+                <button class="btn btn-primary">Edit</button>
+                <button class="btn btn-danger">Delete</button>
+              </div>
             </div>
-          </fieldset>
-        </form>
-      </div>
+          <div class="panel panel-default">
+              <div class="panel-heading">Panel Header</div>
+              <div class="panel-body">Panel Content</div>
+              <div class="panel-footer">
+                  <button class="btn btn-primary">Edit</button>
+                  <button class="btn btn-danger">Delete</button>
+                </div>
+            </div>
         </div>
-        <div class="tab-pane fade" id="events">
-          <table class="table table-striped table-hover ">
-            <thead>
-              <tr>
-                <th>S.No.</th>
-                <th>Event Name</th>
-                <th>Starting on</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="info">
-                <td>1</td>
-                <td>Hackathon Exela</td>
-                <td>31st Jan</td>
-                <td><a href="#" class="btn btn-primary">See Details</a></td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>IoT Challenge</td>
-                <td>14th Feb</td>
-                <td><a href="#" class="btn btn-primary">See Details</a></td>
-              </tr>
-              <tr class="info">
-                <td>3</td>
-                <td>Smart Office Challenge</td>
-                <td>1 Jan</td>
-                <td><a href="#" class="btn btn-primary">See Details</a></td>
-              </tr>    
-            </tbody>
-          </table> 
+        <div *ngIf="events.length == 0">
+            No Event created yet.
         </div>
-      
-      
-      
-      </div>
-     
     </div>
   </div>
 </div>
-

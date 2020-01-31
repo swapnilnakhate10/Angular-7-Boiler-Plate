@@ -13,7 +13,7 @@ export class LandingPageComponent implements OnInit {
   constructor(private toastr: ToasterService) { }
 
   ngOnInit() {
-    this.toastr.showSuccess(Success.welcome);
+    // this.toastr.showSuccess(Success.welcome);
   }
 
 }

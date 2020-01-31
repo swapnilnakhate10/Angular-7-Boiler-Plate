@@ -12,28 +12,33 @@ export class DashboardComponent implements OnInit {
   teamForm;
   submitted:boolean;
   teamCreate:boolean;
+  events = [];
 
-  // convenience getter for easy access to form fields
-  get f() { return this.teamForm.controls; }
-
-  onClickSubmit(data) { 
-    this.submitted = true;
-        if(this.teamForm.invalid){
-          return;
-        }
-        console.log(data)
-        console.log("Form submitted")
-    }
-  
-   constructor() { }
+  constructor() { }
 
   ngOnInit() {
-
     this.teamForm = new FormGroup({
                 teamname: new FormControl('',Validators.required),
                 teamIconPath: new FormControl('',Validators.required),
                 tagline: new FormControl('')
     });
+  }
+
+  onClickSubmit(data) { 
+      this.submitted = true;
+      if(this.teamForm.invalid){
+        return;
+      }
+      console.log(data)
+      console.log("Form submitted")
+  }
+
+  get f() {
+     return this.teamForm.controls;
+  }
+  
+  getAllEvents() {
+
   }
 
 }
