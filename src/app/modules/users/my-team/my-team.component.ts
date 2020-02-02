@@ -48,11 +48,10 @@ export class MyTeamComponent implements OnInit {
     this.httpService.post(UrlDetails.teams, formData).subscribe((response) => {
       this.toaster.showSuccess( 'Team registered successfully.');
       this.router.navigate(['/user/my-team']);
+      this.isTeamCreate = false;
     }, (error) => {
       this.toaster.showError(error.errmsg);
     });
-
-     console.log(formData);
   }
 
   constructor(private httpService: HttpService, private toaster: ToasterService,
@@ -67,8 +66,22 @@ export class MyTeamComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    // Fetching Teams data
+    this.httpService.get(UrlDetails.teams).subscribe((response) => {
+      const typedArray = new Uint8Array(response);
+      const array = Array.from(typedArray);
+
+      // for( let i = 0; i<array.length;i++){
+      //  this.teams.push({id:i+1,name:array[i]['name'],team_leader:'John Doe'});
+      // }
+    console.log(typedArray);
+    }, (error) => {
+      this.toaster.showError(error.errmsg);
+    });
+
      this.teamForm = new FormGroup({
-                teamname: new FormControl('',Validators.required),
+                name: new FormControl('', Validators.required),
                 tagline: new FormControl('Programming rocks!'),
                 path: new FormControl('',) ,
                 demoURL: new FormControl('')

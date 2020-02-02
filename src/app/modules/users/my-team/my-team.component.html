@@ -8,9 +8,9 @@
             <div class="form-group">
               <label for="inputTeamName" class="col-lg-4 control-label">Team Name*</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control" required id="teamname" formControlName = "teamname" placeholder="Your Team name" >
-                <div *ngIf="submitted && f.teamname.errors" class="invalid-feedback">
-                    <div *ngIf="f.teamname.errors.required">*Name is required</div>
+                <input type="text" class="form-control" required id="name" formControlName = "name" placeholder="Your Team name" >
+                <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                    <div *ngIf="f.name.errors.required">*Name is required</div>
                 </div>
               </div>
             </div>
