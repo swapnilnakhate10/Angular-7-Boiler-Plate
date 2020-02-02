@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MyTeamComponent } from './my-team/my-team.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UsersComponent } from './users.component';
+import { StartChallengeComponent } from './start-challenge/start-challenge.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
       {
         path:'my-profile',
         component: UserProfileComponent
+      },
+      {
+        path:'challenge/:eventId',
+        component: StartChallengeComponent
       }
     ]
   }

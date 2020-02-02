@@ -9,9 +9,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MyTeamComponent } from './my-team/my-team.component';
 import { UsersHeaderComponent } from './users-header/users-header.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { StartChallengeComponent } from './start-challenge/start-challenge.component';
 
 @NgModule({
-  declarations: [UsersComponent, DashboardComponent, MyTeamComponent, UsersHeaderComponent, UserProfileComponent],
+  declarations: [UsersComponent, DashboardComponent, MyTeamComponent, UsersHeaderComponent, UserProfileComponent, StartChallengeComponent],
   imports: [
     CommonModule,
     SharedModule,

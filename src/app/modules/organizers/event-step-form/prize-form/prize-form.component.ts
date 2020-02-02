@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
-
+import { Router } from '@angular/router';
 import { Event } from '../../../../models/event';
 import { UrlDetails } from '../../../../constants/url-details';
 import { Success, Error } from '../../../../constants/messages';
@@ -19,7 +19,8 @@ export class PrizeFormComponent implements OnInit {
   prizeForm;
   prizeModels = [];
 
-  constructor(private httpService: HttpService, private toaster: ToasterService) { }
+  constructor(private httpService: HttpService, private toaster: ToasterService,
+              private router: Router) { }
 
   ngOnInit() {
     this.prizeForm = new FormGroup({
@@ -65,6 +66,10 @@ export class PrizeFormComponent implements OnInit {
 
   addOrUpdateEventError(error) {
     this.toaster.showError(Error.createEvent);
+  }
+
+  submitPrizes() {
+    this.router.navigateByUrl('organizer');
   }
 
 }

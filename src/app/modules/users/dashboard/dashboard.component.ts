@@ -60,4 +60,8 @@ export class DashboardComponent implements OnInit {
      return this.teamForm.controls;
   }
 
+  startChallenge(eventDetails) {
+    this.router.navigateByUrl('user/challenge/'+eventDetails._id);
+  }
+
 }
