@@ -76,7 +76,7 @@ export class UserLoginComponent implements OnInit {
   }
 
   loginError(error) {
-    this.toaster.showError(error.message);
+    this.toaster.showError(error.error.message);
   }
 
 }

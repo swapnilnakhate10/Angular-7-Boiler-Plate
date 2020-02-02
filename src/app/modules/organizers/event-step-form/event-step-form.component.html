@@ -1,0 +1,6 @@
+<div *ngIf="currentStep === 1">
+  <app-event-form [eventData]="eventData" (eventForm)="onSubmitEventForm($event)"></app-event-form>
+</div>
+<div *ngIf="currentStep === 2">
+  <app-prize-form [eventId]="eventId" (prizeForm)="onSubmitPrizes($event)"></app-prize-form>
+</div>

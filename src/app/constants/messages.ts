@@ -32,6 +32,7 @@ export class Error {
     public static login: string = "Error logging in.";
     public static logout: string = "Error logging out.";
 
+    public static getEvent: string = "Error get Event.";
     public static cancelEvent: string = "Error cancelEvent.";
     public static createEvent: string = "Error createEvent.";
     public static updateEvent: string = "Error updateEvent.";
