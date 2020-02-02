@@ -14,7 +14,7 @@
                 </div>
               </div>
             </div>
-           
+
             <div class="form-group">
               <label for="inputTagLine" class="col-lg-4 control-label">Tag Line</label>
               <div class="col-lg-8">
@@ -49,7 +49,7 @@
                         <td><a href="#" class="btn btn-success">Add</a></td>
                     </tr>
                 </tbody>
-                </table> 
+                </table>
               </div>
             </div>
 
@@ -62,20 +62,20 @@
                         <th>S.No.</th>
                         <th>Name</th>
                         <th>Designation</th>
-                       
+
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="info" *ngFor="let user of users">
                         <td>{{user.id}}</td>
                         <td>{{user.name}}</td>
-                        <td>{{user.designation}}</td>                       
+                        <td>{{user.designation}}</td>
                     </tr>
                 </tbody>
-                </table> 
+                </table>
               </div>
             </div>
-                
+
             <div class="form-group" >
               <div class="col-lg-12 col-lg-offset-4">
                 <button type="reset" class="btn btn-default" (click)="cancel()">Cancel</button> &nbsp;
@@ -83,14 +83,10 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-4" style="text-align:center">
-            <img src="assets/images/team_icon.png" id="userImage" alt="user_image.png" style="width:150px;height:150px;">
-            <input type="file" class="form-control" id="inputfile" formControlName = "path" name="path" >
-          </div>
-          </fieldset>
+        </fieldset>
         </form>
 
-    
+
     </div>
     <div class="row" *ngIf="!isTeamCreate">
         <!-->To show the list of Teams here<-->
@@ -112,11 +108,11 @@
       <td>{{team.team_leader}}</td>
       <td><a href="#" class="btn btn-danger">Leave</a></td>
     </tr>
-   
+
   </tbody>
-</table> 
+</table>
     </div>
     </div>
-    
+
 </div>
 <section>
