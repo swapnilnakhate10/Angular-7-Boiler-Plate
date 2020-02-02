@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ToasterService } from './../shared/services/toaster.service';
-import { Success, Error } from '../../constants/messages';
-import { UrlDetails } from '../../constants/url-details';
 
 @Component({
   selector: 'app-landing-page',
@@ -10,10 +7,9 @@ import { UrlDetails } from '../../constants/url-details';
 })
 export class LandingPageComponent implements OnInit {
 
-  constructor(private toastr: ToasterService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.toastr.showSuccess(Success.welcome);
   }
 
 }

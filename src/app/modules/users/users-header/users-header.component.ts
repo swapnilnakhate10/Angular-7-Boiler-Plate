@@ -8,19 +8,19 @@ import * as RolesMenu from "../../../data/role-menu.json";
   templateUrl: './users-header.component.html',
   styleUrls: ['./users-header.component.scss']
 })
+
 export class UsersHeaderComponent implements OnInit {
+
+  userMenu:any;
+  menulist:any;
 
   constructor(private router: Router) {
     this.menulist = this.userMenu;
    }
 
-  userMenu:any;
-  menulist:any;
-
   ngOnInit() {
     this.userMenu = (<any>RolesMenu).user;
     this.menulist = this.userMenu;
-    
   }
 
   logout() {
