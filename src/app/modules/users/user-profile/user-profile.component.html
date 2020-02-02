@@ -5,15 +5,14 @@
         <div class="panel-heading">Profile Details</div>
         <div class="panel-body">
           <img src="assets/images/user.png" alt="user.png" style="width:200px;height:200px">
-          <h1>John Doe</h1>
+          <h1> {{ userDetails.firstName}} {{userDetails.lastName }}</h1>
           <span class="label label-success">Developer</span>
-          <br/>
-          <br/>
+          <br />
+          <br />
           <button class="btn btn-primary">Edit Profile</button>
-          <h5>abc@xyz.com</h5>
+          <h5>{{ userDetails.email }}</h5>
         </div>
       </div>
     </div>
   </div>
 </div>
-

@@ -5,15 +5,14 @@
         <div class="panel-heading">Profile Details</div>
         <div class="panel-body">
           <img src="assets/images/user.png" alt="user.png" style="width:200px;height:200px">
-          <h1>John Doe</h1>
-          <span class="label label-success">Developer</span>
-          <br/>
-          <br/>
-          <button class="btn btn-primary">Edit Profile</button>
-          <h5>abc@xyz.com</h5>
+          <h1>{{organizerDetails.name }} </h1>
+          <span class="label label-success">ORGANIZER</span>
+          <br />
+          <br />
+          <button class="btn btn-primary" routerLink="/organizer/update-profile">Edit Profile</button>
+          <h5>{{organizerDetails.email}}</h5>
         </div>
       </div>
     </div>
   </div>
 </div>
-

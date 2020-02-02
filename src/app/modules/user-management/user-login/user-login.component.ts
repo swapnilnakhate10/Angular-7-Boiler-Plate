@@ -15,17 +15,17 @@ import { Router } from "@angular/router";
 export class UserLoginComponent implements OnInit {
   userLogin;
   orgLogin;
-  showuserSignIn:boolean = true;
-  
+  showuserSignIn: boolean = true;
+
   constructor(private httpService: HttpService, private StorageService: StorageService,
-              private toaster: ToasterService, private router: Router) { 
+    private toaster: ToasterService, private router: Router) {
     this.userLogin = new FormGroup({
-        email: new FormControl('',Validators.required),
-        password: new FormControl('',Validators.required),
+      email: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required),
     });
     this.orgLogin = new FormGroup({
-        email: new FormControl('',Validators.required),
-        password: new FormControl('',Validators.required),
+      email: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required),
     });
   }
 
@@ -33,46 +33,49 @@ export class UserLoginComponent implements OnInit {
 
   }
 
-  toggleLogin(value:any) {
-    if(value.target.value=='yes') {
+  toggleLogin(value: any) {
+    if (value.target.value == 'yes') {
       this.showuserSignIn = true;
     } else {
-    this.showuserSignIn = false;
+      this.showuserSignIn = false;
     }
   }
 
-  login(value:any) { 
-    this.httpService.post(UrlDetails.userLoginUrl,value).subscribe((response) =>{
+  login(value: any) {
+    this.httpService.post(UrlDetails.userLoginUrl, value).subscribe((response) => {
       this.loginSuccess(response);
-    }, (error)=> {
+    }, (error) => {
       this.loginError(error);
     })
   }
 
-  onOrgLogin(value:any) { 
-    this.httpService.post(UrlDetails.organizationLogin,value).subscribe((response) =>{
+  onOrgLogin(value: any) {
+    this.httpService.post(UrlDetails.organizationLogin, value).subscribe((response) => {
       this.loginSuccessOrg(response);
-    }, (error)=> {
+    }, (error) => {
       this.loginError(error);
     })
   }
 
   loginSuccessOrg(response) {
-      StorageService.set(StorageService.ORGANIZER_ID, response._id);
-      StorageService.set(StorageService.CURRENT_ORGANIZATION_NAME, response.organization);
-      StorageService.set(StorageService.ORGANIZER_NAME, response.name);
-      StorageService.set(StorageService.ORGANIZER_EMAIL, response.email);
-      StorageService.set(StorageService.USER_TYPE, "organizer");
-      this.router.navigate(['/organizer']);
+    StorageService.set("isLoggedIn", 'true');
+    StorageService.set(StorageService.ORGANIZER_ID, response._id);
+    StorageService.set(StorageService.ORGANIZER_NAME, response.name);
+    StorageService.set(StorageService.CURRENT_ORGANIZATION_NAME, response.organization);
+    StorageService.set(StorageService.ORGANIZER_EMAIL, response.email);
+    StorageService.set(StorageService.ORGANIZER_CONTACT, response.contactNo);
+    StorageService.set(StorageService.USER_TYPE, "organizer");
+    this.router.navigate(['/organizer']);
   }
 
   loginSuccess(response) {
-      StorageService.set(StorageService.USER_ID, response._id);
-      StorageService.set(StorageService.USER_FIRSTNAME, response.firstName);
-      StorageService.set(StorageService.USER_LASTNAME, response.lastName);
-      StorageService.set(StorageService.USER_EMAIL, response.email);
-      StorageService.set(StorageService.USER_TYPE, "user");
-      this.router.navigate(['/user']);
+    StorageService.set("isLoggedIn", 'true');
+    StorageService.set(StorageService.USER_ID, response._id);
+    StorageService.set(StorageService.USER_FIRSTNAME, response.firstName);
+    StorageService.set(StorageService.USER_LASTNAME, response.lastName);
+    StorageService.set(StorageService.USER_EMAIL, response.email);
+    StorageService.set(StorageService.USER_TYPE, "user");
+    this.router.navigate(['/user']);
   }
 
   loginError(error) {

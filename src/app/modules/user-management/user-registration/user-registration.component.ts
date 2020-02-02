@@ -63,7 +63,7 @@ export class UserRegistrationComponent implements OnInit {
   register(data) {
     let userModel = '';
     this.submitted = true;
-    console.log(data);
+    // console.log(data);
     this.httpService.post(UrlDetails.users, data).subscribe((response) =>{
       this.loginSuccess(response);
     }, (error)=> {
@@ -73,6 +73,12 @@ export class UserRegistrationComponent implements OnInit {
 
   loginSuccess(response) {
       this.toaster.showSuccess(Success.login);
+      StorageService.set("isLoggedIn",'true');
+        StorageService.set(StorageService.USER_ID, response._id);
+        StorageService.set(StorageService.USER_FIRSTNAME, response.firstName);
+        StorageService.set(StorageService.USER_LASTNAME, response.lastName);
+        StorageService.set(StorageService.USER_EMAIL, response.email);
+        StorageService.set(StorageService.USER_TYPE, "user");
       this.router.navigate(['/user']);
   }
 

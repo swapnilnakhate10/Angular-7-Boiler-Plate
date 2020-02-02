@@ -12,36 +12,39 @@ import { Router } from "@angular/router";
   styleUrls: ['./organizer-registration.component.scss']
 })
 export class OrganizerRegistrationComponent implements OnInit {
-orgForm;
-   constructor(private httpService: HttpService, private StorageService: StorageService,
-              private toaster: ToasterService, private router: Router) { 
-      this.orgForm = new FormGroup({
-                email: new FormControl('',Validators.required),
-                organization: new FormControl('',Validators.required),
-                name: new FormControl('',Validators.required),
-                password: new FormControl('',Validators.required),
-                contactNo: new FormControl(''),
-                logo: new FormControl('')
-
+  orgForm;
+  constructor(private httpService: HttpService, private StorageService: StorageService,
+    private toaster: ToasterService, private router: Router) {
+    this.orgForm = new FormGroup({
+      email: new FormControl('', Validators.required),
+      organization: new FormControl('', Validators.required),
+      name: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required),
+      contactNo: new FormControl(''),
+      logo: new FormControl('')
     });
-              }
+  }
 
   ngOnInit() {
   }
 
-onSubmit(data) { 
-        // if(this.orgForm.invalid){
-        //   return;
-        // }
-        console.log(data)
-        console.log("Form submitted")
-        
-    this.httpService.post(UrlDetails.createOrganization,data).subscribe((response) =>{
-      this.toaster.showSuccess("User registered successfully.");
-      StorageService.set("isLoggedIn",'true');
-      this.router.navigate(['/organizer']);
-    }, (error)=> {
+  onSubmit(data) {
+    this.httpService.post(UrlDetails.createOrganization, data).subscribe((response) => {
+      this.toaster.showSuccess("Organization registered successfully.");
+      this.registerSuccess(response);
+    }, (error) => {
       this.toaster.showError(error.errmsg);
     });
-    }
+  }
+
+  registerSuccess(response) {
+    StorageService.set("isLoggedIn", 'true');
+    StorageService.set(StorageService.ORGANIZER_ID, response._id);
+    StorageService.set(StorageService.ORGANIZER_NAME, response.name);
+    StorageService.set(StorageService.CURRENT_ORGANIZATION_NAME, response.organization);
+    StorageService.set(StorageService.ORGANIZER_EMAIL, response.email);
+    StorageService.set(StorageService.ORGANIZER_CONTACT, response.contactNo);
+    StorageService.set(StorageService.USER_TYPE, "organizer");
+    this.router.navigate(['/organizer']);
+  }
 }

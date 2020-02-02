@@ -13,4 +13,5 @@ export class UrlDetails {
     public static prizes: string = environment.hackathonCore + "prizes/";
     public static createOrganization: string = environment.hackathonCore + "organizers";
     public static organizationLogin: string = environment.hackathonCore + "organizers/login";
+    public static updateOrganization: string = environment.hackathonCore + "organizers";
 }

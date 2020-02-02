@@ -6,6 +6,7 @@ import { CreateEventComponent } from './create-event/create-event.component';
 import { EditEventComponent } from './edit-event/edit-event.component';
 import { OrganizerProfileComponent } from './organizer-profile/organizer-profile.component';
 import { EvaluateEventComponent } from './evaluate-event/evaluate-event.component';
+import { UpdateOrganizerComponent } from './update-organizer/update-organizer.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
       {
         path: 'my-profile',
         component: OrganizerProfileComponent
+      },
+      {
+        path: 'update-profile',
+        component: UpdateOrganizerComponent
       }
     ]
   }

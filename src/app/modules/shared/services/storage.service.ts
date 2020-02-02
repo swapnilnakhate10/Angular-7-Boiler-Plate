@@ -17,6 +17,7 @@ export class StorageService {
     public static ORGANIZER_NAME: string = 'organizer_name';
     public static CURRENT_ORGANIZATION_NAME: string = 'current_organization';
     public static ORGANIZER_EMAIL: string = 'organizer_email';
+    public static ORGANIZER_CONTACT: string = 'organizer_contact';
 
     public static set(key: string, value: any): void {
         if(key !== null && value !== null && key !== undefined && value !== undefined ) {
