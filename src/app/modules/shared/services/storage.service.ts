@@ -11,6 +11,7 @@ export class StorageService {
     public static USER_ID: string = 'user_id';
     public static USER_FIRSTNAME: string = 'user_firstname';
     public static USER_LASTNAME: string = 'user_lastname';
+    public static USER_TYPE: string = 'user_type';
     public static USER_EMAIL: string = 'user_email';
     public static ORGANIZER_ID: string = 'organizer_id';
     public static ORGANIZER_NAME: string = 'organizer_name';
