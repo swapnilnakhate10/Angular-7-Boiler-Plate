@@ -13,7 +13,7 @@
             <div class="form-group">
               <label for="inputName" class="col-lg-4 control-label">First Name*</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control" required id="fname" formControlName = "firstName" placeholder="Your full name" >
+                <input type="text" class="form-control" required id="fname" formControlName = "firstName" placeholder="Your first name" >
                 <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
                     <div *ngIf="f.firstName.errors.required">* First Name is required</div>
                 </div>
@@ -22,7 +22,7 @@
             <div class="form-group">
               <label for="inputName" class="col-lg-4 control-label">Last Name*</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control" required id="lname" formControlName = "lastName" placeholder="Your full name" >
+                <input type="text" class="form-control" required id="lname" formControlName = "lastName" placeholder="Your last name" >
                 <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
                     <div *ngIf="f.lastName.errors.required">*Last Name is required</div>
                 </div>
@@ -63,11 +63,11 @@
                 <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                     <div *ngIf="f.password.errors.required">*Password field is required</div>
                 </div>
-                <div class="checkbox">
+                <!-- <div class="checkbox">
                   <label>
                     <input type="checkbox" id="showPassword"> Visible
                   </label>
-                </div>
+                </div> -->
               </div>
             </div>
 
