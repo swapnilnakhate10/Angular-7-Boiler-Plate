@@ -1,9 +1,9 @@
 <app-header></app-header>
 <div class="switch-field">
 		<input type="radio" id="radio-one" name="switch-one" (click)="toggleLogin($event)" value="yes" checked/>
-		<label for="radio-one">UserLogin</label>
+		<label for="radio-one">User Login</label>
 		<input type="radio" id="radio-two" (click)="toggleLogin($event)" name="switch-one" value="no" />
-		<label for="radio-two">Organization Login</label>
+		<label for="radio-two">Organizer Login</label>
 	</div>
 
 <div  *ngIf="showuserSignIn" class="container">
@@ -12,17 +12,17 @@
 			<div class="panel-heading">User Login</div>
 			<div class="panel-body">
 				<form  class="form-group"  (ngSubmit)="login(userLogin.value)"  [formGroup] ="userLogin">
-					<div>
+					<div class="form-group">
 						<label for="email">Email address:</label>
 						<input type="email" class="form-control" id="email" formControlName = "email">
 					</div>
-					<div>
+					<div class="form-group">
 						<label for="pwd">Password:</label>
 						<input type="password" class="form-control" id="pwd" formControlName = "password">
 					</div>
-					<!--<div class="checkbox">
+					<div class="checkbox">
 						<label><input type="checkbox"> Remember me</label>
-					</div>-->
+					</div>
 					 <button type="submit" class="btn btn-lg btn-success" >Login</button>
 				</form>
 
