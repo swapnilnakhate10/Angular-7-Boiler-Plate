@@ -1,0 +1,120 @@
+<div class="container ">
+  <div class="row">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h3 class="panel-title">Create New Event</h3>
+      </div>
+      <div class="panel-body" style="height: 700px; overflow-y : auto">
+        <form class="form-horizontal" (ngSubmit)="submitEventData(userForm.value)" [formGroup]="userForm">
+          <fieldset>
+            <legend>Fill following details</legend>
+            <div class="col-lg-8">
+              <div class="form-group">
+                <label for="inputName" class="col-lg-4 control-label">Event Name*</label>
+                <div class="col-lg-8">
+                  <input type="text" class="form-control" required id="name" formControlName="name"
+                    placeholder="Event Name">
+                  <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                    <div *ngIf="f.name.errors.required">*Event Name is required</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="inputName" class="col-lg-4 control-label">Start Date*</label>
+                <div class="col-lg-8">
+                    <my-date-picker name="mydate" [options]="myDatePickerOptions" 
+                    required id="startDateTime" formControlName="startDateTime"></my-date-picker>
+
+                  <div *ngIf="submitted && f.startDateTime.errors" class="invalid-feedback">
+                    <div *ngIf="f.startDateTime.errors.required">*Start Date Time is required</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="inputName" class="col-lg-4 control-label">End Date*</label>
+                <div class="col-lg-8">
+                    <my-date-picker name="mydate" [options]="myDatePickerOptions" 
+                    required id="endDateTime" formControlName="endDateTime"></my-date-picker>
+
+                  <div *ngIf="submitted && f.endDateTime.errors" class="invalid-feedback">
+                    <div *ngIf="f.endDateTime.errors.required">*Start Date Time is required</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="inputName" class="col-lg-4 control-label">Short Description*</label>
+                <div class="col-lg-8">
+                  <input type="text" class="form-control" required id="shortDescription"
+                    formControlName="shortDescription" placeholder="Short Description">
+                  <div *ngIf="submitted && f.shortDescription.errors" class="invalid-feedback">
+                    <div *ngIf="f.shortDescription.errors.required">*Short Description is required</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputName" class="col-lg-4 control-label">Problem Statement*</label>
+                <div class="col-lg-8">
+                  <textarea type="text" class="form-control" required id="problemStatement"
+                    formControlName="problemStatement" placeholder="Problem Statement"> </textarea>
+                  <div *ngIf="submitted && f.problemStatement.errors" class="invalid-feedback">
+                    <div *ngIf="f.problemStatement.errors.required">*Problem Statement is required</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="inputName" class="col-lg-4 control-label">Rules And Regulations*</label>
+                <div class="col-lg-8">
+                  <textarea type="text" class="form-control" required id="rulesAndRegulations"
+                    formControlName="rulesAndRegulations" placeholder="Rules And Regulations"> </textarea>
+                  <div *ngIf="submitted && f.rulesAndRegulations.errors" class="invalid-feedback">
+                    <div *ngIf="f.rulesAndRegulations.errors.required">*Rules And Regulations* is required</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="textArea" class="col-lg-4 control-label">Difficulty</label>
+                <div class="col-lg-8">
+                  <select class="form-control" formControlName="difficulty">
+                    <option value="" disabled selected hidden>Choose Difficulty</option>
+                    <option *ngFor="let obj of difficultyList" [ngValue]="obj">{{obj}}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="textArea" class="col-lg-4 control-label">Max Team Size</label>
+                <div class="col-lg-8">
+                  <select class="form-control" formControlName="maxTeamSize">
+                    <option value="" disabled selected hidden>Choose Team Size</option>
+                    <option *ngFor="let size of teamSize" [ngValue]="size">{{size}}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="inputName" class="col-lg-4 control-label">Technologies*</label>
+                <div class="col-lg-8">
+                  <input type="text" class="form-control" required id="technologies" formControlName="technologies"
+                    placeholder="Technologies">
+                  <div *ngIf="submitted && f.technologies.errors" class="invalid-feedback">
+                    <div *ngIf="f.technologies.errors.required">*Technologies is required</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-lg-12 col-lg-offset-4">
+                  <button type="reset" class="btn btn-default">Cancel</button>
+                  <button type="submit" class="btn btn-primary">Next</button>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
