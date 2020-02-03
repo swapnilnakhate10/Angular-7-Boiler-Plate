@@ -10,9 +10,10 @@ import { MyTeamComponent } from './my-team/my-team.component';
 import { UsersHeaderComponent } from './users-header/users-header.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { StartChallengeComponent } from './start-challenge/start-challenge.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
 
 @NgModule({
-  declarations: [UsersComponent, DashboardComponent, MyTeamComponent, UsersHeaderComponent, UserProfileComponent, StartChallengeComponent],
+  declarations: [UsersComponent, DashboardComponent, MyTeamComponent, UsersHeaderComponent, UserProfileComponent, StartChallengeComponent, UpdateUserComponent],
   imports: [
     CommonModule,
     SharedModule,

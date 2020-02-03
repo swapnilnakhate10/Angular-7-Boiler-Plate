@@ -22,7 +22,9 @@ export class UserProfileComponent implements OnInit {
         firstName: StorageService.get(StorageService.USER_FIRSTNAME),
         lastName: StorageService.get(StorageService.USER_LASTNAME),
         email: StorageService.get(StorageService.USER_EMAIL),
-        type: StorageService.get(StorageService.USER_TYPE)
+        type: StorageService.get(StorageService.USER_TYPE),
+        designation: StorageService.get(StorageService.USER_DESIGNATION)
+        
       }
     } else {
       StorageService.removeAll();
