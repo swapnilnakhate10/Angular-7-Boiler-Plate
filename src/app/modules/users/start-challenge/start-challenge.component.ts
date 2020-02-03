@@ -22,6 +22,7 @@ export class StartChallengeComponent implements OnInit {
               private httpService: HttpService,
               private toaster: ToasterService) { 
   }
+
   ngOnInit() {
     this.eventId = this.route.snapshot.paramMap.get('eventId');
     this.getEventPrizesList(this.eventId);
@@ -38,24 +39,53 @@ export class StartChallengeComponent implements OnInit {
 
   getEventSuccess(data) {
     this.event = data;
+    this.createGithubRepoWithTeamAccess();
   }
 
   getEventError(error) {
+    this.toaster.showError(Error.getEvent);
   }
   
   getEventPrizesList(eventId) {
     this.httpService.get(UrlDetails.prizes +'event/'+eventId).subscribe((response) => {
-      this.getEventDataSuccess(response);
+      this.getEventPrizesListSuccess(response);
     }, (error)=> {
-      this.getEventDataError(error);
+      this.getEventPrizesListError(error);
     });
   }
 
-  getEventDataSuccess(data) {
+  getEventPrizesListSuccess(data) {
     this.prizes = data;
   }
 
-  getEventDataError(error) {
+  getEventPrizesListError(error) {
+    this.toaster.showError(Error.getEvent);
+  }
+
+  createGithubRepoWithTeamAccess() {
+    let requesyBody = {
+        "name": "Test-Hackathon-Repo",
+        "description": "This is your Hackthon repo",
+        "private": false,
+        "reponame": "ashish9308/Test-Hackathon-Repo",
+        "userlist" : ["ashish-9308"]
+      };
+    this.httpService.post(UrlDetails.createAndAddAccessToUser, requesyBody).subscribe((response) => {
+      this.createGithubRepoWithTeamAccessSuccess(response);
+    }, (error)=> {
+      this.createGithubRepoWithTeamAccessError(error);
+    });
+  }
+
+  
+  createGithubRepoWithTeamAccessSuccess(data) {
+    console.log(data);
+    this.event.githubRepoLink = data;
+    console.log('Success creating github repo');
+  }
+
+  createGithubRepoWithTeamAccessError(error) {
+    console.log('Error creating github repo');
   }
 
 
