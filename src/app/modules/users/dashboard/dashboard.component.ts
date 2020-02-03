@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { StorageService } from './../../shared/services/storage.service';
+
 import { ToasterService } from './../../shared/services/toaster.service';
 import { HttpService } from './../../shared/services/http.service';
 import { Success, Error } from '../../../constants/messages';
@@ -23,6 +25,10 @@ export class DashboardComponent implements OnInit {
             private toaster: ToasterService) { }
 
   ngOnInit() {
+     if(!StorageService.get("isLoggedIn")) {
+      this.router.navigate(['/landing']);
+      return;
+    }
     this.teamForm = new FormGroup({
                 teamname: new FormControl('',Validators.required),
                 teamIconPath: new FormControl('',Validators.required),
