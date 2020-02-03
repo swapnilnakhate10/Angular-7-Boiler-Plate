@@ -5,6 +5,7 @@ import { MyTeamComponent } from './my-team/my-team.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UsersComponent } from './users.component';
 import { StartChallengeComponent } from './start-challenge/start-challenge.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
 
 const routes: Routes = [
   {
@@ -31,7 +32,11 @@ const routes: Routes = [
       {
         path:'challenge/:eventId',
         component: StartChallengeComponent
-      }
+      },
+      {
+        path:'update-profile',
+        component: UpdateUserComponent
+      },
     ]
   }
 ];

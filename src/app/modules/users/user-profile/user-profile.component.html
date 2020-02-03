@@ -6,10 +6,10 @@
         <div class="panel-body">
           <img src="assets/images/user.png" alt="user.png" style="width:200px;height:200px">
           <h1> {{ userDetails.firstName}} {{userDetails.lastName }}</h1>
-          <span class="label label-success">Developer</span>
+          <span class="label label-success">{{userDetails.designation}}</span>
           <br />
           <br />
-          <button class="btn btn-primary">Edit Profile</button>
+          <button class="btn btn-primary" routerLink="/user/update-profile">Edit Profile</button>
           <h5>{{ userDetails.email }}</h5>
         </div>
       </div>
