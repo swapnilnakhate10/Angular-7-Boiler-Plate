@@ -22,8 +22,13 @@
             </div>
             <div class="panel-body">{{event.shortDescription}}</div>
             <div class="panel-footer">
-              <button *ngIf="event.status !== 'completed' && event.status !== 'cancelled'" class="btn btn-primary btn-padding" (click)="enrollForEvent(event)">Enroll</button>
-              <button *ngIf="event.status === 'completed'" class="btn btn-info btn-padding" (click)="viewResult(event._id)">View Result</button>
+              <!-- <button class="btn btn-primary btn-padding" (click)="startChallenge(event)">Start Challenge</button> -->
+              <div *ngIf="event.status === 'completed' else enroll"> 
+                <button class="btn btn-primary btn-padding" (click)="viewResult(event._id)">View Result</button>
+              </div>
+              <ng-template #enroll>
+                <button class="btn btn-primary btn-padding" (click)="enrollForEvent(event)">Enroll</button>
+              </ng-template>
             </div>
           </div>
         </div>

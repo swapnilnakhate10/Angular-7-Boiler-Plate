@@ -1,4 +1,11 @@
-element.style {
-    height: 250px;
+.element.style {
+    height: 330px;
     overflow-y: auto;
+}
+.btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+    padding: 5px;
+    margin: 10px;
 }

@@ -7,7 +7,7 @@
       <div class="panel-body" style="height: 700px; overflow-y : auto">
         <form class="form-horizontal" (ngSubmit)="submitEventData(userForm.value)" [formGroup]="userForm">
           <fieldset>
-            <legend>Fill following details</legend>
+            <legend>Fillup following details</legend>
             <div class="col-lg-8">
               <div class="form-group">
                 <label for="inputName" class="col-lg-4 control-label">Event Name*</label>
@@ -39,7 +39,7 @@
                     required id="endDateTime" formControlName="endDateTime"></my-date-picker>
 
                   <div *ngIf="submitted && f.endDateTime.errors" class="invalid-feedback">
-                    <div *ngIf="f.endDateTime.errors.required">*Start Date Time is required</div>
+                    <div *ngIf="f.endDateTime.errors.required">*End Date Time is required</div>
                   </div>
                 </div>
               </div>
