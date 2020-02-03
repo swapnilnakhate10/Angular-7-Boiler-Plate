@@ -33,9 +33,9 @@
               <label for="inputDemoUrl" class="col-lg-4 control-label">Add New Members</label>
               <div class="col-lg-8"> 
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Enter gitID...">
+                  <input type="text" class="form-control" placeholder="Enter email..." #userEmail>
                   <span class="input-group-btn">
-                    <a class="btn btn-default" (click)="searchMember()">Search</a>
+                    <a class="btn btn-default" (click)="searchMember(userEmail.value)">Search</a>
                   </span>
                 </div>
                 <div *ngIf="isMemberFound">  
@@ -43,14 +43,14 @@
                 <thead>
                     <tr>
                         <th>Full Name</th>
-                        <th>Designation</th>
+                        <th>Email ID</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr  *ngFor="let user of users">
                         <td>{{user.firstName}} {{user.lastName}}</td>
-                        <td>{{user.designation}}</td>
+                        <td>{{user.email}}</td>
                         <td><a class="btn btn-success" (click)="addMemeber(user)">Add</a></td>
                     </tr>
                 </tbody>
@@ -66,14 +66,13 @@
                 <thead>
                     <tr>
                         <th>Full Name</th>                     
-                        <th>Designation</th>
-
+                        <th>Email ID</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="info" *ngFor="let member of members">
                          <td>{{member.firstName}} {{member.lastName}}</td>                       
-                        <td>{{member.designation}}</td>
+                        <td>{{member.email}}</td>
                     </tr>
                 </tbody>
                 </table>

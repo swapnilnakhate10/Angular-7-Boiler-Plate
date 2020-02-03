@@ -18,6 +18,7 @@ export class MyTeamComponent implements OnInit {
   isTeamCreate = false;
   submitted = false;
   isMemberFound = false;
+  userEmail: any;
 
   users: any=[];
   userID: any;
@@ -42,16 +43,12 @@ export class MyTeamComponent implements OnInit {
     this.isTeamCreate = false;
   }
 
-  searchMember(){
-
-     this.httpService.get(UrlDetails.users+this.userID).subscribe((response) => {
-       console.log(response)
-         this.users.push(response);
-
-      //  this.isTeamCreate = false;
-      // this.toaster.showSuccess( 'Team registered successfully.');
-      // this.router.navigate(['/user/my-team']);
-     
+  searchMember(data){
+     this.httpService.post(UrlDetails.users+'search',{searchText: data}).subscribe((response:any) => {
+        for(let i =0;i<response.length;i++) {
+            this.users.push(response[i]);
+        }     
+        this.toaster.showInfo("Found "+response.length+" member.");
     }, (error) => {
       this.toaster.showError(error.errmsg);
     });
@@ -66,6 +63,7 @@ export class MyTeamComponent implements OnInit {
   // Form submit event
   register(formData) {
     formData.teamLeaderId = this.userID;
+    formData.members  = this.members;
     this.submitted = true;
     if ( this.teamForm.invalid ) {
       return;
@@ -96,11 +94,14 @@ export class MyTeamComponent implements OnInit {
     this.userID =  StorageService.get(StorageService.USER_ID);
    
     // Fetching Teams data
-    this.httpService.get(UrlDetails.teams+'user/5e37b8048b2b9600b07c06b8').subscribe((response) => {
-      console.log(response);
-      // response.forEach((team)=>{
+    this.httpService.get(UrlDetails.teams+'user/'+this.userID).subscribe((response) => {
+     if(response.byteLength>0){
+      //  response.forEach((team)=>{
       //   this.teams.push(team);
       // })
+    } else {
+      this.toaster.showSuccess( 'No Teams availables. You can create a new Team');
+    }
     }, (error) => {
       this.toaster.showError(error.errmsg);
     });
