@@ -7,6 +7,7 @@ import { EditEventComponent } from './edit-event/edit-event.component';
 import { OrganizerProfileComponent } from './organizer-profile/organizer-profile.component';
 import { EvaluateEventComponent } from './evaluate-event/evaluate-event.component';
 import { UpdateOrganizerComponent } from './update-organizer/update-organizer.component';
+import { TeamDetailsComponent } from './events/team-details/team-details.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
       {
         path: 'update-profile',
         component: UpdateOrganizerComponent
+      },
+      {
+        path: 'team-details/:eventId',
+        component: TeamDetailsComponent
       }
     ]
   }

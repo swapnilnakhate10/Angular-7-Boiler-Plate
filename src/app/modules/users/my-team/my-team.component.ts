@@ -95,17 +95,14 @@ export class MyTeamComponent implements OnInit {
    
     // Fetching Teams data
     this.httpService.get(UrlDetails.teams+'user/'+this.userID).subscribe((response:any) => {
-     if(response.length>0){
-        for(let i =0;i<response.length;i++) {
-            this.teams.push(response[i]);
-        }  
-       
-    } else {
-      this.toaster.showSuccess( 'No Teams availables. You can create a new Team');
-    }
-    }, (error) => {
-      this.toaster.showError(error.errmsg);
-    });
+        if(response.length>0){
+          this.teams = response;
+        } else {
+          this.toaster.showSuccess( 'No Teams availables. You can create a new Team');
+        }
+      }, (error) => {
+        this.toaster.showError(error.errmsg);
+      });
 
      this.teamForm = new FormGroup({
                 name: new FormControl('', Validators.required),

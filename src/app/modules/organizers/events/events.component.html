@@ -7,7 +7,7 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      <div class="panel-group" *ngIf="events.length >= 0">
+      <div class="panel-group" *ngIf="events.length > 0">
           <div class="panel panel-default" *ngFor="let event of events">
             <div class="panel-heading">
               {{event.name}}
@@ -18,7 +18,8 @@
             </div>
             <div class="panel-body">{{event.shortDescription}}</div>
             <div class="panel-footer" *ngIf="event.status !== 'completed'">
-              <button class="btn btn-primary btn-padding" (click)="editEvent(event)">Edit</button>
+              <!-- <button class="btn btn-primary btn-padding" (click)="editEvent(event)">Edit</button> -->
+              <button class="btn btn-primary btn-padding" (click)="viewegisteredTeamsForEvent(event)">Registered Teams</button>
               <button class="btn btn-danger btn-padding" (click)="cancelEvent(event)">Cancel</button>
             </div>
             <div class="panel-footer" *ngIf="event.status === 'completed'">

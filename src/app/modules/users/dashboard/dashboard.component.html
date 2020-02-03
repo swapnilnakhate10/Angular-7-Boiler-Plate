@@ -1,5 +1,15 @@
 <div class="container">
   <div class="row">
+    <div class="col-md-offset-8 col-md-4">
+        <div class="form-group">
+            <label for="power">Select Team : </label>
+            <select class="form-control" id="power" [(ngModel)]="selectedTeam" required>
+              <option *ngFor="let team of teams" [value]="team">{{team.name}}</option>
+            </select>
+          </div>  
+    </div>
+  </div>
+  <div class="row">
     <div class="col-md-12">
       <div class="panel-group" *ngIf="events.length >= 0">
           <div class="panel panel-default"><div class="panel panel-default" *ngFor="let event of events">
@@ -12,7 +22,8 @@
             </div>
             <div class="panel-body">{{event.shortDescription}}</div>
             <div class="panel-footer">
-              <button class="btn btn-primary btn-padding" (click)="startChallenge(event)">Start Challenge</button>
+              <!-- <button class="btn btn-primary btn-padding" (click)="startChallenge(event)">Start Challenge</button> -->
+              <button class="btn btn-primary btn-padding" (click)="enrollForEvent(event)">Enroll</button>
             </div>
           </div>
         </div>
