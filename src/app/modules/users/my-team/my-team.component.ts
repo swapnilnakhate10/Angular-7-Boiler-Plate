@@ -94,11 +94,12 @@ export class MyTeamComponent implements OnInit {
     this.userID =  StorageService.get(StorageService.USER_ID);
    
     // Fetching Teams data
-    this.httpService.get(UrlDetails.teams+'user/'+this.userID).subscribe((response) => {
-     if(response.byteLength>0){
-      //  response.forEach((team)=>{
-      //   this.teams.push(team);
-      // })
+    this.httpService.get(UrlDetails.teams+'user/'+this.userID).subscribe((response:any) => {
+     if(response.length>0){
+        for(let i =0;i<response.length;i++) {
+            this.teams.push(response[i]);
+        }  
+       
     } else {
       this.toaster.showSuccess( 'No Teams availables. You can create a new Team');
     }
