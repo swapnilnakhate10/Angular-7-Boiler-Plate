@@ -14,5 +14,4 @@ export class Event {
     technologies: String;
     difficulty: String;
     prizes: [any];
-    githubRepoLink: String;
   }
