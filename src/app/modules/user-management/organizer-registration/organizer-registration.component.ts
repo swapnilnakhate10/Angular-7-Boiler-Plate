@@ -13,6 +13,7 @@ import { Router } from "@angular/router";
 })
 export class OrganizerRegistrationComponent implements OnInit {
   orgForm;
+  isVisiblePassword:boolean = false;
   constructor(private httpService: HttpService, private StorageService: StorageService,
     private toaster: ToasterService, private router: Router) {
     this.orgForm = new FormGroup({
@@ -26,6 +27,11 @@ export class OrganizerRegistrationComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  showPassword(password){
+      this.isVisiblePassword = !this.isVisiblePassword;
+     password.type = this.isVisiblePassword? "text":"password";
   }
 
   onSubmit(data) {

@@ -59,7 +59,13 @@
             <div class="form-group">
               <label for="inputPassword" class="col-lg-4 control-label">Password</label>
               <div class="col-lg-8">
-                <input type="password" class="form-control" id="inputPassword" formControlName = "password"  placeholder="Password" rqeuired >
+                <div class="input-group">
+                  <input #password type="password" class="form-control" id="inputPassword" formControlName = "password"  placeholder="Password" rqeuired >
+                  <span class="input-group-btn">
+                    <a class="btn btn-default" (click)="showPassword(password)">Show</a>
+                  </span>
+                </div>
+                
                 <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                     <div *ngIf="f.password.errors.required">*Password field is required</div>
                 </div>

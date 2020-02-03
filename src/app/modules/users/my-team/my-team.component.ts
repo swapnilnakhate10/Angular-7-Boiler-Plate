@@ -17,9 +17,12 @@ export class MyTeamComponent implements OnInit {
 
   isTeamCreate = false;
   submitted = false;
+  isMemberFound = false;
+
   users: any;
 
   teams: any;
+  members: any =[];
 
   teamForm;
 
@@ -39,6 +42,18 @@ export class MyTeamComponent implements OnInit {
 
   }
 
+  searchMember(){
+     this.users = [
+      {id: 1, name:"Kaushal Kishor", designation:"Developer"},
+      {id: 2, name:"Ashish Kumar", designation:"Data Scientist"}];
+
+    this.isMemberFound = true;
+  }
+
+  addMemeber(memeber){
+    this.members.push(memeber);
+  }
+
   // Form submit event
   register(formData) {
     this.submitted = true;
@@ -56,10 +71,7 @@ export class MyTeamComponent implements OnInit {
 
   constructor(private httpService: HttpService, private toaster: ToasterService,
     private router: Router) {
-    this.users = [
-      {id: 1, name:"Kaushal Kishor", designation:"Developer"},
-      {id: 2, name:"Ashish Kumar", designation:"Data Scientist"}];
-
+   
     this.teams = [
       {id:1,name:"Code Blooded",team_leader:"Amrish"},
       {id:2,name:"Runtime Terror",team_leader:"Kaushal Kishor"}];
@@ -69,13 +81,8 @@ export class MyTeamComponent implements OnInit {
 
     // Fetching Teams data
     this.httpService.get(UrlDetails.teams).subscribe((response) => {
-      const typedArray = new Uint8Array(response);
-      const array = Array.from(typedArray);
+      
 
-      // for( let i = 0; i<array.length;i++){
-      //  this.teams.push({id:i+1,name:array[i]['name'],team_leader:'John Doe'});
-      // }
-    console.log(typedArray);
     }, (error) => {
       this.toaster.showError(error.errmsg);
     });

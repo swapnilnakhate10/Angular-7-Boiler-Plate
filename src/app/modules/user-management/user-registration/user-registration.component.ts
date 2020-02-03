@@ -16,6 +16,8 @@ export class UserRegistrationComponent implements OnInit {
   
   userForm;
   submitted:boolean;
+isVisiblePassword: boolean = false;
+
   roles:String[];
   sizes:String[];
   constructor(private httpService: HttpService, private StorageService: StorageService,
@@ -84,6 +86,12 @@ export class UserRegistrationComponent implements OnInit {
 
   loginError(error) {
     this.toaster.showError(Error.login);
+  }
+
+// Toggle Password input field from plain text to password dots
+  showPassword(passowrd) {
+     this.isVisiblePassword = !this.isVisiblePassword;
+     passowrd.type = this.isVisiblePassword? "text":"password";
   }
   
 }
