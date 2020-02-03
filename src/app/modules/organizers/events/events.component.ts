@@ -6,6 +6,7 @@ import { Success, Error } from '../../../constants/messages';
 import { UrlDetails } from '../../../constants/url-details';
 import { EventDataSource } from './event.datasource';
 import { EventService } from './../../shared/services/event.service';
+import { StorageService } from '../../shared/services/storage.service';
 
 @Component({
   selector: 'app-events',
@@ -15,20 +16,23 @@ import { EventService } from './../../shared/services/event.service';
 export class EventsComponent implements OnInit {
 
   dataSource:EventDataSource;
-  events: [];
+  organizationId : any;
+  events = [];
 
   constructor(private router: Router,
               private httpService: HttpService,
               private toaster: ToasterService, private eventService: EventService) { }
 
   ngOnInit() {
-    this.getAllEventsByOrganizationId();
-    this.dataSource = new EventDataSource(this.eventService);
-    this.dataSource.loadBreakings();
+    this.organizationId = StorageService.get(StorageService.ORGANIZER_ID);
+    this.getAllEventsByOrganizationId(this.organizationId);
+
+    // this.dataSource = new EventDataSource(this.eventService);
+    // this.dataSource.loadBreakings();
   }
 
-  getAllEventsByOrganizationId() {
-    this.httpService.get(UrlDetails.eventsListByOrganizerId).subscribe((response) =>{
+  getAllEventsByOrganizationId(organizationId) {
+    this.httpService.get(UrlDetails.eventsListByOrganizerId + organizationId).subscribe((response) =>{
       this.getAllEventsByOrganizationIdSuccess(response);
     }, (error)=> {
       this.getAllEventsByOrganizationIdError(error);
@@ -70,6 +74,10 @@ export class EventsComponent implements OnInit {
 
   cancelEventError(error) {
     this.toaster.showError(Error.cancelEvent);
+  }
+
+  viewegisteredTeamsForEvent(eventDetails) {
+    this.router.navigateByUrl('/organizer/team-details/'+eventDetails._id);
   }
 
 }

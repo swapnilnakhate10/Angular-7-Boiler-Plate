@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { FormsModule } from '@angular/forms';
 import { UsersRoutingModule } from './users-routing.module';
 import { UsersComponent } from './users.component';
 import { SharedModule } from '../shared/shared.module';
@@ -18,6 +18,7 @@ import { UpdateUserComponent } from './update-user/update-user.component';
     CommonModule,
     SharedModule,
     ReactiveFormsModule,
+    FormsModule,
     UsersRoutingModule
   ]
 })
