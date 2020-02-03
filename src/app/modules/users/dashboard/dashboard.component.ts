@@ -62,6 +62,7 @@ export class DashboardComponent implements OnInit {
     this.httpService.get(UrlDetails.teams + 'user/'+ userID).subscribe((response:any) => {
       this.teams = response;
       this.selectedTeam = response[0];
+      StorageService.set(StorageService.USER_CURRENT_TEAM_ID, this.selectedTeam._id);
     }, (error) => {
        this.toaster.showError(error.errmsg);
      });
@@ -80,8 +81,8 @@ export class DashboardComponent implements OnInit {
      return this.teamForm.controls;
   }
 
-  startChallenge(eventDetails) {
-    this.router.navigateByUrl('user/challenge/'+eventDetails._id);
+  changeTeam() {
+    StorageService.set(StorageService.USER_CURRENT_TEAM_ID, this.selectedTeam._id);
   }
 
   enrollForEvent(eventDetails) {
@@ -101,7 +102,7 @@ export class DashboardComponent implements OnInit {
     this.httpService.put(UrlDetails.events + 'enroll', updateBody).subscribe((response:any) => {
       this.toaster.showSuccess("Successfully enrolled for an event.");
     }, (error) => {
-       this.toaster.showError(error.errmsg);
+       this.toaster.showError(error.error.message);
      });
   }
 

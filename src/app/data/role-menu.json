@@ -25,6 +25,11 @@
 			"icon": "fa fa-dashboard"
 		},
 		{
+			"text": "Participated Event",
+			"url": "/user/participated-events",
+			"icon": "fa fa-dashboard"
+		},
+		{
 			"text": "My Team",
 			"url": "/user/my-team",
 			"icon": "fa fa-users"

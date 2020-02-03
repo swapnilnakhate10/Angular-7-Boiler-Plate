@@ -6,6 +6,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UsersComponent } from './users.component';
 import { StartChallengeComponent } from './start-challenge/start-challenge.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
+import { ParticipatedEventsComponent } from './participated-events/participated-events.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,10 @@ const routes: Routes = [
         path:'update-profile',
         component: UpdateUserComponent
       },
+      {
+        path:'participated-events',
+        component: ParticipatedEventsComponent
+      }
     ]
   }
 ];

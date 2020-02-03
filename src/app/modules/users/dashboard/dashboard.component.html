@@ -4,7 +4,7 @@
         <div class="form-group">
             <label for="power">Select Team : </label>
             <select class="form-control" id="power" [(ngModel)]="selectedTeam" required>
-              <option *ngFor="let team of teams" [value]="team">{{team.name}}</option>
+              <option *ngFor="let team of teams" [value]="team" (click)="changeTeam()">{{team.name}}</option>
             </select>
           </div>  
     </div>

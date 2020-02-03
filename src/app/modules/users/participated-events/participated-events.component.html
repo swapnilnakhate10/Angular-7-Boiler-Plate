@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-md-offset-2 col-md-8">
+      <div class="panel-group" *ngIf="events.length >= 0">
+          <div class="panel panel-default"><div class="panel panel-default" *ngFor="let event of events">
+            <div class="panel-heading ">
+              {{event.name}}
+              <span class="duration-date">
+                {{event.startDateTime | date}} To {{event.endDateTime | date}}
+              </span>
+              <span class="{{event.status}}">{{event.status | uppercase}}</span>
+            </div>
+            <div class="panel-body">{{event.shortDescription}}</div>
+            <div class="panel-footer">
+              <button class="btn btn-primary btn-padding" (click)="startChallenge(event)">Start Challenge</button>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="events.length == 0">
+            No Event applied yet.
+        </div>
+    </div>
+  </div>
