@@ -10,7 +10,7 @@ export class EventStepFormComponent implements OnInit {
 
   @Input() eventData: Event;
   @Output() eventForm = new EventEmitter<Event>();
-  currentStep: Number = 2;
+  currentStep: Number = 1;
   eventId : string;
   prizesData = [];
 

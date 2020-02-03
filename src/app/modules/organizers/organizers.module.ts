@@ -16,6 +16,8 @@ import { EvaluateEventComponent } from './evaluate-event/evaluate-event.componen
 import { EventStepFormComponent } from './event-step-form/event-step-form.component';
 import { PrizeFormComponent } from './event-step-form/prize-form/prize-form.component';
 import { UpdateOrganizerComponent } from './update-organizer/update-organizer.component';
+import { EventService } from '../shared/services/event.service';
+
 @NgModule({
   declarations: [OrganizersComponent, EventsComponent, EventFormComponent, CreateEventComponent, EditEventComponent, OrganizerHeaderComponent, OrganizerProfileComponent, EvaluateEventComponent, EventStepFormComponent, PrizeFormComponent, UpdateOrganizerComponent],
   imports: [
@@ -25,6 +27,7 @@ import { UpdateOrganizerComponent } from './update-organizer/update-organizer.co
     FormsModule,
     OrganizersRoutingModule,
     SharedModule
-  ]
+  ],
+  providers: [EventService]
 })
 export class OrganizersModule { }

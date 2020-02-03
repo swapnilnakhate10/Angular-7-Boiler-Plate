@@ -4,6 +4,8 @@ import { ToasterService } from './../../shared/services/toaster.service';
 import { HttpService } from './../../shared/services/http.service';
 import { Success, Error } from '../../../constants/messages';
 import { UrlDetails } from '../../../constants/url-details';
+import { EventDataSource } from './event.datasource';
+import { EventService } from './../../shared/services/event.service';
 
 @Component({
   selector: 'app-events',
@@ -12,14 +14,17 @@ import { UrlDetails } from '../../../constants/url-details';
 })
 export class EventsComponent implements OnInit {
 
-  events = [];
+  dataSource:EventDataSource;
+  events: [];
 
   constructor(private router: Router,
               private httpService: HttpService,
-              private toaster: ToasterService) { }
+              private toaster: ToasterService, private eventService: EventService) { }
 
   ngOnInit() {
     this.getAllEventsByOrganizationId();
+    this.dataSource = new EventDataSource(this.eventService);
+    this.dataSource.loadBreakings();
   }
 
   getAllEventsByOrganizationId() {

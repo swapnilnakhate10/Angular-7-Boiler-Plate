@@ -6,3 +6,22 @@
     float: right;
     margin: 10px;
 }
+
+.duration-date {
+    float: right;
+    font-size: medium;
+}
+
+.completed {
+    width: 20px;
+    background-color: #f5a938;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.scheduled {
+    width: 20px;
+    background-color: #07a32e;
+    border-radius: 5px;
+    padding: 5px;
+}

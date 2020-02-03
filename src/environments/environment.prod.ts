@@ -1,6 +1,6 @@
 
 export const environment = {
   production: true,
-  hackathonCore : 'http://localhost:8080/api/',
+  hackathonCore : 'https://cb-hck-core.exela.global/',
   githubCore : 'http://localhost:3000/'
 };

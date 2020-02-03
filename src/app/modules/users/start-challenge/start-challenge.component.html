@@ -59,12 +59,13 @@
   
               <div class="col-md-12">
                 <div class="col-md-4" *ngFor="let prizeModel of prizes">
-                    <div class="panel panel-default">
-                      <div class="panel-heading">Rank : {{prizeModel.rank}} <br>Title : {{prizeModel.title}}</div>
-                      <div class="panel-body">Description : {{prizeModel.description}}</div>
-                      <div class="panel-footer">Amount : {{prizeModel.amount}}</div>
+                    <div class="panel panel-default" style="text-align: center;">
+                      <div class="panel-heading"><div class="panel-body">{{prizeModel.description}}</div></div>
+                      <div class="panel-body">{{prizeModel.title}}</div>
+                      <div class="panel-footer">Amount : ₹{{prizeModel.amount}}</div>
                     </div>
                 </div>
+                
               </div>
             </div>
           </fieldset>

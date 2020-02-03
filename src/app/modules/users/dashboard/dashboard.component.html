@@ -3,12 +3,12 @@
     <div class="col-md-12">
       <div class="panel-group" *ngIf="events.length >= 0">
           <div class="panel panel-default"><div class="panel panel-default" *ngFor="let event of events">
-            <div class="panel-heading">
+            <div class="panel-heading ">
               {{event.name}}
-              <span style="float:right">
+              <span class="duration-date">
                 {{event.startDateTime | date}} To {{event.endDateTime | date}}
               </span>
-              <span class="btn btn-info">{{event.status | uppercase}}</span>
+              <span class="{{event.status}}">{{event.status | uppercase}}</span>
             </div>
             <div class="panel-body">{{event.shortDescription}}</div>
             <div class="panel-footer">
