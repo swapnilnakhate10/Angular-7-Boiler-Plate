@@ -9,6 +9,8 @@ import { ToastrModule } from 'ng6-toastr-notifications';
 import { SharedModule } from './modules/shared/shared.module';
 import { AppComponent } from './app.component';
 import { LandingPageModule } from './modules/landing-page/landing-page.module';
+import { ContactUsModule } from './modules/contact-us/contact-us.module';
+import { AboutUsModule } from './modules/about-us/about-us.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { LandingPageModule } from './modules/landing-page/landing-page.module';
     ToastrModule.forRoot(),
     HttpClientModule,
     LandingPageModule,
+    ContactUsModule,
+    AboutUsModule,
     SharedModule
   ],
   providers: [],

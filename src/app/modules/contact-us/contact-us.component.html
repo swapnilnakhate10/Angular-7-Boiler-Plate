@@ -1,0 +1,78 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h3 class="panel-title">Contact Us</h3>
+      </div>
+      <div class="panel-body">
+        <form class="form-horizontal" (ngSubmit)="register(userForm.value)" [formGroup] = "userForm" >
+          <fieldset>
+          <legend>Let's create a great challenge together!</legend>
+          <div class="col-lg-8">
+            <div class="form-group">
+              <label for="inputName" class="col-lg-4 control-label">First Name</label>
+              <div class="col-lg-8">
+                <input type="text" class="form-control" required id="fname" formControlName = "firstName" placeholder="Your first name" >
+                <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                    <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputName" class="col-lg-4 control-label">Last Name</label>
+              <div class="col-lg-8">
+                <input type="text" class="form-control" required id="lname" formControlName = "lastName" placeholder="Your last name" >
+                <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                    <div *ngIf="f.lastName.errors.required">*Last Name is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputEmail" class="col-lg-4 control-label">Email</label>
+              <div class="col-lg-8">
+                <input type="text" class="form-control" formControlName = "email"  placeholder="Email" required >
+                 <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">Email is required</div>
+                    <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                  </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inputNumber" class="col-lg-4 control-label">Contact number</label>
+              <div class="col-lg-8">
+                <input type="text" class="form-control" formControlName = "contactNumber" placeholder="+91-" >
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inputName" class="col-lg-4 control-label">Your message</label>
+              <div class="col-lg-8">
+                <textarea type="text" class="form-control" required id="msg"
+                  formControlName="msg" placeholder="Please enter your message"> </textarea>
+                <div *ngIf="submitted && f.msg.errors" class="invalid-feedback">
+                  <div *ngIf="f.msg.errors.required">Message is required</div>
+                </div>
+              </div>
+            </div>
+
+      
+            <div class="form-group" >
+              <div class="col-lg-12 col-lg-offset-4">
+                <button type="reset" class="btn btn-default">Cancel</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </div>
+          <!--<div class="col-lg-4">
+            <img src="assets/images/user.png" id="userImage" alt="user_image.png" style="width:150px;height:150px;">
+            <input type="file" class="form-control" id="inputfile" formControlName = "image" name="image" >
+          </div>-->
+          </fieldset>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
