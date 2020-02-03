@@ -8,6 +8,7 @@ import { OrganizerProfileComponent } from './organizer-profile/organizer-profile
 import { EvaluateEventComponent } from './evaluate-event/evaluate-event.component';
 import { UpdateOrganizerComponent } from './update-organizer/update-organizer.component';
 import { TeamDetailsComponent } from './events/team-details/team-details.component';
+import { FinalResultComponent } from './evaluate-event/final-result/final-result.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,10 @@ const routes: Routes = [
       {
         path: 'team-details/:eventId',
         component: TeamDetailsComponent
+      },
+      {
+        path: 'event-result/:eventId',
+        component : FinalResultComponent
       }
     ]
   }
