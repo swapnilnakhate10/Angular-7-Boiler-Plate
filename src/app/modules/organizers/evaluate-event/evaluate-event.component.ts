@@ -37,6 +37,9 @@ export class EvaluateEventComponent implements OnInit {
 
   getAllTeamsDetailsSuccess(response) {
     this.teams = response[0].teams;
+    if(response[0].status === "completed") {
+      this.router.navigateByUrl('organizer/event-result/'+response[0]._id);
+    }
   }
 
   getAllTeamsDetailsError(error) {
@@ -59,4 +62,23 @@ export class EvaluateEventComponent implements OnInit {
   submitEvaluationError(error) {
     this.toaster.showError("Error Submit.");
   }
+
+  publishResult(evalutionData) {
+    let body = { status: "completed" };
+    this.httpService.put(UrlDetails.events+ this.eventId, body).subscribe((response) =>{
+      this.publishResultSuccess(response);
+    }, (error)=> {
+      this.publishResultError(error);
+    });
+  }
+
+  publishResultSuccess(response) {
+    this.toaster.showSuccess("Result Published successfully.");
+    this.router.navigateByUrl('event-result');
+  }
+
+  publishResultError(error) {
+    this.toaster.showError("Error publishing result.");
+  }
+
 }
