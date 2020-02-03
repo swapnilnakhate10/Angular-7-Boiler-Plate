@@ -85,6 +85,10 @@ export class DashboardComponent implements OnInit {
     StorageService.set(StorageService.USER_CURRENT_TEAM_ID, this.selectedTeam._id);
   }
 
+  viewResult(eventId) {
+    this.router.navigateByUrl('user/eventresult/'+eventId);
+  }
+
   enrollForEvent(eventDetails) {
     console.log(this.selectedTeam);
     if(this.selectedTeam && this.selectedTeam._id) {

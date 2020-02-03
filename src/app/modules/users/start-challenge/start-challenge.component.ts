@@ -81,11 +81,13 @@ export class StartChallengeComponent implements OnInit {
   createGithubRepoWithTeamAccessSuccess(data) {
     console.log(data);
     this.event.githubRepoLink = data;
+    this.toaster.showSuccess('Created github repo for user');
     console.log('Success creating github repo');
   }
 
   createGithubRepoWithTeamAccessError(error) {
     console.log('Error creating github repo');
+    this.toaster.showSuccess('Error creating github repo for Team.');
   }
 
 

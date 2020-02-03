@@ -1,0 +1,30 @@
+<div class="col-md-offset-2 col-md-8">
+    <h3 style="text-align: center">Winner List</h3>
+    <table class="table">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Team Name</th>
+            <th>Github Repo Link</th>
+            <th>Coding Standards (20%)</th>
+            <th>Usablitiy (20%)</th>
+            <th>UI/UX (20%)</th>
+            <th>Funactional Completeness (40%)</th>
+            <th>Final Score (40%)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let team of winnerResults; let i=index">
+            <th>{{i+1}}</th>
+            <th>{{team._id.name}}</th>
+            <th>{{team.repoLink ? team.repoLink : "-"}}</th>
+            <th>{{team.coding_standards}}</th>
+            <th>{{team.usablity}}</th>
+            <th>{{team.ui_ux}}</th>
+            <th>{{team.functionalCompleteness}}</th>
+            <th>{{team.finalScore}}</th>
+          </tr>
+        </tbody>
+      </table>
+    
+</div>

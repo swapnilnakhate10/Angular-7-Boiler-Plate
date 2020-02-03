@@ -4,7 +4,7 @@
     <p>All registered teams for this an event.</p>
   </div>
   <div class="col-md-offset-4 col-md-4">
-    <table class="table table-striped table-hover">
+    <table class="table table-striped table-hover" *ngIf="teams.length > 0">
         <thead>
             <tr>
               <th>Title</th>
@@ -18,5 +18,8 @@
           </tr>
         </tbody>
     </table>
+    <div *ngIf="teams.length == 0">
+      <h3 style="text-align: center">No Team registered yet.</h3>
+    </div>
   </div>
 </div>

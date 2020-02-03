@@ -50,8 +50,8 @@ export class EventFormComponent implements OnInit {
     if (this.userForm.invalid) {
       return;
     }
-    data.startDateTime= new Date(data.startDateTime.epoc);
-    data.endDateTime = new Date(data.endDateTime.epoc);
+    data.startDateTime= new Date(data.startDateTime.formatted);
+    data.endDateTime = new Date(data.endDateTime.formatted);
     this.addOrUpdateEvent(data);
   }
 
