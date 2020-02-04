@@ -35,6 +35,7 @@ export class ContactUsComponent implements OnInit {
   register(data) {
     if(data && !this.userForm.invalid)    
     this.toaster.showSuccess("Thank you for reaching out!");
+    this.router.navigateByUrl('/');
   }
 
 }
