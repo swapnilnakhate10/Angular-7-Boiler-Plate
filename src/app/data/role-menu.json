@@ -1,6 +1,10 @@
 {
 	"common": [
-
+		{
+			"text": "Events",
+			"url": "/events",
+			"icon": "fa fa-dashboard"
+		},
 		{
 			"text": "About",
 			"url": "/about",
@@ -9,12 +13,6 @@
 		{
 			"text": "Contact",
 			"url": "/contacts",
-			"icon": "fa fa-dashboard"
-		}
-		,
-		{
-			"text": "Events",
-			"url": "/events",
 			"icon": "fa fa-dashboard"
 		}
 	],
