@@ -15,8 +15,4 @@ export class UrlDetails {
     public static organizationLogin: string = environment.hackathonCore + "organizers/login";
     public static updateOrganization: string = environment.hackathonCore + "organizers";
 
-    // githubCore API
-    public static createAndAddAccessToUser : string = environment.githubCore + "createrepo";
-    public static test : string = environment.githubCore + "test";
-    public static revokeAccess : string = environment.githubCore + "revokeaccess";
 }
