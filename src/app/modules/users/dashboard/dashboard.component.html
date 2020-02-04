@@ -3,8 +3,8 @@
     <div class="col-md-offset-8 col-md-4">
         <div class="form-group">
             <label for="power">Select Team : </label>
-            <select class="form-control" id="power" [(ngModel)]="selectedTeam" required>
-              <option *ngFor="let team of teams" [value]="team" (click)="changeTeam()">{{team.name}}</option>
+            <select class="form-control" id="power" (ngModelChange)="changeTeam($event)" [(ngModel)]="selectedTeam" required>
+              <option *ngFor="let team of teams" [ngValue]="team">{{team.name}}</option>
             </select>
           </div>  
     </div>

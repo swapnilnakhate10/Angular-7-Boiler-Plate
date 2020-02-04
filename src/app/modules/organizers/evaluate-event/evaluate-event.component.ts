@@ -37,9 +37,9 @@ export class EvaluateEventComponent implements OnInit {
 
   getAllTeamsDetailsSuccess(response) {
     this.teams = response[0].teams;
-    if(response[0].status === "completed") {
-      this.router.navigateByUrl('organizer/event-result/'+response[0]._id);
-    }
+    // if(response[0].status === "published") {
+    //   this.router.navigateByUrl('organizer/event-result/'+response[0]._id);
+    // }
   }
 
   getAllTeamsDetailsError(error) {

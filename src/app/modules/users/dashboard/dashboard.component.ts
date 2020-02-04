@@ -44,7 +44,6 @@ export class DashboardComponent implements OnInit {
 
   getAllEventsByOrganizationId() {
     this.httpService.get(UrlDetails.events).subscribe((response) =>{
-      debugger
       this.getAllEventsByOrganizationIdSuccess(response);
     }, (error)=> {
       this.getAllEventsByOrganizationIdError(error);
@@ -63,7 +62,7 @@ export class DashboardComponent implements OnInit {
     this.httpService.get(UrlDetails.teams + 'user/'+ userID).subscribe((response:any) => {
       this.teams = response;
       this.selectedTeam = response[0];
-      StorageService.set(StorageService.USER_CURRENT_TEAM_ID, this.selectedTeam._id);
+      this.setTeamMemberDetails(this.selectedTeam);
     }, (error) => {
        this.toaster.showError(error.errmsg);
      });
@@ -71,23 +70,34 @@ export class DashboardComponent implements OnInit {
 
   onClickSubmit(data) { 
       this.submitted = true;
-      if(this.teamForm.invalid){
+      if(this.teamForm.invalid) {
         return;
       }
-      console.log(data)
-      console.log("Form submitted")
   }
 
   get f() {
      return this.teamForm.controls;
   }
 
-  changeTeam() {
-    StorageService.set(StorageService.USER_CURRENT_TEAM_ID, this.selectedTeam._id);
+  changeTeam(teamDetails) {
+    this.setTeamMemberDetails(teamDetails);
   }
 
   viewResult(eventId) {
     this.router.navigateByUrl('user/eventresult/'+eventId);
+  }
+
+  setTeamMemberDetails(teamDetails) {
+    debugger
+    let teamMemberGitIds = [];
+    const teamMembers = teamDetails.members;
+    teamMembers.forEach(element => {
+      if(element && element.gitId) {
+        teamMemberGitIds.push(element.gitId);
+      }
+    });
+    StorageService.set(StorageService.USER_CURRENT_TEAM_ID, teamDetails._id);
+    StorageService.set(StorageService.CURRENT_TEAM_MEMBERS_GITID, teamMemberGitIds);
   }
 
   enrollForEvent(eventDetails) {
