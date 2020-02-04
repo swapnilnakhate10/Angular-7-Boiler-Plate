@@ -40,7 +40,6 @@ export class StartChallengeComponent implements OnInit {
 
   getEventSuccess(data) {
     this.event = data;
-    this.createGithubRepoWithTeamAccess();
   }
 
   getEventError(error) {
@@ -62,39 +61,5 @@ export class StartChallengeComponent implements OnInit {
   getEventPrizesListError(error) {
     this.toaster.showError(Error.getEvent);
   }
-
-  createGithubRepoWithTeamAccess() {
-    let currentDate = new Date();
-    let reporname = "Hackathon-Repo-"+currentDate.getTime();
-    let teamMembers = StorageService.get(StorageService.CURRENT_TEAM_MEMBERS_GITID);
-    console.log('type a : '+typeof teamMembers);
-    console.log(teamMembers);
-    let requestBody = {
-        "name": reporname,
-        "description": "This is your Hackthon repo",
-        "private": false,
-        "reponame": "ashish9308/"+reporname,
-        "userlist" : ["ashish-9308"]
-      };
-    this.httpService.post(UrlDetails.createAndAddAccessToUser, requestBody).subscribe((response) => {
-      this.createGithubRepoWithTeamAccessSuccess(response);
-    }, (error)=> {
-      this.createGithubRepoWithTeamAccessError(error);
-    });
-  }
-
-  
-  createGithubRepoWithTeamAccessSuccess(data) {
-    console.log(data);
-    this.event.githubRepoLink = data.html_url;
-    this.toaster.showSuccess('Created github repo for user');
-    console.log('Success creating github repo');
-  }
-
-  createGithubRepoWithTeamAccessError(error) {
-    console.log('Error creating github repo');
-    this.toaster.showSuccess('Error creating github repo for Team.');
-  }
-
 
 }
