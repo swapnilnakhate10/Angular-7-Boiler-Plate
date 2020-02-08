@@ -88,7 +88,6 @@ export class DashboardComponent implements OnInit {
   }
 
   setTeamMemberDetails(teamDetails) {
-    debugger
     let teamMemberGitIds = [];
     const teamMembers = teamDetails.members;
     teamMembers.forEach(element => {

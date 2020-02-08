@@ -48,10 +48,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr  *ngFor="let user of users">
+                    <tr *ngFor="let user of users">
                         <td>{{user.firstName}} {{user.lastName}}</td>
                         <td>{{user.email}}</td>
                         <td><a class="btn btn-success" (click)="addMemeber(user)">Add</a></td>
+                    </tr>
+                    <tr *ngIf="users.length == 0">
+                      <td colspan="3">
+                        No Member in this team.
+                      </td>
                     </tr>
                 </tbody>
                 </table>
@@ -73,6 +78,11 @@
                     <tr class="info" *ngFor="let member of members">
                          <td>{{member.firstName}} {{member.lastName}}</td>                       
                         <td>{{member.email}}</td>
+                    </tr>
+                    <tr *ngIf="members.length == 0">
+                      <td colspan="3">
+                        No Member in this team.
+                      </td>
                     </tr>
                 </tbody>
                 </table>

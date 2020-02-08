@@ -74,7 +74,7 @@ export class EvaluateEventComponent implements OnInit {
 
   publishResultSuccess(response) {
     this.toaster.showSuccess("Result Published successfully.");
-    this.router.navigateByUrl('event-result');
+    this.router.navigateByUrl('organizer/event-result/'+this.eventId);
   }
 
   publishResultError(error) {
