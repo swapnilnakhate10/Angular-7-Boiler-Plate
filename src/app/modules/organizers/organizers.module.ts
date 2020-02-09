@@ -11,7 +11,6 @@ import { SharedModule } from '../shared/shared.module';
 import { OrganizerHeaderComponent } from './organizer-header/organizer-header.component';
 import { OrganizerProfileComponent } from './organizer-profile/organizer-profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MyDatePickerModule } from 'mydatepicker';
 import { EvaluateEventComponent } from './evaluate-event/evaluate-event.component';
 import { EventStepFormComponent } from './event-step-form/event-step-form.component';
 import { PrizeFormComponent } from './event-step-form/prize-form/prize-form.component';
@@ -19,16 +18,18 @@ import { UpdateOrganizerComponent } from './update-organizer/update-organizer.co
 import { EventService } from '../shared/services/event.service';
 import { TeamDetailsComponent } from './events/team-details/team-details.component';
 import { FinalResultComponent } from './evaluate-event/final-result/final-result.component';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 @NgModule({
   declarations: [OrganizersComponent, EventsComponent, EventFormComponent, CreateEventComponent, EditEventComponent, OrganizerHeaderComponent, OrganizerProfileComponent, EvaluateEventComponent, EventStepFormComponent, PrizeFormComponent, UpdateOrganizerComponent, TeamDetailsComponent, FinalResultComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    MyDatePickerModule,
     FormsModule,
     OrganizersRoutingModule,
-    SharedModule
+    SharedModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule
   ],
   providers: [EventService]
 })

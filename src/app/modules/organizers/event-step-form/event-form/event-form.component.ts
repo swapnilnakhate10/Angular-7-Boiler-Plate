@@ -1,6 +1,5 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
-import {IMyDpOptions} from 'mydatepicker';
 
 import { Event } from '../../../../models/event';
 import { UrlDetails } from '../../../../constants/url-details';
@@ -18,7 +17,6 @@ export class EventFormComponent implements OnInit {
 
   @Input() eventData: Event;
   @Output() eventForm = new EventEmitter<Event>();
-  public myDatePickerOptions: IMyDpOptions;
   userForm;
   submitted: boolean;
   difficultyList: String[];
@@ -50,8 +48,6 @@ export class EventFormComponent implements OnInit {
     if (this.userForm.invalid) {
       return;
     }
-    data.startDateTime= new Date(data.startDateTime.formatted);
-    data.endDateTime = new Date(data.endDateTime.formatted);
     this.addOrUpdateEvent(data);
   }
 
