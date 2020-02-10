@@ -19,6 +19,7 @@ import { EventService } from '../shared/services/event.service';
 import { TeamDetailsComponent } from './events/team-details/team-details.component';
 import { FinalResultComponent } from './evaluate-event/final-result/final-result.component';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { TagInputModule } from 'ngx-chips';
 
 @NgModule({
   declarations: [OrganizersComponent, EventsComponent, EventFormComponent, CreateEventComponent, EditEventComponent, OrganizerHeaderComponent, OrganizerProfileComponent, EvaluateEventComponent, EventStepFormComponent, PrizeFormComponent, UpdateOrganizerComponent, TeamDetailsComponent, FinalResultComponent],
@@ -29,7 +30,8 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
     OrganizersRoutingModule,
     SharedModule,
     OwlDateTimeModule,
-    OwlNativeDateTimeModule
+    OwlNativeDateTimeModule,
+    TagInputModule
   ],
   providers: [EventService]
 })

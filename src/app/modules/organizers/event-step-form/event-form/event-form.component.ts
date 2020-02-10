@@ -21,6 +21,7 @@ export class EventFormComponent implements OnInit {
   submitted: boolean;
   difficultyList: String[];
   teamSize: Number[];
+  techonlogyList: String[];
 
   constructor(private httpService: HttpService, private toaster:ToasterService) {
     this.userForm = new FormGroup({
@@ -41,6 +42,7 @@ export class EventFormComponent implements OnInit {
     this.submitted = false;
     this.difficultyList = ['Easy', 'Medium', 'Hard'];
     this.teamSize = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    this.techonlogyList = ['Java', 'NodeJs', 'Angular 2', 'Angular 4', 'Angular 5', 'Angular 6', 'AngularJs']
   }
 
   submitEventData(data: any) {
