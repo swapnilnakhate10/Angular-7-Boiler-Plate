@@ -84,12 +84,13 @@ export class MyTeamComponent implements OnInit {
   }
 
   register(formData) {
-    formData.teamLeaderId = this.userID;
-    formData.members  = this.members;
-    this.submitted = true;
     if ( this.teamForm.invalid ) {
       return;
     }
+    formData.teamLeaderId = this.userID;
+    formData.members = this.members;
+    formData.members.push(this.userID);
+    this.submitted = true;    
     this.httpService.post(UrlDetails.teams, formData).subscribe((response) => {
       this.isTeamCreate = false;
       this.toaster.showSuccess( 'Team registered successfully.');

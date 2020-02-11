@@ -76,12 +76,12 @@
                 </thead>
                 <tbody>
                     <tr class="info" *ngFor="let member of members">
-                         <td>{{member.firstName}} {{member.lastName}}</td>                       
+                        <td>{{member.firstName}} {{member.lastName}}</td>                       
                         <td>{{member.email}}</td>
                     </tr>
                     <tr *ngIf="members.length == 0">
                       <td colspan="3">
-                        No Member in this team.
+                        No Members added in this team.
                       </td>
                     </tr>
                 </tbody>
@@ -108,20 +108,31 @@
          <table class="table table-striped table-hover ">
             <thead>
                 <tr>
-                
-                <th>Title</th>
-                <th>Tag Line</th>
-                <th>Action</th>
+                  <th>Title</th>
+                  <th>Tag Line</th>
+                  <th>Team Members</th>
+                  <th>Action</th>
                 </tr>
   </thead>
   <tbody>
     <tr *ngFor="let team of teams">
-     
       <td>{{team.name}}</td>
       <td>{{team.tagline}}</td>
-      <td><a href="#" class="btn btn-danger">Leave</a></td>
+      <td rowspan="team.members.length">
+        <div class="row" *ngFor="let member of team.members">
+          <div class="col-md-10">
+            {{member.email}}
+            <i *ngIf="team.teamLeaderId == member._id" class="fa fa-user-o" aria-hidden="true"></i>
+          </div>
+          <div *ngIf="team.teamLeaderId == userID" class="col-md-2">
+              <i class="fa fa-trash-o"></i>
+          </div>
+        </div>
+      </td>
+      <td>
+        <a *ngIf="team.teamLeaderId != userID" class="btn btn-danger">Leave</a>
+      </td>
     </tr>
-
   </tbody>
 </table>
     </div>
