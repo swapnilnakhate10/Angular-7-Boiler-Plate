@@ -124,13 +124,13 @@
             {{member.email}}
             <i *ngIf="team.teamLeaderId == member._id" class="fa fa-user-o" aria-hidden="true"></i>
           </div>
-          <div *ngIf="team.teamLeaderId == userID" class="col-md-2">
-              <i class="fa fa-trash-o"></i>
+          <div *ngIf="team.teamLeaderId != member._id" class="col-md-2">
+              <i (click)="removeMemberFromTeam(team, member._id)" class="fa fa-trash-o"></i>
           </div>
         </div>
       </td>
       <td>
-        <a *ngIf="team.teamLeaderId != userID" class="btn btn-danger">Leave</a>
+        <a (click)="removeMemberFromTeam(team, userID)" *ngIf="team.teamLeaderId != userID" class="btn btn-danger">Leave</a>
       </td>
     </tr>
   </tbody>

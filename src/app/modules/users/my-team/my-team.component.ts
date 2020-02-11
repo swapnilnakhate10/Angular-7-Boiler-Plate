@@ -100,4 +100,16 @@ export class MyTeamComponent implements OnInit {
     });
   }
 
+  removeMemberFromTeam(teamDetails: any, teamMemberId: any) {
+    teamDetails.members = teamDetails.members.filter((member :any) =>{
+      return (teamMemberId !== member._id);
+    });
+    this.httpService.put(UrlDetails.teams + teamDetails._id, teamDetails).subscribe((response) => {
+      this.toaster.showSuccess('Member removed successfully.');
+      this.getTeams(this.userID);
+    }, (error) => {
+      this.toaster.showError(error.errmsg);
+    });
+  }
+
 }
