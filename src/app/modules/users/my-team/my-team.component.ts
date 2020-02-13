@@ -19,10 +19,10 @@ export class MyTeamComponent implements OnInit {
   submitted = false;
   isMemberFound = false;
   userEmail: any;
-  users: any=[];
+  users: any = [];
   userID: any;
   teams: any = [];
-  members: any =[];
+  members: any = [];
   teamForm;
 
   constructor(private httpService: HttpService, private toaster: ToasterService,
@@ -65,14 +65,10 @@ removeMemeber(index) {
   this.members.splice(index, 1);
 }
 
-cancel() {
-    this.submitted = false;
-    this.isTeamCreate = false;
-}
-
-searchMember(data) {
+keyUser(usermail) {
+  if ( usermail.length === 3 ) {
     this.users = [];
-     this.httpService.post(UrlDetails.users + 'search', { searchText: data }).subscribe((response: any) => {
+     this.httpService.post(UrlDetails.users + 'search', { searchText: usermail }).subscribe((response: any) => {
         for ( let i = 0; i < response.length; i++) {
             this.users.push(response[i]);
         }
@@ -82,7 +78,23 @@ searchMember(data) {
       this.isMemberFound = true;
       this.toaster.showError(error.errmsg);
     });
+  } else if (usermail.length > 3) {
+
+    this.users.forEach((item, index) => {
+      const regExp = new RegExp(`^${usermail}`);
+      if (!regExp.test(item.email)) {
+        this.users.splice(index, 1);
+      }
+    });
+  } else if ( usermail.length < 3) {
+    this.users = [];
   }
+}
+
+cancel() {
+    this.submitted = false;
+    this.isTeamCreate = false;
+}
 
   addMemeber(memeber) {
     this.members.push(memeber);
@@ -105,6 +117,8 @@ register(formData) {
       this.toaster.showError(error.errmsg);
     });
 }
+
+
 
 removeMemberFromTeam(teamDetails: any, teamMemberId: any) {
     teamDetails.members = teamDetails.members.filter((member: any) => {

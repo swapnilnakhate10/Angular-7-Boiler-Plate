@@ -32,12 +32,9 @@
             <div class="form-group">
               <label for="inputDemoUrl" class="col-lg-4 control-label">Add New Members</label>
               <div class="col-lg-8"> 
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Enter email..." #userEmail>
-                  <span class="input-group-btn">
-                    <a class="btn btn-default" (click)="searchMember(userEmail.value)">Search</a>
-                  </span>
-                </div>
+               
+                  <input type="text" class="form-control" placeholder="Search using email..." #userEmail (keyup)='keyUser(userEmail.value)'>
+               
                 <div *ngIf="isMemberFound">  
                 <table class="table table-striped table-hover ">
                 <thead>
