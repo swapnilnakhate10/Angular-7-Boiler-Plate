@@ -30,21 +30,21 @@ export class MyTeamComponent implements OnInit {
 
   ngOnInit() {
     this.userID =  StorageService.get(StorageService.USER_ID);
-    if(!StorageService.get("isLoggedIn")) {
+    if (!StorageService.get( 'isLoggedIn')) {
       this.router.navigate(['/landing']);
     }
     this.teamForm = new FormGroup({
         name: new FormControl('', Validators.required),
         tagline: new FormControl('Programming rocks!'),
-        path: new FormControl('',) ,
+        path: new FormControl('') ,
         demoURL: new FormControl('')
     });
     this.getTeams(this.userID);
   }
 
   getTeams(userID) {
-    this.httpService.get(UrlDetails.teams+'user/'+userID).subscribe((response:any) => {
-      if(response.length>0){
+    this.httpService.get(UrlDetails.teams + 'user/' + userID).subscribe((response: any) => {
+      if ( response.length > 0 ) {
         this.teams = response;
       } else {
         this.toaster.showSuccess( 'No Teams availables. You can create a new Team');
@@ -61,36 +61,42 @@ export class MyTeamComponent implements OnInit {
     this.submitted = false;
   }
 
-  cancel() {
+removeMemeber(index) {
+  this.members.splice(index, 1);
+}
+
+cancel() {
     this.submitted = false;
     this.isTeamCreate = false;
-  }
+}
 
-  searchMember(data){
-     this.httpService.post(UrlDetails.users+'search',{searchText: data}).subscribe((response:any) => {
-        for(let i =0;i<response.length;i++) {
+searchMember(data) {
+    this.users = [];
+     this.httpService.post(UrlDetails.users + 'search', { searchText: data }).subscribe((response: any) => {
+        for ( let i = 0; i < response.length; i++) {
             this.users.push(response[i]);
-        }     
+        }
         this.isMemberFound = true;
-        this.toaster.showInfo("Found "+response.length+" member.");
+        this.toaster.showInfo( 'Found ' + response.length + ' member.');
     }, (error) => {
       this.isMemberFound = true;
       this.toaster.showError(error.errmsg);
     });
   }
 
-  addMemeber(memeber){
+  addMemeber(memeber) {
     this.members.push(memeber);
   }
 
-  register(formData) {
+register(formData) {
     if ( this.teamForm.invalid ) {
+      this.toaster.showError( 'Please fill the form correctly.');
       return;
     }
     formData.teamLeaderId = this.userID;
     formData.members = this.members;
     formData.members.push(this.userID);
-    this.submitted = true;    
+    this.submitted = true;
     this.httpService.post(UrlDetails.teams, formData).subscribe((response) => {
       this.isTeamCreate = false;
       this.toaster.showSuccess( 'Team registered successfully.');
@@ -98,10 +104,10 @@ export class MyTeamComponent implements OnInit {
     }, (error) => {
       this.toaster.showError(error.errmsg);
     });
-  }
+}
 
-  removeMemberFromTeam(teamDetails: any, teamMemberId: any) {
-    teamDetails.members = teamDetails.members.filter((member :any) =>{
+removeMemberFromTeam(teamDetails: any, teamMemberId: any) {
+    teamDetails.members = teamDetails.members.filter((member: any) => {
       return (teamMemberId !== member._id);
     });
     this.httpService.put(UrlDetails.teams + teamDetails._id, teamDetails).subscribe((response) => {

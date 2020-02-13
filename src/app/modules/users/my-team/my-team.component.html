@@ -72,18 +72,22 @@
                     <tr>
                         <th>Full Name</th>                     
                         <th>Email ID</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="info" *ngFor="let member of members">
-                        <td>{{member.firstName}} {{member.lastName}}</td>                       
-                        <td>{{member.email}}</td>
-                    </tr>
-                    <tr *ngIf="members.length == 0">
+                   
+                    <tr class="danger" *ngIf="members.length == 0">
                       <td colspan="3">
                         No Members added in this team.
                       </td>
                     </tr>
+                     <tr class="info" *ngFor="let member of members; index as i">
+                        <td>{{member.firstName}} {{member.lastName}}</td>                       
+                        <td>{{member.email}}</td>
+                        <td><a class="btn btn-warning" (click)="removeMemeber(i)">Remove</a></td>
+                    </tr>
+                   
                 </tbody>
                 </table>
               </div>
