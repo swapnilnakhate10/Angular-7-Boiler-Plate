@@ -36,57 +36,53 @@
                   <input type="text" class="form-control" placeholder="Search using email..." #userEmail (keyup)='keyUser(userEmail.value)'>
                
                 <div *ngIf="isMemberFound">  
-                <table class="table table-striped table-hover ">
-                <thead>
-                    <tr>
+                  <table class="table table-striped table-hover ">
+                    <thead>
+                      <tr>
                         <th>Full Name</th>
                         <th>Email ID</th>
                         <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let user of users">
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let user of users">
                         <td>{{user.firstName}} {{user.lastName}}</td>
                         <td>{{user.email}}</td>
                         <td><a class="btn btn-success" (click)="addMemeber(user)">Add</a></td>
-                    </tr>
-                    <tr *ngIf="users.length == 0">
-                      <td colspan="3">
-                        No Member in this team.
-                      </td>
-                    </tr>
-                </tbody>
-                </table>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
 
              <div class="form-group">
               <label for="inputDemoUrl" class="col-lg-4 control-label">Team Members</label>
-              <div class="col-lg-8">
-                <table class="table table-striped table-hover ">
-                <thead>
-                    <tr>
+              <div *ngIf="members.length > 0">
+                <div class="col-lg-8">
+                  <table class="table table-striped table-hover ">
+                    <thead>
+                      <tr>
                         <th>Full Name</th>                     
                         <th>Email ID</th>
                         <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
+                      </tr>
+                    </thead>
+                  <tbody>
                    
-                    <tr class="danger" *ngIf="members.length == 0">
-                      <td colspan="3">
-                        No Members added in this team.
-                      </td>
+                    <tr class="info" *ngFor="let member of members; index as i">
+                       <td>{{member.firstName}} {{member.lastName}}</td>                       
+                       <td>{{member.email}}</td>
+                       <td><a class="btn btn-warning" (click)="removeMemeber(i)">Remove</a></td>
                     </tr>
-                     <tr class="info" *ngFor="let member of members; index as i">
-                        <td>{{member.firstName}} {{member.lastName}}</td>                       
-                        <td>{{member.email}}</td>
-                        <td><a class="btn btn-warning" (click)="removeMemeber(i)">Remove</a></td>
-                    </tr>
-                   
-                </tbody>
+                   </tbody>
                 </table>
+              </div>
+              </div>
+              <div *ngIf="members.length == 0">
+                 <div class="col-lg-8">
+                <p class="text-danger">No Members in this team</p>
+                </div>
               </div>
             </div>
 

@@ -73,9 +73,8 @@ keyUser(usermail) {
             this.users.push(response[i]);
         }
         this.isMemberFound = true;
-        this.toaster.showInfo( 'Found ' + response.length + ' member.');
     }, (error) => {
-      this.isMemberFound = true;
+      this.isMemberFound = false;
       this.toaster.showError(error.errmsg);
     });
   } else if (usermail.length > 3) {
@@ -88,6 +87,7 @@ keyUser(usermail) {
     });
   } else if ( usermail.length < 3) {
     this.users = [];
+    this.isMemberFound = false;
   }
 }
 
