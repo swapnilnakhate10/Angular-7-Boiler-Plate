@@ -96,7 +96,8 @@ cancel() {
     this.isTeamCreate = false;
 }
 
-  addMemeber(memeber) {
+  addMemeber(memeber, index) {
+    this.users.splice(index, 1);
     this.members.push(memeber);
   }
 

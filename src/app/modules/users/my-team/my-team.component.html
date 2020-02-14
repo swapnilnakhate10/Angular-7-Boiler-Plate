@@ -45,10 +45,10 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let user of users">
+                      <tr *ngFor="let user of users; index as i">
                         <td>{{user.firstName}} {{user.lastName}}</td>
                         <td>{{user.email}}</td>
-                        <td><a class="btn btn-success" (click)="addMemeber(user)">Add</a></td>
+                        <td><a class="btn btn-success" (click)="addMemeber(user,i)">Add</a></td>
                       </tr>
                     </tbody>
                   </table>
