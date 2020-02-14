@@ -1,0 +1,87 @@
+// File for image upload
+
+// core
+Logo: String,
+
+
+//UI
+constructor( public fileUploadCtrl: FileUploadController)
+
+ poiLogo: new FormControl(''),
+
+
+selectLogo(input) {
+        this.fileUploadCtrl.readImageFile(input, { width: null, height: null }, 70000, (dataUrl) => {
+            this.createPoiForm.controls['poiLogo'].setValue(dataUrl);
+            this.logoSelected = true;
+            this.logoValidation = false;
+        });
+    }
+
+    removeLogo() {
+        this.createPoiForm.controls['poiLogo'].setValue('');
+        this.logoSelected = false;
+        this.imageInput.nativeElement.value = '';
+        this.logoValidation = true;
+    }
+
+
+    readImageFile(input: any, imageSize: any, maxSize: any, callback?: (e: any, fileName?: string) => void) {
+        console.log('image file Size', Math.round(input.files[0].size / 1024));
+        console.log('maxSize ===>', maxSize);
+        console.log('imageSize.height ===>', imageSize.height);
+        console.log('imageSize.width ===>', imageSize.width);
+
+        if (input.files && input.files[0]) {
+            let _URL = window.URL || window.webkitURL;
+            let img = new Image();
+            img.src = _URL.createObjectURL(input.files[0]);
+
+            // Check image width & height
+            img.onload = () => {
+                if (imageSize.height != null && imageSize.width != null && img.width > imageSize.width && img.height > imageSize.height) {
+                    this._toastCtrl.errorToast('Image dimension should be less than ' + imageSize.width + 'x' + imageSize.height);
+                } else if (maxSize != undefined && maxSize != null && maxSize < input.files[0].size) {
+                    this._toastCtrl.errorToast('Image size should be less than ' + Math.round(maxSize / 1024) + ' kb');
+                } else {
+                    this.readFile(input, (result, fileName) => {
+                        callback(result, fileName);
+                    });
+                }
+            };
+        }
+    }
+
+     this.createPoiForm.patchValue(poi);
+            if (poi.poiLogo) {
+                this.logoSelected = true;
+                this.createPoiForm.controls['poiLogo'].setValue(poi.poiLogo);
+            }
+
+    //HTML
+    <div class="col-sm-3 col-xs-3">
+                        <div class="file-upload-inner image-file-uploader-box">
+                            <div class="image-selection-wrap" *ngIf="logoSelected">
+                                <div class="selected-image">
+                                    <img src="{{createPoiForm.controls['poiLogo'].value}}" />
+                                </div>
+                                <div class="selected-image-actions">
+                                    <div class="i-actions-inner">
+                                        <label i18n class="i-actions replace" for="input-file">REPLACE</label><br />
+                                        <div i18n class="i-actions remove" (click)="removeLogo()">REMOVE</div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <label class="uploader" for="input-file" *ngIf="!logoSelected">
+                                <div class="icon-text-wrap">
+                                    <i class="icon-upload3"></i><br />
+                                    <span i18n class="file-upload-text">Upload Photo</span>
+                                    <!-- <span class="file-upload-hint-text">(Logo Size 230px X 80px)</span>                       -->
+                                </div>
+                            </label>
+                            <input id="input-file" type="file" name="file" accept="image/*" (change)="selectLogo(input)"
+                                #input />
+                                <label i18n class="select-logo-error" *ngIf="logoValidation == true">Please select logo.</label>
+                        </div>
+                    </div>
