@@ -1,0 +1,28 @@
+<div class="container">
+
+  <div class="right-align">
+    <button class="btn btn-primary" routerLink="/organizer/create-judge">
+      Create Judge
+    </button>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-bordered table-hovered">
+        <thead>
+          <tr>
+              <th>Name</th>
+              <th>Specialiaztion</th>
+              <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let judge of judges">
+            <td>{{judge.name}}</td>
+            <td>{{judge.specialization ? judge.specialization : '-'}}</td>
+            <td>{{judge.email}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

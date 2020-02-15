@@ -9,6 +9,8 @@ import { EvaluateEventComponent } from './evaluate-event/evaluate-event.componen
 import { UpdateOrganizerComponent } from './update-organizer/update-organizer.component';
 import { TeamDetailsComponent } from './events/team-details/team-details.component';
 import { FinalResultComponent } from './evaluate-event/final-result/final-result.component';
+import { JudgeListComponent } from './judge-list/judge-list.component';
+import { JudgeFormComponent } from './judge-form/judge-form.component';
 
 const routes: Routes = [
   {
@@ -51,6 +53,14 @@ const routes: Routes = [
       {
         path: 'event-result/:eventId',
         component : FinalResultComponent
+      },
+      {
+        path: 'judges',
+        component : JudgeListComponent
+      },
+      {
+        path : 'create-judge',
+        component: JudgeFormComponent
       }
     ]
   }

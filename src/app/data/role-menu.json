@@ -43,6 +43,11 @@
 			"text": "My Profile",
 			"url": "/organizer/my-profile",
 			"icon": "fa fa-user"
+		},
+		{
+			"text": "Event Judges",
+			"url": "/organizer/judges",
+			"icon": "fa fa-balance-scale"
 		}
     ]
 }

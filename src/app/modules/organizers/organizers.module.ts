@@ -20,9 +20,11 @@ import { TeamDetailsComponent } from './events/team-details/team-details.compone
 import { FinalResultComponent } from './evaluate-event/final-result/final-result.component';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { TagInputModule } from 'ngx-chips';
+import { JudgeListComponent } from './judge-list/judge-list.component';
+import { JudgeFormComponent } from './judge-form/judge-form.component';
 
 @NgModule({
-  declarations: [OrganizersComponent, EventsComponent, EventFormComponent, CreateEventComponent, EditEventComponent, OrganizerHeaderComponent, OrganizerProfileComponent, EvaluateEventComponent, EventStepFormComponent, PrizeFormComponent, UpdateOrganizerComponent, TeamDetailsComponent, FinalResultComponent],
+  declarations: [OrganizersComponent, EventsComponent, EventFormComponent, CreateEventComponent, EditEventComponent, OrganizerHeaderComponent, OrganizerProfileComponent, EvaluateEventComponent, EventStepFormComponent, PrizeFormComponent, UpdateOrganizerComponent, TeamDetailsComponent, FinalResultComponent, JudgeListComponent, JudgeFormComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

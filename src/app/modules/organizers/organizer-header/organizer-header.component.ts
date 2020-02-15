@@ -10,18 +10,17 @@ import * as RolesMenu from "../../../data/role-menu.json";
 })
 export class OrganizerHeaderComponent implements OnInit {
 
-  constructor(private router: Router) { 
-    this.menulist = this.organiserMenu;
-  }
-
   userMenu:any;
   organiserMenu:any;
   menulist:any;
 
+  constructor(private router: Router) { 
+    this.menulist = this.organiserMenu;
+  }
+
   ngOnInit() {
     this.organiserMenu = (<any>RolesMenu).organizer;
-    this.menulist = this.organiserMenu;
-    
+    this.menulist = this.organiserMenu;    
   }
 
   logout() {
