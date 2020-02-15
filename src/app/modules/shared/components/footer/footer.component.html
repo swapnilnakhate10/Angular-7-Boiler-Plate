@@ -1,5 +1,12 @@
+<div class ="icon-span" (click)="showFirst=!showFirst;chatIconToggle()">
+  <i class="material-icons" *ngIf="showFirst" style='font-size:48px;color:red'>cancel</i>
+  <i class="material-icons" *ngIf="!showFirst" style='font-size:48px;color:#5cb85c'>chat</i>
+</div>
+<span class ="bottom-left">
+  <iframe class="iframechat" [ngClass]="iframechat ? 'open' : 'close'" src="https://web.teletype.global/"></iframe>
+</span>
 <footer class="footer">
-    <div class="container">
-      <p>Exela Hackathon 	&copy;2020</p>
-    </div>
-  </footer>
+  <div class="container">
+    <p>Exela Hackathon 	&copy;2020</p>
+  </div>
+</footer>

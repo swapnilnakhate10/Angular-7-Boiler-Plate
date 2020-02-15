@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
+  iframechat: boolean = false;
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  chatIconToggle() {
+    this.iframechat = !this.iframechat;
+  }
 }
