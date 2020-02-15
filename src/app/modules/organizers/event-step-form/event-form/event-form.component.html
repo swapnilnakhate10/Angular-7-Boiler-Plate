@@ -10,12 +10,12 @@
             <legend>Fillup following details</legend>
             <div class="col-lg-8">
               <div class="form-group">
-                <label for="name" class="col-lg-4 control-label">Event Name*</label>
+                <label for="eventName" class="col-lg-4 control-label">Event Name*</label>
                 <div class="col-lg-8">
-                  <input type="text" class="form-control" required id="name" formControlName="name"
+                  <input type="text" class="form-control" required id="eventName" formControlName="name"
                     placeholder="Event Name">
-                  <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-                    <div *ngIf="f.name.errors.required">*Event Name is required</div>
+                  <div *ngIf="submitted && userForm.name && userForm.name.errors" class="invalid-feedback">
+                    <div *ngIf="userForm.name.errors.required">*Event Name is required</div>
                   </div>
                 </div>
               </div>
@@ -25,8 +25,8 @@
                 <div class="col-sm-8">
                   <input formControlName="startDateTime" [owlDateTimeTrigger]="dtPicker1" [owlDateTime]="dtPicker1">
                   <owl-date-time #dtPicker1></owl-date-time>
-                  <div *ngIf="submitted && f.startDateTime.errors" class="invalid-feedback">
-                    <div *ngIf="f.startDateTime.errors.required">*Start Date Time is required</div>
+                  <div *ngIf="submitted && userForm.startDateTime.errors" class="invalid-feedback">
+                    <div *ngIf="userForm.startDateTime.errors.required">*Start Date Time is required</div>
                   </div>
                 </div>
               </div>
@@ -36,8 +36,8 @@
                 <div class="col-sm-8">
                   <input formControlName="endDateTime" [owlDateTimeTrigger]="dtPicker2" [owlDateTime]="dtPicker2">
                   <owl-date-time #dtPicker2></owl-date-time>
-                  <div *ngIf="submitted && f.endDateTime.errors" class="invalid-feedback">
-                    <div *ngIf="f.endDateTime.errors.required">*End Date Time is required</div>
+                  <div *ngIf="submitted && userForm.endDateTime.errors" class="invalid-feedback">
+                    <div *ngIf="userForm.endDateTime.errors.required">*End Date Time is required</div>
                   </div>
                 </div>
               </div>
@@ -47,8 +47,8 @@
                 <div class="col-lg-8">
                   <input type="text" class="form-control" required id="shortDescription"
                     formControlName="shortDescription" placeholder="Short Description">
-                  <div *ngIf="submitted && f.shortDescription.errors" class="invalid-feedback">
-                    <div *ngIf="f.shortDescription.errors.required">*Short Description is required</div>
+                  <div *ngIf="submitted && userForm.shortDescription.errors" class="invalid-feedback">
+                    <div *ngIf="userForm.shortDescription.errors.required">*Short Description is required</div>
                   </div>
                 </div>
               </div>
@@ -57,8 +57,8 @@
                 <div class="col-lg-8">
                   <textarea type="text" class="form-control" required id="problemStatement"
                     formControlName="problemStatement" placeholder="Problem Statement"> </textarea>
-                  <div *ngIf="submitted && f.problemStatement.errors" class="invalid-feedback">
-                    <div *ngIf="f.problemStatement.errors.required">*Problem Statement is required</div>
+                  <div *ngIf="submitted && userForm.problemStatement.errors" class="invalid-feedback">
+                    <div *ngIf="userForm.problemStatement.errors.required">*Problem Statement is required</div>
                   </div>
                 </div>
               </div>
@@ -68,8 +68,8 @@
                 <div class="col-lg-8">
                   <textarea type="text" class="form-control" required id="rulesAndRegulations"
                     formControlName="rulesAndRegulations" placeholder="Rules And Regulations"> </textarea>
-                  <div *ngIf="submitted && f.rulesAndRegulations.errors" class="invalid-feedback">
-                    <div *ngIf="f.rulesAndRegulations.errors.required">*Rules And Regulations* is required</div>
+                  <div *ngIf="submitted && userForm.rulesAndRegulations.errors" class="invalid-feedback">
+                    <div *ngIf="userForm.rulesAndRegulations.errors.required">*Rules And Regulations* is required</div>
                   </div>
                 </div>
               </div>
