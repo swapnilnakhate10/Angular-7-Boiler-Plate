@@ -6,6 +6,7 @@ import { Success, Error } from '../../../constants/messages';
 import { UrlDetails } from 'src/app/constants/url-details';
 import { StorageService } from '../../shared/services/storage.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { phoneNumberValidator } from '../../shared/field-validator';
 
 @Component({
   selector: 'app-update-user',
@@ -19,18 +20,20 @@ export class UpdateUserComponent implements OnInit {
   roles: String[];
   sizes: String[];
   userDetails = {};
+  public max = new Date();
 
   constructor(private httpService: HttpService, private StorageService: StorageService,
     private toaster: ToasterService, private router: Router) {
     this.userForm = new FormGroup({
-      email: new FormControl('', Validators.required),
-      firstName: new FormControl('', Validators.required),
-      lastName: new FormControl('', Validators.required),
-      contactNumber: new FormControl(''),
-      gitId: new FormControl('', Validators.required),
-      designation: new FormControl('', Validators.required),
-      image: new FormControl(''),
-      tShirtSize: new FormControl('')
+      email: new FormControl('',[Validators.required, Validators.email]),
+                firstName: new FormControl('',Validators.required),
+                lastName: new FormControl('',Validators.required),
+                contactNumber: new FormControl('',[phoneNumberValidator,Validators.minLength(10)]),
+                gitId: new FormControl('',Validators.required),
+                designation: new FormControl('',Validators.required),
+                image: new FormControl('',),
+                tShirtSize: new FormControl('',),
+                dob: new FormControl('',)
     });
   }
 
@@ -61,6 +64,7 @@ export class UpdateUserComponent implements OnInit {
         designation: response['designation'],
         tShirtSize: response['tShirtSize'],
         contactNumber: response['contactNumber'],
+        dob: new Date(response['dob']),
         type: StorageService.get(StorageService.USER_TYPE),
         password: response['password']
       }
@@ -73,11 +77,19 @@ export class UpdateUserComponent implements OnInit {
   }
 
   updateDetails(data) {
+    this.submitted = true;
+    if(this.userForm.invalid){
+      return;
+    }
     if (this.userDetails) {
       // console.log(data)
       // console.log("Form submitted")
       data['password'] = this.userDetails['password'];
       this.httpService.put(UrlDetails.users + '/' + this.userDetails['userId'], data).subscribe((response) => {
+        if(response['errmsg']){
+          this.toaster.showError("Something went wrong.");
+          return;
+        }
         this.toaster.showSuccess("User details updated successfully.");
         this.updateSuccess(response);
       }, (error) => {

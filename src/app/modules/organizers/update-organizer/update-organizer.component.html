@@ -13,19 +13,19 @@
                 <label for="inputName" class="col-lg-4 control-label">Name*</label>
                 <div class="col-lg-8">
                   <input type="text" class="form-control" required id="fullname" formControlName="name"
-                    placeholder="Name">
-                  <div *ngIf="submitted && f.fullname.errors" class="invalid-feedback">
-                    <div *ngIf="f.fullname.errors.required">*Name is required</div>
-                  </div>
+                  placeholder="Name">
+                <div *ngIf="submitted && f.name.errors" class="invalid-feedback text-danger">
+                  <div *ngIf="f.name.errors.required">Name is required</div>
+                </div>
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputEmail" class="col-lg-4 control-label">Email*</label>
                 <div class="col-lg-8">
                   <input type="text" class="form-control" formControlName="email" placeholder="Email" required>
-                  <div *ngIf="submitted && f.emailid.errors" class="invalid-feedback">
-                    <div *ngIf="f.emailid.errors.required">Email is required</div>
-                    <div *ngIf="f.emailid.errors.email">Email must be a valid email address</div>
+                  <div *ngIf="submitted && f.email.errors" class="invalid-feedback  text-danger">
+                    <div *ngIf="f.email.errors.required">Email is required</div>
+                    <div *ngIf="f.email.errors.email">Enter valid email address</div>
                   </div>
                 </div>
               </div>
@@ -34,16 +34,32 @@
                 <div class="col-lg-8">
                   <input type="text" class="form-control" required id="orgname" formControlName="organization"
                     placeholder="Your Organization name">
-                  <div *ngIf="submitted && f.orgname.errors" class="invalid-feedback">
-                    <div *ngIf="f.orgname.errors.required">*Organization Name is required</div>
+                  <div *ngIf="submitted && f.organization.errors" class="invalid-feedback text-danger">
+                    <div *ngIf="f.organization.errors.required">Organization Name is required</div>
                   </div>
                 </div>
               </div>
+              <div class="form-group">
+                <label for="inputEmail" class="col-lg-4 control-label">Date Of Birth*</label>
+                <div class="col-lg-8">
 
+                  <input class="form-control" formControlName="dob" placeholder="Your date of birth"
+                   [owlDateTimeTrigger]="dt3" [owlDateTime]="dt3" [max]="max">
+                   <div *ngIf="submitted && f.dob.errors" class="invalid-feedback text-danger">
+                    <div *ngIf="f.dob.errors.required">Birthdate is required</div>
+                  </div>
+                  <owl-date-time [pickerType]="'calendar'" #dt3></owl-date-time>
+                </div>
+              </div>
               <div class="form-group">
                 <label for="inputNumber" class="col-lg-4 control-label">Contact Number</label>
                 <div class="col-lg-8">
                   <input type="text" class="form-control" formControlName="contactNo" placeholder="+91-">
+                  <div *ngIf="submitted && f.contactNo.errors" class="invalid-feedback text-danger">
+                    <span *ngIf="f.contactNo.errors.invalidNumber">Contact Number has to be a number </span>
+                    <div *ngIf="f.contactNo.errors && !f.contactNo.errors.invalidNumber">Enter valid Contact Number
+                    </div>
+                  </div>
                 </div>
               </div>
               <!--<div class="form-group">

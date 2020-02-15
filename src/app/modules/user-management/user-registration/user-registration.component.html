@@ -6,108 +6,127 @@
         <h3 class="panel-title">Register new user</h3>
       </div>
       <div class="panel-body">
-        <form class="form-horizontal" (ngSubmit)="register(userForm.value)" [formGroup] = "userForm" >
+        <form class="form-horizontal" (ngSubmit)="register(userForm.value)" [formGroup]="userForm">
           <fieldset>
-          <legend>Fill following details</legend>
-          <div class="col-lg-8">
-            <div class="form-group">
-              <label for="inputName" class="col-lg-4 control-label">First Name*</label>
-              <div class="col-lg-8">
-                <input type="text" class="form-control" required id="fname" formControlName = "firstName" placeholder="Your first name" >
-                <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-                    <div *ngIf="f.firstName.errors.required">* First Name is required</div>
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputName" class="col-lg-4 control-label">Last Name*</label>
-              <div class="col-lg-8">
-                <input type="text" class="form-control" required id="lname" formControlName = "lastName" placeholder="Your last name" >
-                <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-                    <div *ngIf="f.lastName.errors.required">*Last Name is required</div>
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputEmail" class="col-lg-4 control-label">Email*</label>
-              <div class="col-lg-8">
-                <input type="text" class="form-control" formControlName = "email"  placeholder="Email" required >
-                 <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                    <div *ngIf="f.email.errors.required">Email is required</div>
-                    <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+            <legend>Fill following details</legend>
+            <div class="col-lg-8">
+              <div class="form-group">
+                <label for="inputName" class="col-lg-4 control-label">First Name*</label>
+                <div class="col-lg-8">
+                  <input type="text" class="form-control" required id="fname" formControlName="firstName"
+                    placeholder="Your first name">
+                  <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback text-danger">
+                    <div *ngIf="f.firstName.errors.required">First Name is required</div>
                   </div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="inputNumber" class="col-lg-4 control-label">Contact Number</label>
-              <div class="col-lg-8">
-                <input type="text" class="form-control" formControlName = "contactNumber" placeholder="+91-" >
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="inputGitID" class="col-lg-4 control-label">Gitlab ID*</label>
-              <div class="col-lg-8">
-                <input type="text" class="form-control" formControlName = "gitId" placeholder="jonDoe1214" required>
-                <div *ngIf="submitted && f.gitId.errors" class="invalid-feedback">
-                    <div *ngIf="f.gitId.errors.required">*Your gitlab ID is required</div>
                 </div>
               </div>
-            </div>
+              <div class="form-group">
+                <label for="inputName" class="col-lg-4 control-label">Last Name*</label>
+                <div class="col-lg-8">
+                  <input type="text" class="form-control" required id="lname" formControlName="lastName"
+                    placeholder="Your last name">
+                  <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback text-danger">
+                    <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail" class="col-lg-4 control-label">Email*</label>
+                <div class="col-lg-8">
+                  <input type="text" class="form-control" formControlName="email" placeholder="Your email id" required>
+                  <div *ngIf="submitted && f.email.errors" class="invalid-feedback text-danger">
+                    <div *ngIf="f.email.errors.required">Email is required</div>
+                    <div *ngIf="f.email.errors.email">Enter valid email address</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail" class="col-lg-4 control-label">Date Of Birth*</label>
+                <div class="col-lg-8">
 
-            <div class="form-group">
-              <label for="inputPassword" class="col-lg-4 control-label">Password</label>
-              <div class="col-lg-8">
-                <div class="input-group">
-                  <input #password type="password" class="form-control" id="inputPassword" formControlName = "password"  placeholder="Password" rqeuired >
-                  <span class="input-group-btn">
-                    <a class="btn btn-default" (click)="showPassword(password)">Show</a>
-                  </span>
+                  <input class="form-control" formControlName="dob" placeholder="Your date of birth"
+                   [owlDateTimeTrigger]="dt3" [owlDateTime]="dt3" [max]="max">
+                   <div *ngIf="submitted && f.dob.errors" class="invalid-feedback text-danger">
+                    <div *ngIf="f.dob.errors.required">Birthdate is required</div>
+                  </div>
+                  <owl-date-time [pickerType]="'calendar'" #dt3></owl-date-time>
                 </div>
-                
-                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                    <div *ngIf="f.password.errors.required">*Password field is required</div>
+              </div>
+              <div class="form-group">
+                <label for="inputNumber" class="col-lg-4 control-label">Contact Number</label>
+                <div class="col-lg-8">
+                  <input type="text" class="form-control" formControlName="contactNumber" placeholder="+91-">
+                  <div *ngIf="submitted && f.contactNumber.errors" class="invalid-feedback text-danger">
+                    <span *ngIf="f.contactNumber.errors.invalidNumber"> Contact Number has to be a number </span>
+                    <div *ngIf="f.contactNumber.errors && !f.contactNumber.errors.invalidNumber">Enter valid Contact
+                      Number</div>
+                  </div>
                 </div>
-                <!-- <div class="checkbox">
+              </div>
+
+              <div class="form-group">
+                <label for="inputGitID" class="col-lg-4 control-label">Gitlab ID*</label>
+                <div class="col-lg-8">
+                  <input type="text" class="form-control" formControlName="gitId" placeholder="jonDoe1214" required>
+                  <div *ngIf="submitted && f.gitId.errors" class="invalid-feedback text-danger">
+                    <div *ngIf="f.gitId.errors.required">Your gitlab ID is required</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="inputPassword" class="col-lg-4 control-label">Password*</label>
+                <div class="col-lg-8">
+                  <div class="input-group">
+                    <input #password type="password" class="form-control" id="inputPassword" formControlName="password"
+                      placeholder="Password" required>
+                    <span class="input-group-btn">
+                      <a class="btn btn-default" (click)="showPassword(password)">Show</a>
+                    </span>
+                  </div>
+
+                  <div *ngIf="submitted && f.password.errors" class="invalid-feedback text-danger">
+                    <div *ngIf="f.password.errors.required">Password field is required</div>
+                  </div>
+                  <!-- <div class="checkbox">
                   <label>
                     <input type="checkbox" id="showPassword"> Visible
                   </label>
                 </div> -->
+                </div>
               </div>
-            </div>
 
-            <div class="form-group">
-              <label for="textArea" class="col-lg-4 control-label">Designation</label>
-              <div class="col-lg-8">
-                <select class="form-control" formControlName = "designation">
-                  <option value="" disabled selected hidden>Choose your Designation</option>
-                  <option *ngFor="let role of roles" [ngValue]="role">{{role}}</option>
-                </select>
-                 <div *ngIf="submitted && f.designation.errors" class="invalid-feedback">
-                    <div *ngIf="f.designation.errors.required">*Role is required</div>
+              <div class="form-group">
+                <label for="textArea" class="col-lg-4 control-label">Designation</label>
+                <div class="col-lg-8">
+                  <select class="form-control" formControlName="designation">
+                    <option value="" disabled selected hidden>Choose your Designation</option>
+                    <option *ngFor="let role of roles" [ngValue]="role">{{role}}</option>
+                  </select>
+                  <div *ngIf="submitted && f.designation.errors" class="invalid-feedback text-danger">
+                    <div *ngIf="f.designation.errors.required">Designation is required</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="textArea" class="col-lg-4 control-label">T-shirt Size</label>
+                <div class="col-lg-8">
+                  <select class="form-control" formControlName="tShirtSize">
+                    <option value="" disabled selected hidden>Choose your Size</option>
+                    <option *ngFor="let size of sizes" [ngValue]="size">{{size}}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-lg-12 col-lg-offset-4">
+                  <button type="reset" class="btn btn-default">Cancel</button>
+                  <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
               </div>
             </div>
-
-             <div class="form-group">
-              <label for="textArea" class="col-lg-4 control-label">T-shirt Size</label>
-              <div class="col-lg-8">
-                <select class="form-control"  formControlName = "tShirtSize">
-                  <option value="" disabled selected hidden>Choose your Size</option>
-                  <option *ngFor="let size of sizes" [ngValue]="size">{{size}}</option>
-                </select>
-              </div>
-            </div>
-      
-            <div class="form-group" >
-              <div class="col-lg-12 col-lg-offset-4">
-                <button type="reset" class="btn btn-default">Cancel</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </div>
-            </div>
-          </div>
-          <!--<div class="col-lg-4">
+            <!--<div class="col-lg-4">
             <img src="assets/images/user.png" id="userImage" alt="user_image.png" style="width:150px;height:150px;">
             <input type="file" class="form-control" id="inputfile" formControlName = "image" name="image" >
           </div>-->

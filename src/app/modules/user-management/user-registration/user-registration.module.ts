@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './../../shared/shared.module';
 import { UserRegistrationRoutingModule } from './user-registration-routing.module';
 import { UserRegistrationComponent } from './user-registration.component';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 @NgModule({
   declarations: [UserRegistrationComponent],
@@ -11,7 +12,9 @@ import { UserRegistrationComponent } from './user-registration.component';
     CommonModule,
     ReactiveFormsModule,
     UserRegistrationRoutingModule,
-    SharedModule
+    SharedModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule
   ]
 })
 export class UserRegistrationModule { }

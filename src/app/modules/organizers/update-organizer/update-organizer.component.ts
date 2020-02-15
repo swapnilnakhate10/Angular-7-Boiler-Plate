@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { StorageService } from '../../shared/services/storage.service';
 import { UrlDetails } from 'src/app/constants/url-details';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { phoneNumberValidator } from '../../shared/field-validator';
 
 @Component({
   selector: 'app-update-organizer',
@@ -17,19 +18,23 @@ export class UpdateOrganizerComponent implements OnInit {
     private toaster: ToasterService, private router: Router) {
 
     this.orgForm = new FormGroup({
-      email: new FormControl('', Validators.required),
+      email: new FormControl('',  [Validators.required, Validators.email]),
       organization: new FormControl('', Validators.required),
       name: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required),
-      contactNo: new FormControl(''),
-      logo: new FormControl('')
+     // password: new FormControl('', Validators.required),
+      contactNo: new FormControl('',[phoneNumberValidator,Validators.minLength(10)]),
+      logo: new FormControl(''),
+      dob: new FormControl('', )
     });
   }
 
   organizerDetails = {};
   orgForm;
+  submitted: boolean;
+  public max = new Date();
 
   ngOnInit() {
+    this.submitted = false;
     if (StorageService.get("isLoggedIn")) {
       this.getOrgDetails();
     } else {
@@ -47,7 +52,8 @@ export class UpdateOrganizerComponent implements OnInit {
         email: response['email'],
         contactNo: response['contactNo'],
         type: StorageService.get(StorageService.USER_TYPE),
-        password: response['password']
+        password: response['password'],
+        dob: response['dob']
       }
       this.setFormValues();
     }, (error) => {
@@ -58,6 +64,10 @@ export class UpdateOrganizerComponent implements OnInit {
   }
 
   onSubmit(data) {
+    this.submitted = true;
+    if(this.orgForm.invalid){
+      return;
+    }
     if (this.organizerDetails) {
       console.log(data)
       console.log("Form submitted")
@@ -91,5 +101,7 @@ export class UpdateOrganizerComponent implements OnInit {
       contactNo: this.organizerDetails['contactNo']
     });
   }
+
+  get f() { return this.orgForm.controls; }
 
 }

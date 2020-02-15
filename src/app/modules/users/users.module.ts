@@ -13,6 +13,7 @@ import { StartChallengeComponent } from './start-challenge/start-challenge.compo
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { ParticipatedEventsComponent } from './participated-events/participated-events.component';
 import { EventResultComponent } from './dashboard/event-result/event-result.component';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 @NgModule({
   declarations: [UsersComponent, DashboardComponent, MyTeamComponent, UsersHeaderComponent, UserProfileComponent, StartChallengeComponent, UpdateUserComponent, ParticipatedEventsComponent, EventResultComponent],
@@ -21,7 +22,9 @@ import { EventResultComponent } from './dashboard/event-result/event-result.comp
     SharedModule,
     ReactiveFormsModule,
     FormsModule,
-    UsersRoutingModule
+    UsersRoutingModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule
   ]
 })
 export class UsersModule { }

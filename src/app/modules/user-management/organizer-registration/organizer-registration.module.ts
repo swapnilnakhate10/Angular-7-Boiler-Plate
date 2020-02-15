@@ -4,6 +4,7 @@ import { SharedModule } from './../../shared/shared.module';
 import { OrganizerRegistrationRoutingModule } from './organizer-registration-routing.module';
 import { OrganizerRegistrationComponent } from './organizer-registration.component';
 import { ReactiveFormsModule } from "@angular/forms";
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 @NgModule({
   declarations: [OrganizerRegistrationComponent],
@@ -11,7 +12,9 @@ import { ReactiveFormsModule } from "@angular/forms";
     CommonModule,
     OrganizerRegistrationRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule
   ]
 })
 export class OrganizerRegistrationModule { }

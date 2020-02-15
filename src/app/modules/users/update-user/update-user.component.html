@@ -13,8 +13,8 @@
               <label for="inputName" class="col-lg-4 control-label">First Name*</label>
               <div class="col-lg-8">
                 <input type="text" class="form-control" required id="fname" formControlName = "firstName" placeholder="Your first name" >
-                <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-                    <div *ngIf="f.firstName.errors.required">* First Name is required</div>
+                <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback text-danger">
+                  <div *ngIf="f.firstName.errors.required">First Name is required</div>
                 </div>
               </div>
             </div>
@@ -22,26 +22,41 @@
               <label for="inputName" class="col-lg-4 control-label">Last Name*</label>
               <div class="col-lg-8">
                 <input type="text" class="form-control" required id="lname" formControlName = "lastName" placeholder="Your last name" >
-                <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-                    <div *ngIf="f.lastName.errors.required">*Last Name is required</div>
+                <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback text-danger">
+                  <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail" class="col-lg-4 control-label">Email*</label>
+            <div class="col-lg-8">
+              <input type="text" class="form-control" formControlName = "email"  placeholder="Email" required >
+               <div *ngIf="submitted && f.email.errors" class="invalid-feedback text-danger">
+                  <div *ngIf="f.email.errors.required">Email is required</div>
+                  <div *ngIf="f.email.errors.email">Enter valid email address</div>
                 </div>
               </div>
             </div>
-            <div class="form-group">
-              <label for="inputEmail" class="col-lg-4 control-label">Email*</label>
+            <!-- <div class="form-group">
+              <label for="inputEmail" class="col-lg-4 control-label">Date Of Birth*</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control" formControlName = "email"  placeholder="Email" required >
-                 <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                    <div *ngIf="f.email.errors.required">Email is required</div>
-                    <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
-                  </div>
-              </div>
-            </div>
 
+                <input class="form-control" formControlName="dob" placeholder="Your date of birth"
+                 [owlDateTimeTrigger]="dt3" [owlDateTime]="dt3" [max]="max"  >
+                 <div *ngIf="submitted && f.dob.errors" class="invalid-feedback text-danger">
+                  <div *ngIf="f.dob.errors.required">Your birthdate is required</div>
+                </div>
+                <owl-date-time  [pickerType]="'calendar'" #dt3></owl-date-time>
+              </div>
+            </div> -->
             <div class="form-group">
               <label for="inputNumber" class="col-lg-4 control-label">Contact Number</label>
               <div class="col-lg-8">
                 <input type="text" class="form-control" formControlName = "contactNumber" placeholder="+91-" >
+                <div *ngIf="submitted && f.contactNumber.errors" class="invalid-feedback text-danger">
+                <span *ngIf="f.contactNumber.errors.invalidNumber"> Contact Number has to be a number </span>
+                <div *ngIf="f.contactNumber.errors && !f.contactNumber.errors.invalidNumber">Enter valid Contact Number</div>
+              </div>
               </div>
             </div>
 
@@ -49,8 +64,8 @@
               <label for="inputGitID" class="col-lg-4 control-label">Gitlab ID*</label>
               <div class="col-lg-8">
                 <input type="text" class="form-control" formControlName = "gitId" placeholder="jonDoe1214" required>
-                <div *ngIf="submitted && f.gitId.errors" class="invalid-feedback">
-                    <div *ngIf="f.gitId.errors.required">*Your gitlab ID is required</div>
+                <div *ngIf="submitted && f.gitId.errors" class="invalid-feedback text-danger">
+                    <div *ngIf="f.gitId.errors.required">Your gitlab ID is required</div>
                 </div>
               </div>
             </div>
@@ -83,10 +98,10 @@
                   <option value="" disabled selected hidden>Choose your Designation</option>
                   <option *ngFor="let role of roles" [ngValue]="role">{{role}}</option>
                 </select>
-                 <div *ngIf="submitted && f.designation.errors" class="invalid-feedback">
-                    <div *ngIf="f.designation.errors.required">*Role is required</div>
-                </div>
-              </div>
+                <div *ngIf="submitted && f.designation.errors" class="invalid-feedback text-danger">
+                   <div *ngIf="f.designation.errors.required">Designation is required</div>
+               </div>
+             </div>
             </div>
 
              <div class="form-group">
