@@ -12,6 +12,7 @@ import { UrlDetails } from '../../../constants/url-details';
 })
 export class EvaluateEventComponent implements OnInit {
 
+  eventDetails : Event;
   teams = [];
   eventId: any;
 
@@ -36,49 +37,19 @@ export class EvaluateEventComponent implements OnInit {
   }
 
   getAllTeamsDetailsSuccess(response) {
+    this.eventDetails = response[0];
     this.teams = response[0].teams;
-    // if(response[0].status === "published") {
-    //   this.router.navigateByUrl('organizer/event-result/'+response[0]._id);
-    // }
+    if(response[0].status === "published") {
+      this.router.navigateByUrl('organizer/event-result/'+response[0]._id);
+    }
   }
 
   getAllTeamsDetailsError(error) {
     this.toaster.showError(Error.login);
   }
 
-  submitEvaluation(evalutionData) {
-    let body = { teams : evalutionData };
-    this.httpService.put(UrlDetails.events+ this.eventId, body).subscribe((response) =>{
-      this.submitEvaluationSuccess(response);
-    }, (error)=> {
-      this.submitEvaluationError(error);
-    });
-  }
 
-  submitEvaluationSuccess(response) {
-    this.toaster.showSuccess("Submitted successfully.");
-  }
-
-  submitEvaluationError(error) {
-    this.toaster.showError("Error Submit.");
-  }
-
-  publishResult(evalutionData) {
-    let body = { status: "completed" };
-    this.httpService.put(UrlDetails.events+ this.eventId, body).subscribe((response) =>{
-      this.publishResultSuccess(response);
-    }, (error)=> {
-      this.publishResultError(error);
-    });
-  }
-
-  publishResultSuccess(response) {
-    this.toaster.showSuccess("Result Published successfully.");
+  publishResult() {
     this.router.navigateByUrl('organizer/event-result/'+this.eventId);
   }
-
-  publishResultError(error) {
-    this.toaster.showError("Error publishing result.");
-  }
-
 }

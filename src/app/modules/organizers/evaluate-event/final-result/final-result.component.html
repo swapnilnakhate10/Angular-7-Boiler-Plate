@@ -1,30 +1,34 @@
-<div class="col-md-offset-2 col-md-8">
-    <h3 style="text-align: center">Winner List</h3>
+<div class="col-md-offset-2 col-md-8" *ngIf="eventDetails">
+    <h3 style="text-align: center">Winner List for event : {{eventDetails.name}}</h3>
     <table class="table">
         <thead>
           <tr>
-            <th>Rank</th>
+            <th>Winner Rank</th>
+            <th>Winner Title</th>
+            <th>Winner Amount</th>
             <th>Team Name</th>
             <th>Github Repo</th>
-            <th>Code Quality (20%)</th>
-            <th>Usablitiy (20%)</th>
-            <th>UI/UX (20%)</th>
-            <th>Funcanility (40%)</th>
+            <th *ngFor="let config of eventDetails.evaluationConfiguration">
+              {{config.parameter}}
+            </th>
             <th>Final Score (40%)</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let team of winnerResults; let i=index">
-            <th>{{i+1}}</th>
+            <th>{{prizes[i].rank}}</th>
+            <th>{{prizes[i].title}}</th>
+            <th>{{prizes[i].amount}} &#8377;</th>
             <th>{{team._id.name}}</th>
             <th>{{team.repoLink ? team.repoLink : "-"}}</th>
-            <th>{{team.coding_standards}}</th>
-            <th>{{team.usablity}}</th>
-            <th>{{team.ui_ux}}</th>
-            <th>{{team.functionalCompleteness}}</th>
+            <th *ngFor="let config of team.evaluations">
+                {{config.finalScore}}
+              </th>
             <th>{{team.finalScore}}</th>
           </tr>
         </tbody>
       </table>
-    
+    <div class="row">
+      <button class="btn btn-primary" (click)="publishResult()">Publish Result</button>
+    </div>
 </div>

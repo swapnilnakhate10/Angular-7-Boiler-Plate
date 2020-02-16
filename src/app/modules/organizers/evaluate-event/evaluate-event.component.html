@@ -1,50 +1,30 @@
-<div class="container">
-  Evaluating EVents
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Team Name</th>
-        <th>Github Repo Link</th>
-        <th>Coding Standards (20%)</th>
-        <th>Usablitiy (20%)</th>
-        <th>UI/UX (20%)</th>
-        <th>Funactional Completeness (40%)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let team of teams; let i=index">
-        <th>{{team._id.name}}</th>
-        <th>{{team.repoLink ? team.repoLink : "-"}}</th>
-        <th>
-          <input type="number" class="form-control" id="coding_standards{{i}}"
-               required
-               [(ngModel)]="team.coding_standards" name="name"
-               #name="ngModel">
-        </th>
-        <th>
-          <input type="number" class="form-control" id="usablity{{i}}"
-               required
-               [(ngModel)]="team.usablity" name="name"
-               #name="ngModel">
-        </th>
-        <th>
-            <input type="number" class="form-control" id="ui_ux{{i}}"
-               required [(ngModel)]="team.ui_ux" name="name" #name="ngModel">
-        </th>
-        <th>
-            <input type="number" class="form-control" id="functionalCompleteness{{i}}"
-               required [(ngModel)]="team.functionalCompleteness" name="name" #name="ngModel">
-        </th>
-      </tr>
-    </tbody>
-    <tfoot>
-      <button class="btn btn-primary" (click)="submitEvaluation(teams)">Submit</button>
-    </tfoot>
-  </table>
-
-  <div class="row">
-      <button class="btn btn-primary" (click)="publishResult(teams)">Publish Result</button>
+<div class="container" *ngIf="eventDetails">
+    <h5>Evaluating Event : {{eventDetails.name}}</h5>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Team Name</th>
+          <th>Github Repo Link</th>
+          <th *ngFor="let config of eventDetails?.evaluationConfiguration">
+            {{config.parameter}} <br>
+            (Max Score : {{config.maxScore}}) <br>
+            (Weightage : {{config.weightage}})
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let team of teams; let i=index">
+          <th>{{team._id.name}}</th>
+          <th>{{team.repoLink ? team.repoLink : "-"}} </th>
+          <th *ngFor="let config of team?.evaluations">
+              <input type="number" class="form-control" id="config{{i+config.name}}" [disabled]="config.judge != judgeId"
+              required [(ngModel)]="config.score" name="name" #name="ngModel">
+            </th>
+        </tr>
+      </tbody>
+      <tfoot>
+        <button class="btn btn-primary" (click)="publishResult()">View Final Winner List</button>
+      </tfoot>
+    </table>
+  
   </div>
-
-</div>
