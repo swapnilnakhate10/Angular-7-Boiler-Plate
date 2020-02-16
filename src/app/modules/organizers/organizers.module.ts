@@ -20,11 +20,13 @@ import { TeamDetailsComponent } from './events/team-details/team-details.compone
 import { FinalResultComponent } from './evaluate-event/final-result/final-result.component';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { TagInputModule } from 'ngx-chips';
+import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { JudgeListComponent } from './judge-list/judge-list.component';
 import { JudgeFormComponent } from './judge-form/judge-form.component';
+import { EvaluationComponent } from './event-step-form/evaluation/evaluation.component';
 
 @NgModule({
-  declarations: [OrganizersComponent, EventsComponent, EventFormComponent, CreateEventComponent, EditEventComponent, OrganizerHeaderComponent, OrganizerProfileComponent, EvaluateEventComponent, EventStepFormComponent, PrizeFormComponent, UpdateOrganizerComponent, TeamDetailsComponent, FinalResultComponent, JudgeListComponent, JudgeFormComponent],
+  declarations: [OrganizersComponent, EventsComponent, EventFormComponent, CreateEventComponent, EditEventComponent, OrganizerHeaderComponent, OrganizerProfileComponent, EvaluateEventComponent, EventStepFormComponent, PrizeFormComponent, UpdateOrganizerComponent, TeamDetailsComponent, FinalResultComponent, JudgeListComponent, JudgeFormComponent, EvaluationComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -33,7 +35,8 @@ import { JudgeFormComponent } from './judge-form/judge-form.component';
     SharedModule,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
-    TagInputModule
+    TagInputModule,
+    AutocompleteLibModule
   ],
   providers: [EventService]
 })

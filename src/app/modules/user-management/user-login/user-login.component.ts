@@ -21,16 +21,19 @@ export class UserLoginComponent implements OnInit {
     private toaster: ToasterService, private router: Router) {
     this.userLogin = new FormGroup({
       email: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required)
     });
     this.orgLogin = new FormGroup({
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
+      userType: new FormControl('', Validators.required)
     });
   }
 
   ngOnInit() {
-
+    this.orgLogin.patchValue({
+      userType: "organizer"
+    });
   }
 
   toggleLogin(value: any) {
@@ -50,11 +53,32 @@ export class UserLoginComponent implements OnInit {
   }
 
   onOrgLogin(value: any) {
-    this.httpService.post(UrlDetails.organizationLogin, value).subscribe((response) => {
+    console.log('userType : '+value);
+    if(value.userType == 'organizer') {
+      this.organizerLogin(value);
+    } else {
+      this.judgeLogin(value);
+    }
+  }
+
+  organizerLogin(data) {
+    this.httpService.post(UrlDetails.organizationLogin, data).subscribe((response) => {
       this.loginSuccessOrg(response);
     }, (error) => {
       this.loginError(error);
-    })
+    });
+  }
+
+  judgeLogin(data) {
+    this.httpService.post(UrlDetails.judgesLogin, data).subscribe((response) => {
+      this.judgeLoginSuccess(response);
+    }, (error) => {
+      this.loginError(error);
+    });
+  }
+
+  judgeLoginSuccess(response) {
+    this.router.navigate(['/judges']);
   }
 
   loginSuccessOrg(response) {

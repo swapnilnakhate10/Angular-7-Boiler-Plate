@@ -49,5 +49,12 @@
 			"url": "/organizer/judges",
 			"icon": "fa fa-balance-scale"
 		}
-    ]
+	],
+	"judges" : [
+		{
+			"text": "Events Dashboard",
+			"url": "/judges/events",
+			"icon": "fa fa-dashboard"
+		}
+	]
 }

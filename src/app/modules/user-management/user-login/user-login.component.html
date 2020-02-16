@@ -9,7 +9,6 @@
 <div *ngIf="showuserSignIn" class="container">
 	<div class="panel-group">
 		<div class="panel panel-success">
-			<div class="panel-heading">User Login</div>
 			<div class="panel-body">
 				<form  class="form-group"  (ngSubmit)="login(userLogin.value)"  [formGroup] ="userLogin">
 					<div class="form-group">
@@ -34,7 +33,6 @@
   <div *ngIf="!showuserSignIn" class="container">
 	<div class="panel-group">
 		<div class="panel panel-success">
-			<div class="panel-heading">Organizer Login</div>
 			<div class="panel-body">
 				<form  (ngSubmit)="onOrgLogin(orgLogin.value)"  [formGroup] ="orgLogin">
 					<div class="form-group">
@@ -44,6 +42,21 @@
 					<div class="form-group">
 						<label for="pwd">Password:</label>
 						<input type="password" class="form-control" formControlName = "password" id="pwd">
+					</div>
+					<div class="form-group">
+						<div class="radio-inline">
+							<input id="organizer" type="radio" class="custom-control-input" value="organizer" name="userType" formControlName="userType">
+							<label class="custom-control-label" for="organizer">Organizer</label>
+						</div>
+						
+						<div class="radio-inline">
+							<input id="judge" type="radio" class="custom-control-input" value="judge" name="userType" formControlName="userType">
+							<label class="custom-control-label" for="judge">Judge</label>
+						</div>
+						
+						<div *ngIf="isSubmitted && orgLogin.invalid">
+							<p>Please select either value</p>
+						</div>
 					</div>
 					<div class="checkbox">
 						<label><input type="checkbox"> Remember me</label> 

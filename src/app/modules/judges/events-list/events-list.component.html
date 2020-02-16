@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel-group" *ngIf="events.length > 0">
+          <div class="panel panel-default" *ngFor="let event of events">
+            <div class="panel-heading">
+              {{event.name}}
+              <span class="duration-date">
+                {{event.startDateTime | date}} To {{event.endDateTime | date}}
+              </span>
+              <span class={{event.status}}>{{event.status | uppercase}}</span>
+            </div>
+            <div class="panel-body">{{event.shortDescription}}</div>
+            <div class="panel-footer" *ngIf="event.status === 'completed'">
+              <button class="btn btn-primary btn-padding" (click)="evaluateEvent(event)">Evaluate</button>
+            </div>
+          </div>
+    </div>
+    <div class="panel-group" *ngIf="events.length == 0" style="text-align: center">
+      <h4>No Events to evaluate.</h4>
+    </div>
+  </div>
+</div>

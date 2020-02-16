@@ -4,3 +4,6 @@
 <div *ngIf="currentStep === 2">
   <app-prize-form [eventId]="eventId" (prizeForm)="onSubmitPrizes($event)"></app-prize-form>
 </div>
+<div *ngIf="currentStep === 3">
+    <app-evaluation [eventId]="eventId"></app-evaluation>
+</div>

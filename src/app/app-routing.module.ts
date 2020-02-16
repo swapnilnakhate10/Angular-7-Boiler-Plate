@@ -36,6 +36,10 @@ const routes: Routes = [
     loadChildren: './modules/organizers/organizers.module#OrganizersModule'
   },
   {
+    path: 'judges',
+    loadChildren: './modules/judges/judges.module#JudgesModule'
+  },
+  {
     path: 'about',
     loadChildren: './modules/about-us/about-us.module#AboutUsModule',
   }, 
