@@ -80,4 +80,8 @@ export class EventsComponent implements OnInit {
     this.router.navigateByUrl('/organizer/team-details/'+eventDetails._id);
   }
 
+  viewEventResult(eventDetails) {
+    this.router.navigateByUrl('organizer/event-result/'+eventDetails._id);
+  }
+
 }

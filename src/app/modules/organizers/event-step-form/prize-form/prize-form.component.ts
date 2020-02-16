@@ -62,6 +62,7 @@ export class PrizeFormComponent implements OnInit {
 
   addOrUpdateEventSuccess(data) {
     this.toaster.showSuccess(Success.createEvent);
+    this.prizeForm.reset();
     this.getEventPrizesList(this.eventId);
   }
 

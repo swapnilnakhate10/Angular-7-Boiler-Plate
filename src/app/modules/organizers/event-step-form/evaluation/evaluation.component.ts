@@ -60,14 +60,14 @@ export class EvaluationComponent implements OnInit {
     if(this.configForm.valid) {
       evaluationData.score = 0;
       this.evaluations.push(evaluationData);
-      this.configuration = new EvaluationConfiguration();
+      this.configForm.reset();
     } else {
       this.toaster.showError('Please add valid details');
     }
   }
 
   addEvaluationConfiguration() {
-    if(this.evaluations.length > 0) {
+    if(this.validateEvaluationParameters()) {
       const updatedBody = { evaluationConfiguration : this.evaluations };
       this.httpService.put(UrlDetails.events + this.eventId, updatedBody).subscribe((response) => {
         this.addEvaluationConfigurationSuccess(response);
@@ -75,7 +75,19 @@ export class EvaluationComponent implements OnInit {
         this.addEvaluationConfigurationError(error);
       });  
     } else {
-      this.toaster.showError("Please add at least one configuration.");
+      this.toaster.showError("Total weitage sum should be 100%.");
+    }
+  }
+
+  validateEvaluationParameters() {
+    let totalPercentage = 0;
+    this.evaluations.forEach((evaluation) => {
+      totalPercentage = totalPercentage + evaluation.weightage;
+    });
+    if(totalPercentage == 100) {
+      return true;
+    } else {
+      return false;
     }
   }
 

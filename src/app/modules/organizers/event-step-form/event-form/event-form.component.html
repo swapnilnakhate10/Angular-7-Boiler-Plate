@@ -55,7 +55,7 @@
               <div class="form-group">
                 <label for="inputName" class="col-lg-4 control-label">Problem Statement*</label>
                 <div class="col-lg-8">
-                  <textarea type="text" class="form-control" required id="problemStatement"
+                  <textarea type="text" class="form-control" rows="5" required id="problemStatement"
                     formControlName="problemStatement" placeholder="Problem Statement"> </textarea>
                   <div *ngIf="submitted && userForm.problemStatement.errors" class="invalid-feedback">
                     <div *ngIf="userForm.problemStatement.errors.required">*Problem Statement is required</div>
@@ -66,7 +66,7 @@
               <div class="form-group">
                 <label for="inputName" class="col-lg-4 control-label">Rules And Regulations*</label>
                 <div class="col-lg-8">
-                  <textarea type="text" class="form-control" required id="rulesAndRegulations"
+                  <textarea type="text" class="form-control"  rows="5" required id="rulesAndRegulations"
                     formControlName="rulesAndRegulations" placeholder="Rules And Regulations"> </textarea>
                   <div *ngIf="submitted && userForm.rulesAndRegulations.errors" class="invalid-feedback">
                     <div *ngIf="userForm.rulesAndRegulations.errors.required">*Rules And Regulations* is required</div>

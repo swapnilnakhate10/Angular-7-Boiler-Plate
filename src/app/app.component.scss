@@ -1,3 +1,31 @@
 .btn-padding{
     padding: 5px !important;
 }
+
+.completed {
+    width: 20px;
+    background-color: #f5a938;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.ongoing {
+    width: 20px;
+    background-color: #00FFFF;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.scheduled {
+    width: 20px;
+    background-color: #07a32e;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.published {
+    width: 20px;
+    background-color: #6d1111;
+    border-radius: 5px;
+    padding: 5px;
+}
