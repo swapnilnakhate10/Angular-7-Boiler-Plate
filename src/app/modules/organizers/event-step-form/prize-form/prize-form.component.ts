@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Event } from '../../../../models/event';
@@ -16,6 +16,7 @@ import { ToasterService } from './../../../shared/services/toaster.service';
 export class PrizeFormComponent implements OnInit {
 
   @Input() eventId: any;
+  @Output() prizeFormSubmit = new EventEmitter();
   prizeForm;
   prizeModels = [];
 
@@ -69,7 +70,8 @@ export class PrizeFormComponent implements OnInit {
   }
 
   submitPrizes() {
-    this.router.navigateByUrl('organizer');
+    // this.router.navigateByUrl('organizer');
+    this.prizeFormSubmit.emit("done");
   }
 
 }

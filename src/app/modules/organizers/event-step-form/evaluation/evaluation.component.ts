@@ -16,6 +16,7 @@ export class EvaluationComponent implements OnInit {
 
   @Input() eventId: string;
   @Output() formSubmit = new EventEmitter<Event>();
+  keyword = 'email';
 
   configuration: EvaluationConfiguration;
   evaluations = [];
@@ -25,9 +26,9 @@ export class EvaluationComponent implements OnInit {
   constructor(private httpService: HttpService, private toaster:ToasterService) {
     this.configForm = new FormGroup({
       parameter: new FormControl('', Validators.required),
-      maxScore: new FormControl('', Validators.required),
+      maxScore: new FormControl('', [Validators.required, Validators.max(100), Validators.min(0)]),
       judge: new FormControl('', Validators.required),
-      weightage: new FormControl('', Validators.required)
+      weightage: new FormControl('', [Validators.required, Validators.max(100), Validators.min(1)])
     });
   }
 
@@ -52,21 +53,34 @@ export class EvaluationComponent implements OnInit {
   }
 
   selectJudge(event) {
-    console.log('Selceted Judge : '+event);
+    this.configForm.patchValue({ judge: event._id });
   }
 
-  addEvaluationConfiguration(evaluationData: EvaluationConfiguration) {
-    const updatedBody = { evaluation : evaluationData };
-    this.httpService.put(UrlDetails.events + this.eventId, updatedBody).subscribe((response) => {
-      this.addEvaluationConfigurationSuccess(response);
-    }, (error)=> {
-      this.addEvaluationConfigurationError(error);
-    });
+  addEvaluation(evaluationData: EvaluationConfiguration) {
+    if(this.configForm.valid) {
+      this.evaluations.push(evaluationData);
+      this.configuration = new EvaluationConfiguration();
+    } else {
+      this.toaster.showError('Please add valid details');
+    }
+  }
+
+  addEvaluationConfiguration() {
+    if(this.evaluations.length > 0) {
+      const updatedBody = { evaluationConfiguration : this.evaluations };
+      this.httpService.put(UrlDetails.events + this.eventId, updatedBody).subscribe((response) => {
+        this.addEvaluationConfigurationSuccess(response);
+      }, (error)=> {
+        this.addEvaluationConfigurationError(error);
+      });  
+    } else {
+      this.toaster.showError("Please add at least one configuration.");
+    }
   }
 
   addEvaluationConfigurationSuccess(data) {
     this.toaster.showSuccess("Updated evaluation configuration");
-    this.configForm.emit(data);
+    this.formSubmit.emit(data);
   }
 
   addEvaluationConfigurationError(error) {

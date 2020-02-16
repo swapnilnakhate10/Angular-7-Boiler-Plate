@@ -3,7 +3,7 @@
       <div class="col-md-6">
         <div class="panel panel-success">
             <div class="panel-body" style="height: 700px; overflow-y : auto">
-              <form class="form-horizontal" (ngSubmit)="submitPrizeData(configForm.value)" [formGroup]="configForm">
+              <form class="form-horizontal" (ngSubmit)="addEvaluation(configForm.value)" [formGroup]="configForm">
                 
                   <legend>Add Evaluation Parameters</legend>
                   <div class="col-lg-8">
@@ -21,7 +21,7 @@
                     <div class="form-group">
                       <label for="inputName" class="col-lg-4 control-label">Maximum Score*</label>
                       <div class="col-lg-8">
-                        <input type="text" class="form-control" required id="maxScore"
+                        <input type="number" class="form-control" required id="maxScore"
                           formControlName="maxScore" placeholder="maxScore">
                         <div *ngIf="submitted && configForm.maxScore.errors" class="invalid-feedback">
                           <div *ngIf="configForm.maxScore.errors.required">*Maximum Score is required</div>
@@ -32,7 +32,7 @@
                     <div class="form-group">
                       <label for="weightage" class="col-lg-4 control-label">% Weightage*</label>
                       <div class="col-lg-8">
-                        <input type="text" class="form-control" required id="weightage"
+                        <input type="number" class="form-control" required id="weightage"
                           formControlName="weightage" placeholder="weightage">
                         <div *ngIf="submitted && configForm.weightage.errors" class="invalid-feedback">
                           <div *ngIf="configForm.weightage.errors.required">*Weightage is required</div>
@@ -41,13 +41,20 @@
                     </div>
   
                     <div class="form-group">
-                      <label for="inputName" class="col-lg-4 control-label">Amount*</label>
-                      <div class="ng-autocomplete">
+                      <label for="inputName" class="col-md-4 control-label">Select Judge*</label>
+                      <div class="col-md-8">
                           <ng-autocomplete 
                             [data]="judgesList"
-                            [searchKeyword]="'email'"
+                            placeHolder="Enter the Judge email"
+                            [searchKeyword]="keyword"
+                            [itemTemplate]="itemTemplate"
                             (selected)='selectJudge($event)'>                                 
                           </ng-autocomplete>
+
+                          <ng-template #itemTemplate let-item>
+                            <a [innerHTML]="item.email"></a>
+                          </ng-template>
+                        
                       </div>
                     </div>
       
@@ -74,18 +81,21 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let configuration of evaluationParameters">
+            <tr *ngFor="let configuration of evaluations">
               <td>{{configuration.parameter}}</td>
               <td>{{configuration.maxScore}}</td>
               <td>{{configuration.weightage}}</td>
               <td>{{configuration.judge}}</td>
             </tr>
+            <tr *ngIf="evaluations.length == 0">
+              <td colspan="4">No configurations added yet.</td>
+            </tr>
           </tbody>
         </table>
+        <div class="row">
+          <button type="submit" class="btn btn-primary" [ngClass]="{'disabled' : this.evaluations.length == 0 ? true : false}" (click)="addEvaluationConfiguration()">Submit</button>
+        </div>  
       </div>
     </div>
   
-    <div class="row">
-        <button type="submit" class="btn btn-primary" (click)="submitPrizes()">Next</button>
-    </div>
   </div>

@@ -2,8 +2,8 @@
   <app-event-form [eventData]="eventData" (eventForm)="onSubmitEventForm($event)"></app-event-form>
 </div>
 <div *ngIf="currentStep === 2">
-  <app-prize-form [eventId]="eventId" (prizeForm)="onSubmitPrizes($event)"></app-prize-form>
+  <app-prize-form [eventId]="eventId" (prizeFormSubmit)="onSubmitPrizes($event)"></app-prize-form>
 </div>
 <div *ngIf="currentStep === 3">
-    <app-evaluation [eventId]="eventId"></app-evaluation>
+    <app-evaluation [eventId]="eventId" (formSubmit)="onEvaluationSubmit($event)"></app-evaluation>
 </div>

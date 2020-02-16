@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { Event } from '../../../models/event';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-event-step-form',
@@ -14,7 +15,7 @@ export class EventStepFormComponent implements OnInit {
   eventId : string;
   prizesData = [];
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
     if(this.eventData && this.eventData.prizes) {
@@ -25,6 +26,14 @@ export class EventStepFormComponent implements OnInit {
   onSubmitEventForm(data) {
     this.currentStep = 2;
     this.eventId = data._id;
+  }
+
+  onSubmitPrizes(data) {
+    this.currentStep = 3;
+  }
+
+  onEvaluationSubmit() {
+    this.router.navigateByUrl('/organizer');
   }
 
 }
