@@ -24,6 +24,8 @@ export class DashboardComponent implements OnInit {
   teams = [];
   selectedTeam : any;
 
+  eventDetails: any;
+
   constructor(private router: Router,
             private httpService: HttpService,
             private toaster: ToasterService) { }
@@ -35,8 +37,8 @@ export class DashboardComponent implements OnInit {
       return;
     }
     this.teamForm = new FormGroup({
-                teamname: new FormControl('',Validators.required),
-                teamIconPath: new FormControl('',Validators.required),
+                teamname: new FormControl('', Validators.required),
+                teamIconPath: new FormControl('', Validators.required),
                 tagline: new FormControl('')
     });
     this.getAllEventsByOrganizationId();
@@ -46,13 +48,14 @@ export class DashboardComponent implements OnInit {
   getAllEventsByOrganizationId() {
     this.httpService.get(UrlDetails.events + 'active').subscribe((response) =>{
       this.getAllEventsByOrganizationIdSuccess(response);
-    }, (error)=> {
+    }, (error) => {
       this.getAllEventsByOrganizationIdError(error);
     });
   }
 
   getAllEventsByOrganizationIdSuccess(response) {
     this.events = response;
+    this.eventDetails = this.events[0];
   }
 
   getAllEventsByOrganizationIdError(error) {
@@ -60,7 +63,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getAllTeamsForUser(userID) {
-    this.httpService.get(UrlDetails.teams + 'user/'+ userID).subscribe((response:any) => {
+    this.httpService.get(UrlDetails.teams + 'user/' + userID).subscribe((response: any) => {
       this.teams = response;
       this.selectedTeam = response[0];
       this.setTeamMemberDetails(this.selectedTeam);
@@ -69,7 +72,7 @@ export class DashboardComponent implements OnInit {
      });
   }
 
-  onClickSubmit(data) { 
+  onClickSubmit(data) {
       this.submitted = true;
       if(this.teamForm.invalid) {
         return;

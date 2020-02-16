@@ -30,8 +30,8 @@ export class EventFormComponent implements OnInit {
       maxTeamSize: new FormControl('', Validators.required),
       difficulty: new FormControl('', Validators.required),
       logo: new FormControl(''),
-      startDateTime: new FormControl(''),
-      endDateTime: new FormControl(''),
+      startDateTime: new FormControl('', Validators.required),
+      endDateTime: new FormControl('', Validators.required),
       problemStatement: new FormControl('', Validators.required),
       rulesAndRegulations: new FormControl('', Validators.required),
       technologies: new FormControl('', Validators.required)
