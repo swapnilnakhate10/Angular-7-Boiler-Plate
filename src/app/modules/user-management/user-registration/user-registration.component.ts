@@ -19,6 +19,7 @@ export class UserRegistrationComponent implements OnInit {
   submitted: boolean = false;
   isVisiblePassword: boolean = false;
   public max = new Date();
+  isLogoSelected: boolean = false;
 
   roles: String[];
   sizes: String[];
@@ -92,6 +93,7 @@ export class UserRegistrationComponent implements OnInit {
     StorageService.set(StorageService.USER_LASTNAME, response.lastName);
     StorageService.set(StorageService.USER_EMAIL, response.email);
     StorageService.set(StorageService.USER_DESIGNATION, response.designation);
+    StorageService.set(StorageService.USER_IMAGE, response.image);
     StorageService.set(StorageService.USER_TYPE, "user");
     this.router.navigate(['/user']);
   }
@@ -104,6 +106,28 @@ export class UserRegistrationComponent implements OnInit {
   showPassword(passowrd) {
     this.isVisiblePassword = !this.isVisiblePassword;
     passowrd.type = this.isVisiblePassword ? "text" : "password";
+  }
+
+  private imageSrc: string = '';
+
+  handleInputChange(e) {
+    var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+    if(file){
+    var pattern = /image-*/;
+    var reader = new FileReader();
+    if (!file.type.match(pattern)) {
+      alert('invalid format');
+      return;
+    }
+    reader.onload = this._handleReaderLoaded.bind(this);
+    reader.readAsDataURL(file);
+  }
+  }
+  _handleReaderLoaded(e) {
+    let reader = e.target;
+    this.imageSrc = reader.result;
+    this.isLogoSelected=true;
+    this.userForm.controls['image'].setValue(this.imageSrc);
   }
 
 }

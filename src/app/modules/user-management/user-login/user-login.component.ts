@@ -89,6 +89,7 @@ export class UserLoginComponent implements OnInit {
     StorageService.set(StorageService.CURRENT_ORGANIZATION_NAME, response.organization);
     StorageService.set(StorageService.ORGANIZER_EMAIL, response.email);
     StorageService.set(StorageService.ORGANIZER_CONTACT, response.contactNo);
+    StorageService.set(StorageService.ORGANIZER_IMAGE, response.image);
     StorageService.set(StorageService.USER_TYPE, "organizer");
     this.router.navigate(['/organizer']);
   }
@@ -100,7 +101,7 @@ export class UserLoginComponent implements OnInit {
     StorageService.set(StorageService.USER_LASTNAME, response.lastName);
     StorageService.set(StorageService.USER_EMAIL, response.email);
     StorageService.set(StorageService.USER_DESIGNATION, response.designation);
-    
+    StorageService.set(StorageService.USER_IMAGE, response.image);
     StorageService.set(StorageService.USER_TYPE, "user");
     this.router.navigate(['/user']);
   }

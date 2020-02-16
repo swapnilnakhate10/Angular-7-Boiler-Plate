@@ -23,8 +23,8 @@ export class UserProfileComponent implements OnInit {
         lastName: StorageService.get(StorageService.USER_LASTNAME),
         email: StorageService.get(StorageService.USER_EMAIL),
         type: StorageService.get(StorageService.USER_TYPE),
-        designation: StorageService.get(StorageService.USER_DESIGNATION)
-        
+        designation: StorageService.get(StorageService.USER_DESIGNATION),
+        image: StorageService.get(StorageService.USER_IMAGE)
       }
     } else {
       StorageService.removeAll();

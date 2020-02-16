@@ -126,10 +126,16 @@
                 </div>
               </div>
             </div>
-            <!--<div class="col-lg-4">
-            <img src="assets/images/user.png" id="userImage" alt="user_image.png" style="width:150px;height:150px;">
-            <input type="file" class="form-control" id="inputfile" formControlName = "image" name="image" >
-          </div>-->
+            <div class="col-lg-4"> 
+             
+            <img  *ngIf="!isLogoSelected" src="assets/images/user.png" id="userImage" 
+            alt="user_image.png" style="width:150px;height:150px;">
+            <img *ngIf="isLogoSelected" [src]="imageSrc" style="width:150px;height:150px;"/>
+            
+            <input type="file" class="form-control col-lg-4" id="inputfile"  name="image" 
+             (change)="handleInputChange($event)">
+              
+          </div>
           </fieldset>
         </form>
 

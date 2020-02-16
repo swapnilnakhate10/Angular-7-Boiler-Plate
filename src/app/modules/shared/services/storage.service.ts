@@ -15,12 +15,14 @@ export class StorageService {
     public static USER_EMAIL: string = 'user_email';
     public static USER_DESIGNATION: string = 'user_designation';
     public static USER_CURRENT_TEAM_ID: string = 'user_current_team_id';
+    public static USER_IMAGE: string = 'user_image';
     public static CURRENT_TEAM_MEMBERS_GITID: string = 'current_team_members_gitid';
     public static ORGANIZER_ID: string = 'organizer_id';
     public static ORGANIZER_NAME: string = 'organizer_name';
     public static CURRENT_ORGANIZATION_NAME: string = 'current_organization';
     public static ORGANIZER_EMAIL: string = 'organizer_email';
     public static ORGANIZER_CONTACT: string = 'organizer_contact';
+    public static ORGANIZER_IMAGE: string = 'organizer_image';
 
     public static JUDGE_ID: string = 'judge_id';
 
