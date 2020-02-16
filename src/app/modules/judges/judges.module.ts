@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { JudgesRoutingModule } from './judges-routing.module';
 import { JudgesComponent } from './judges.component';
@@ -11,6 +12,7 @@ import { EvaluateEventComponent } from './evaluate-event/evaluate-event.componen
   declarations: [JudgesComponent, EventsListComponent, JudgeHeaderComponent, EvaluateEventComponent],
   imports: [
     CommonModule,
+    FormsModule,
     JudgesRoutingModule
   ]
 })

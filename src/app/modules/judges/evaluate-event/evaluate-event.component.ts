@@ -4,6 +4,7 @@ import { ToasterService } from './../../shared/services/toaster.service';
 import { HttpService } from './../../shared/services/http.service';
 import { Success, Error } from '../../../constants/messages';
 import { UrlDetails } from '../../../constants/url-details';
+import { StorageService } from '../../shared/services/storage.service';
 
 @Component({
   selector: 'app-evaluate-event',
@@ -12,9 +13,10 @@ import { UrlDetails } from '../../../constants/url-details';
 })
 export class EvaluateEventComponent implements OnInit {
 
-
+  eventDetails : Event;
   teams = [];
   eventId: any;
+  judgeId: any;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -24,6 +26,7 @@ export class EvaluateEventComponent implements OnInit {
 
   ngOnInit() {
     this.eventId = this.route.snapshot.paramMap.get('id');
+    this.judgeId = StorageService.get(StorageService.JUDGE_ID);
     console.log('Event Id : '+this.eventId);
     this.getAllTeamsDetails(this.eventId);
   }
@@ -37,6 +40,7 @@ export class EvaluateEventComponent implements OnInit {
   }
 
   getAllTeamsDetailsSuccess(response) {
+    this.eventDetails = response[0];
     this.teams = response[0].teams;
   }
 

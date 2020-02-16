@@ -1,3 +1,30 @@
-<p>
-  evaluate-event works!
-</p>
+<div class="container" *ngIf="eventDetails">
+  <h5>Evaluating Event : {{eventDetails.name}}</h5>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Team Name</th>
+        <th>Github Repo Link</th>
+        <th *ngFor="let config of eventDetails?.evaluationConfiguration">
+          {{config.parameter}} <br>
+          (Max Score : {{config.maxScore}}) <br>
+          (Weightage : {{config.weightage}})
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let team of teams; let i=index">
+        <th>{{team._id.name}}</th>
+        <th>{{team.repoLink ? team.repoLink : "-"}} </th>
+        <th *ngFor="let config of team?.evaluations">
+            <input type="number" class="form-control" id="config{{i+config.name}}" [disabled]="config.judge != judgeId"
+            required [(ngModel)]="config.score" name="name" #name="ngModel">
+          </th>
+      </tr>
+    </tbody>
+    <tfoot>
+      <button class="btn btn-primary" (click)="submitEvaluation(teams)">Submit</button>
+    </tfoot>
+  </table>
+
+</div>
