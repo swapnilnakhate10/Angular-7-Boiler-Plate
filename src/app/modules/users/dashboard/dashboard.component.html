@@ -6,7 +6,7 @@
             <select class="form-control" id="power" (ngModelChange)="changeTeam($event)" [(ngModel)]="selectedTeam" required>
               <option *ngFor="let team of teams" [ngValue]="team">{{team.name}}</option>
             </select>
-          </div>  
+          </div>
     </div>
   </div>
   <div class="row">
@@ -19,7 +19,7 @@
       </div>
       <div class="col-md-8">
         <div class="row">
-          <h1>IBM Community: Deploy AI Virtual Conference</h1>
+          <h1>{{eventDetails.name}}: {{eventDetails.shortDescription}</h1>
           <span class="label label-info">IoT</span>&nbsp;
           <span class="label label-info">AI</span>&nbsp;
           <span class="label label-info">BlockChain</span>
@@ -34,15 +34,15 @@
             <label style="padding-left:2.5em">Ends</label>
             <br/>
             <img src="/assets/images/calender_icon.png" width="15%" height="15%">
-            <div class="startEvent">Feb,3</div>
+            <div class="startEvent"> {{eventDetails.startDateTime | date}}</div>
             &nbsp;&nbsp;
-            <img src="/assets/images/calender_icon.png" width="15%" height="15%">  
-            <div class="endEvent">Feb,5</div>      
+            <img src="/assets/images/calender_icon.png" width="15%" height="15%">
+            <div class="endEvent">{{eventDetails.endDateTime | date}}</div>
           </div>
        </div>
       </div>
-      
-       
+
+
 
   </div>
   <hr/>
@@ -60,7 +60,7 @@
             <div class="panel-body">{{event.shortDescription}}</div>
             <div class="panel-footer">
               <!-- <button class="btn btn-primary btn-padding" (click)="startChallenge(event)">Start Challenge</button> -->
-              <div *ngIf="event.status === 'completed' else enroll"> 
+              <div *ngIf="event.status === 'completed' else enroll">
                 <button class="btn btn-primary btn-padding" (click)="viewResult(event._id)">View Result</button>
               </div>
               <ng-template #enroll>
