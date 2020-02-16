@@ -1,5 +1,16 @@
 <div class="container" *ngIf="eventDetails">
-  <h5>Evaluating Event : {{eventDetails.name}}</h5>
+
+  <div class="row">
+      <div class="panel panel-default">
+        <div class="panel-heading">Evaluating Event : {{eventDetails.name}}</div>
+        <div class="panel-body">
+          Problem Statement : <br>
+          {{eventDetails.problemStatement}}<br><br>
+          Rules and Regulations : <br>
+          {{eventDetails.rulesAndRegulations}}
+        </div>
+      </div>
+  </div>
   <table class="table">
     <thead>
       <tr>
@@ -18,12 +29,12 @@
         <th>{{team.repoLink ? team.repoLink : "-"}} </th>
         <th *ngFor="let config of team?.evaluations">
             <input type="number" class="form-control" id="config{{i+config.name}}" [disabled]="config.judge != judgeId"
-            required [(ngModel)]="config.score" name="name" #name="ngModel">
+            required [(ngModel)]="config.score" (change)="checkRange(config)" name="name" #name="ngModel">
           </th>
       </tr>
     </tbody>
     <tfoot>
-      <button class="btn btn-primary" (click)="submitEvaluation(teams)">Submit</button>
+      <button class="btn btn-primary" [disabled]="invalidForm" (click)="submitEvaluation(teams)">Submit</button>
     </tfoot>
   </table>
 

@@ -17,6 +17,7 @@ export class EvaluateEventComponent implements OnInit {
   teams = [];
   eventId: any;
   judgeId: any;
+  invalidForm = false;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -46,6 +47,15 @@ export class EvaluateEventComponent implements OnInit {
 
   getAllTeamsDetailsError(error) {
     this.toaster.showError(Error.login);
+  }
+
+  checkRange(config) {
+    if(config.score > config.maxScore) {
+      this.invalidForm = true;
+      this.toaster.showError('Score exceeds maximum score');
+    } else {
+      this.invalidForm = false;
+    }
   }
 
   submitEvaluation(evalutionData) {
