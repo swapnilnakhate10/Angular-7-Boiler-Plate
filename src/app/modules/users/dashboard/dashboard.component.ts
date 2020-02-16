@@ -44,7 +44,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getAllEventsByOrganizationId() {
-    this.httpService.get(UrlDetails.events + '/current').subscribe((response) =>{
+    this.httpService.get(UrlDetails.events + 'active').subscribe((response) =>{
       this.getAllEventsByOrganizationIdSuccess(response);
     }, (error)=> {
       this.getAllEventsByOrganizationIdError(error);

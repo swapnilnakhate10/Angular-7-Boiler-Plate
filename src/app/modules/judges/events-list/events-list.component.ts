@@ -44,6 +44,7 @@ export class EventsListComponent implements OnInit {
 
   evaluateEvent(event) {
     console.log('Evaluate event : '+ JSON.stringify(event));
+    this.router.navigateByUrl('/judges/evaluate/'+event._id);
   }
 
 

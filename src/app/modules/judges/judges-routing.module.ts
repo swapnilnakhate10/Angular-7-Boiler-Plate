@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { JudgesComponent } from './judges.component';
 import { EventsListComponent } from './events-list/events-list.component';
+import { EvaluateEventComponent } from './evaluate-event/evaluate-event.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
       {
         path : 'events',
         component: EventsListComponent
+      },
+      {
+        path: 'evaluate/:id',
+        component : EvaluateEventComponent
       }
     ]
   }  

@@ -58,6 +58,7 @@ export class EvaluationComponent implements OnInit {
 
   addEvaluation(evaluationData: EvaluationConfiguration) {
     if(this.configForm.valid) {
+      evaluationData.score = 0;
       this.evaluations.push(evaluationData);
       this.configuration = new EvaluationConfiguration();
     } else {
