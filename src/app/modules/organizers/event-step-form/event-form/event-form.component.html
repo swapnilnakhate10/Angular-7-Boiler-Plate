@@ -23,7 +23,7 @@
               <div class="form-group">
                 <label for="inputName" class="col-sm-4 control-label">Start Date*</label>
                 <div class="col-sm-8">
-                  <input formControlName="startDateTime" [owlDateTimeTrigger]="dtPicker1" [owlDateTime]="dtPicker1">
+                  <input formControlName="startDateTime" [owlDateTimeTrigger]="dtPicker1" [owlDateTime]="dtPicker1" required>
                   <owl-date-time #dtPicker1></owl-date-time>
                   <div *ngIf="submitted && userForm.startDateTime.errors" class="invalid-feedback">
                     <div *ngIf="userForm.startDateTime.errors.required">*Start Date Time is required</div>
@@ -34,7 +34,7 @@
               <div class="form-group">
                 <label for="inputName" class="col-sm-4 control-label">End Date*</label>
                 <div class="col-sm-8">
-                  <input formControlName="endDateTime" [owlDateTimeTrigger]="dtPicker2" [owlDateTime]="dtPicker2">
+                  <input formControlName="endDateTime" [owlDateTimeTrigger]="dtPicker2" [owlDateTime]="dtPicker2" required>
                   <owl-date-time #dtPicker2></owl-date-time>
                   <div *ngIf="submitted && userForm.endDateTime.errors" class="invalid-feedback">
                     <div *ngIf="userForm.endDateTime.errors.required">*End Date Time is required</div>
@@ -100,8 +100,8 @@
                         <tag-input-dropdown [autocompleteItems]="techonlogyList">
                           </tag-input-dropdown>
                     </tag-input>
-                  <div *ngIf="submitted && f.technologies.errors" class="invalid-feedback">
-                    <div *ngIf="f.technologies.errors.required">*Technologies is required</div>
+                  <div *ngIf="submitted && userForm.technologies.errors" class="invalid-feedback">
+                    <div *ngIf="userForm.technologies.errors.required">*Technologies is required</div>
                   </div>
                 </div>
               </div>
