@@ -61,6 +61,7 @@ export class OrganizerRegistrationComponent implements OnInit {
     StorageService.set(StorageService.CURRENT_ORGANIZATION_NAME, response.organization);
     StorageService.set(StorageService.ORGANIZER_EMAIL, response.email);
     StorageService.set(StorageService.ORGANIZER_CONTACT, response.contactNo);
+    StorageService.set(StorageService.ORGANIZER_IMAGE, response.logo);
     StorageService.set(StorageService.USER_TYPE, "organizer");
     this.router.navigate(['/organizer']);
   }
