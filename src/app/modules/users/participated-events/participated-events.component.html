@@ -11,7 +11,9 @@
             </div>
             <div class="panel-body">{{event.shortDescription}}</div>
             <div class="panel-footer">
-              <button *ngIf="event.status !=='completed' && event.status !== 'cancelled'" class="btn btn-primary btn-padding" (click)="startChallenge(event)">Start Challenge</button>
+              <label *ngIf="event.status ==='completed'">*Result is not published yet fot this event.</label>
+              <button *ngIf="event.status ==='ongoing'" class="btn btn-primary btn-padding" (click)="startChallenge(event)">Start Challenge</button>
+              <button *ngIf="event.status ==='published'" class="btn btn-primary btn-padding" (click)="viewResult(event)">View Winner List</button>
             </div>
           </div>
         </div>

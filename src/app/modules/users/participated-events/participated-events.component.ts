@@ -43,4 +43,8 @@ export class ParticipatedEventsComponent implements OnInit {
   startChallenge(eventDetails) {
     this.router.navigateByUrl('user/challenge/'+eventDetails._id);
   }
+
+  viewResult(eventDetails) {
+    this.router.navigateByUrl('user/result/'+eventDetails._id);
+  }
 }

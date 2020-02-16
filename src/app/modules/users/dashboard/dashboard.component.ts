@@ -88,7 +88,7 @@ export class DashboardComponent implements OnInit {
   }
 
   viewResult(eventId) {
-    this.router.navigateByUrl('user/eventresult/'+eventId);
+    this.router.navigateByUrl('user/result/'+eventId);
   }
 
   setTeamMemberDetails(teamDetails) {

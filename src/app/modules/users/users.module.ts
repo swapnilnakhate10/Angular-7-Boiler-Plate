@@ -14,9 +14,10 @@ import { UpdateUserComponent } from './update-user/update-user.component';
 import { ParticipatedEventsComponent } from './participated-events/participated-events.component';
 import { EventResultComponent } from './dashboard/event-result/event-result.component';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { ViewResultComponent } from './view-result/view-result.component';
 
 @NgModule({
-  declarations: [UsersComponent, DashboardComponent, MyTeamComponent, UsersHeaderComponent, UserProfileComponent, StartChallengeComponent, UpdateUserComponent, ParticipatedEventsComponent, EventResultComponent],
+  declarations: [UsersComponent, DashboardComponent, MyTeamComponent, UsersHeaderComponent, UserProfileComponent, StartChallengeComponent, UpdateUserComponent, ParticipatedEventsComponent, EventResultComponent, ViewResultComponent],
   imports: [
     CommonModule,
     SharedModule,

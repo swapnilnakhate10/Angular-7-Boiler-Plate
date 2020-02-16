@@ -8,6 +8,7 @@ import { StartChallengeComponent } from './start-challenge/start-challenge.compo
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { ParticipatedEventsComponent } from './participated-events/participated-events.component';
 import { EventResultComponent } from './dashboard/event-result/event-result.component';
+import { ViewResultComponent } from './view-result/view-result.component';
 
 const routes: Routes = [
   {
@@ -44,8 +45,8 @@ const routes: Routes = [
         component: ParticipatedEventsComponent
       },
       {
-        path : 'eventresult/:eventId',
-        component: EventResultComponent
+        path : 'result/:eventId',
+        component: ViewResultComponent
       }
     ]
   }

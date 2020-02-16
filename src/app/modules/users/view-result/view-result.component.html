@@ -7,7 +7,6 @@
             <th>Winner Title</th>
             <th>Winner Amount</th>
             <th>Team Name</th>
-            <th>Github Repo</th>
             <th *ngFor="let config of eventDetails.evaluationConfiguration">
               {{config.parameter}}
             </th>
@@ -20,7 +19,6 @@
             <th>{{prizes[i].title}}</th>
             <th>{{prizes[i].amount}} &#8377;</th>
             <th>{{team._id.name}}</th>
-            <th>{{team.repoLink ? team.repoLink : "-"}}</th>
             <th *ngFor="let config of team.evaluations">
                 {{config.finalScore}}
               </th>
@@ -28,7 +26,4 @@
           </tr>
         </tbody>
       </table>
-    <div class="row" *ngIf="eventDetails.status == 'completed'">
-      <button class="btn btn-primary" (click)="publishResult()">Publish Result</button>
-    </div>
 </div>
