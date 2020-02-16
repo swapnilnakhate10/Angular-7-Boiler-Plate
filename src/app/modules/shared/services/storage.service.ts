@@ -22,6 +22,8 @@ export class StorageService {
     public static ORGANIZER_EMAIL: string = 'organizer_email';
     public static ORGANIZER_CONTACT: string = 'organizer_contact';
 
+    public static JUDGE_ID: string = 'judge_id';
+
     public static set(key: string, value: any): void {
         if(key !== null && value !== null && key !== undefined && value !== undefined ) {
           localStorage.setItem(key, value);

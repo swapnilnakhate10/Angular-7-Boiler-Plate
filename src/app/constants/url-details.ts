@@ -5,6 +5,7 @@ export class UrlDetails {
     public static userLoginUrl: string = environment.hackathonCore + "users/login";
     public static users: string = environment.hackathonCore + "users/";
     public static eventsListByOrganizerId: string = environment.hackathonCore + "events/organizer/";
+    public static eventsListByJudgeId: string = environment.hackathonCore + "events/judge/";
     public static events: string = environment.hackathonCore + "events/";
     public static createEvent: string = environment.hackathonCore + "events";
 

@@ -78,6 +78,7 @@ export class UserLoginComponent implements OnInit {
   }
 
   judgeLoginSuccess(response) {
+    StorageService.set(StorageService.JUDGE_ID, response._id);
     this.router.navigate(['/judges']);
   }
 

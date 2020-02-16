@@ -15,30 +15,35 @@ import { StorageService } from '../../shared/services/storage.service';
 export class EventsListComponent implements OnInit {
 
   events = [];
+  judgeId: any;
 
   constructor(private router: Router,
     private httpService: HttpService,
     private toaster: ToasterService) { }
 
   ngOnInit() {
-    
+    this.judgeId = StorageService.get(StorageService.JUDGE_ID);
+    this.getAllEventsByJudgeId(this.judgeId);
   }
 
-  getAllEventsByJudgeId(organizationId) {
-    this.httpService.get(UrlDetails.eventsListByOrganizerId + organizationId).subscribe((response) =>{
-      this.getAllEventsByOrganizationIdSuccess(response);
+  getAllEventsByJudgeId(judgeId) {
+    this.httpService.get(UrlDetails.eventsListByJudgeId + judgeId).subscribe((response) =>{
+      this.getAllEventsByJudgeIdSuccess(response);
     }, (error)=> {
-      this.getAllEventsByOrganizationIdError(error);
+      this.getAllEventsByJudgeIdError(error);
     });
   }
 
-  getAllEventsByOrganizationIdSuccess(response) {
+  getAllEventsByJudgeIdSuccess(response) {
     this.events = response;
-      // this.toaster.showSuccess(Success.login);
   }
 
-  getAllEventsByOrganizationIdError(error) {
+  getAllEventsByJudgeIdError(error) {
     this.toaster.showError(Error.login);
+  }
+
+  evaluateEvent(event) {
+    console.log('Evaluate event : '+ JSON.stringify(event));
   }
 
 
