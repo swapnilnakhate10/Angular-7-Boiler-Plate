@@ -46,6 +46,7 @@ export class EventFormComponent implements OnInit {
     this.teamSize = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     this.techonlogyList = ['Java', 'NodeJs', 'Angular 2', 'Angular 4', 'Angular 5', 'Angular 6', 'AngularJs']
   }
+   get f() { return this.userForm.controls; }
 
   submitEventData(data: any) {
     this.submitted = true;
