@@ -13,18 +13,30 @@ export class ToasterService {
 
   showSuccess(message) {
     this.toastr.successToastr(message, 'Success !', this.options);
+     this.removToaster();
   }
 
   showError(message) {
     this.toastr.errorToastr(message, 'Oops !', this.options);
+    this.removToaster();
   }
 
   showWarning(message) {
     this.toastr.warningToastr(message, 'Alert !', this.options);
+    this.removToaster();
   }
 
   showInfo(message) {
     this.toastr.infoToastr(message, 'Info', this.options);
+    this.removToaster();
   }
+  removToaster() {
+    setTimeout(() => {
+      this.toastr.dismissAllToastr();
+    }, 2000
+    );
+
+  }
+
 
 }
