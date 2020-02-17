@@ -24,7 +24,8 @@ export class OrganizerProfileComponent implements OnInit {
         organization:StorageService.get(StorageService.CURRENT_ORGANIZATION_NAME),
         email:StorageService.get(StorageService.ORGANIZER_EMAIL),
         contactNo :StorageService.get(StorageService.ORGANIZER_CONTACT),
-        type : StorageService.get(StorageService.USER_TYPE)
+        type : StorageService.get(StorageService.USER_TYPE),
+        logo : StorageService.get(StorageService.ORGANIZER_IMAGE)
       }
     }else {
       StorageService.removeAll();

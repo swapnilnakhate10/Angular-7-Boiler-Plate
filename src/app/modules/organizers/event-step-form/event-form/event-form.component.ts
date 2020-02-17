@@ -22,6 +22,8 @@ export class EventFormComponent implements OnInit {
   difficultyList: String[];
   teamSize: Number[];
   techonlogyList: String[];
+  isLogoSelected: boolean = false;
+  private imageSrc: string = '';
 
   constructor(private httpService: HttpService, private toaster:ToasterService) {
     this.userForm = new FormGroup({
@@ -69,5 +71,26 @@ export class EventFormComponent implements OnInit {
 
   addOrUpdateEventError(error) {
     this.toaster.showError(Error.createEvent);
+  }
+
+  handleInputChange(e) {
+    var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+    if(file){
+    var pattern = /image-*/;
+    var reader = new FileReader();
+    if (!file.type.match(pattern)) {
+      alert('invalid format');
+      return;
+    }
+    reader.onload = this._handleReaderLoaded.bind(this);
+    reader.readAsDataURL(file);
+  }
+  }
+  
+  _handleReaderLoaded(e) {
+    let reader = e.target;
+    this.imageSrc = reader.result;
+    this.isLogoSelected=true;
+    this.userForm.controls['logo'].setValue(this.imageSrc);
   }
 }

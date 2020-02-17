@@ -112,6 +112,16 @@
                 </div>
               </div>
             </div>
+            <div class="col-lg-4"> 
+             
+              <img  *ngIf="!isLogoSelected" src="assets/images/hackathon-logo.png" id="userImage" 
+              alt="user_image.png" style="width:200px;height:200px;">
+              <img *ngIf="isLogoSelected" [src]="imageSrc" style="width:200px;height:200px;"/>
+              
+              <input type="file" class="form-control col-lg-4" id="inputfile"  name="image" 
+               (change)="handleInputChange($event)">
+                
+            </div>
           </fieldset>
         </form>
       </div>

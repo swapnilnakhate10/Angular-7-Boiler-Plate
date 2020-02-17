@@ -20,9 +20,10 @@ export class UserRegistrationComponent implements OnInit {
   isVisiblePassword: boolean = false;
   public max = new Date();
   isLogoSelected: boolean = false;
-
+  private imageSrc: string = '';
   roles: String[];
   sizes: String[];
+
   constructor(private httpService: HttpService, private StorageService: StorageService,
     private toaster: ToasterService, private router: Router) { }
 
@@ -45,7 +46,6 @@ export class UserRegistrationComponent implements OnInit {
       this.toaster.showError(error.errmsg);
     });
   }
-
 
   ngOnInit() {
     this.submitted = false;
@@ -72,8 +72,6 @@ export class UserRegistrationComponent implements OnInit {
       return;
     }
     let userModel = '';
-
-    // console.log(data);
     this.httpService.post(UrlDetails.users, data).subscribe((response) => {
       if (response['errmsg']) {
         this.toaster.showError("Something went wrong.");
@@ -108,25 +106,24 @@ export class UserRegistrationComponent implements OnInit {
     passowrd.type = this.isVisiblePassword ? "text" : "password";
   }
 
-  private imageSrc: string = '';
-
   handleInputChange(e) {
     var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
-    if(file){
-    var pattern = /image-*/;
-    var reader = new FileReader();
-    if (!file.type.match(pattern)) {
-      alert('invalid format');
-      return;
+    if (file) {
+      var pattern = /image-*/;
+      var reader = new FileReader();
+      if (!file.type.match(pattern)) {
+        alert('invalid format');
+        return;
+      }
+      reader.onload = this._handleReaderLoaded.bind(this);
+      reader.readAsDataURL(file);
     }
-    reader.onload = this._handleReaderLoaded.bind(this);
-    reader.readAsDataURL(file);
   }
-  }
+
   _handleReaderLoaded(e) {
     let reader = e.target;
     this.imageSrc = reader.result;
-    this.isLogoSelected=true;
+    this.isLogoSelected = true;
     this.userForm.controls['image'].setValue(this.imageSrc);
   }
 

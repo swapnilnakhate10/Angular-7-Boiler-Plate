@@ -4,7 +4,10 @@
       <div class="panel panel-default">
         <div class="panel-heading">Profile Details</div>
         <div class="panel-body">
-          <img src="assets/images/user.png" alt="user.png" style="width:200px;height:200px">
+          <img *ngIf="!organizerDetails.logo" src="assets/images/user.png" alt="user.png"
+            style="width:150px;height:150px;">
+          <img *ngIf="organizerDetails.logo" [src]="organizerDetails.logo" alt="user.png"
+            style="width:150px;height:150px;">
           <h1>{{organizerDetails.name }} </h1>
           <span class="label label-success">ORGANIZER</span>
           <br />

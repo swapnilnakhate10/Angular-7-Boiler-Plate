@@ -22,6 +22,7 @@ export class UpdateUserComponent implements OnInit {
   userDetails = {};
   public max = new Date();
   isLogoSelected: boolean = false;
+  private imageSrc: string = '';
 
   constructor(private httpService: HttpService, private StorageService: StorageService,
     private toaster: ToasterService, private router: Router) {
@@ -133,8 +134,6 @@ export class UpdateUserComponent implements OnInit {
       image:this.userDetails['image']
     });
   }
-
-  private imageSrc: string = '';
 
   handleInputChange(e) {
     var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];

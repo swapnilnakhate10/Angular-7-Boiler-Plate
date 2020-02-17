@@ -18,13 +18,13 @@ export class UpdateOrganizerComponent implements OnInit {
     private toaster: ToasterService, private router: Router) {
 
     this.orgForm = new FormGroup({
-      email: new FormControl('',  [Validators.required, Validators.email]),
+      email: new FormControl('', [Validators.required, Validators.email]),
       organization: new FormControl('', Validators.required),
       name: new FormControl('', Validators.required),
-     // password: new FormControl('', Validators.required),
-      contactNo: new FormControl('',[phoneNumberValidator,Validators.minLength(10)]),
+      // password: new FormControl('', Validators.required),
+      contactNo: new FormControl('', [phoneNumberValidator, Validators.minLength(10)]),
       logo: new FormControl(''),
-      dob: new FormControl('', )
+      dob: new FormControl('')
     });
   }
 
@@ -32,6 +32,8 @@ export class UpdateOrganizerComponent implements OnInit {
   orgForm;
   submitted: boolean;
   public max = new Date();
+  isLogoSelected: boolean = false;
+  private imageSrc: string = '';
 
   ngOnInit() {
     this.submitted = false;
@@ -53,7 +55,8 @@ export class UpdateOrganizerComponent implements OnInit {
         contactNo: response['contactNo'],
         type: StorageService.get(StorageService.USER_TYPE),
         password: response['password'],
-        dob: response['dob']
+        dob: response['dob'],   
+        logo: response['logo']
       }
       this.setFormValues();
     }, (error) => {
@@ -65,12 +68,10 @@ export class UpdateOrganizerComponent implements OnInit {
 
   onSubmit(data) {
     this.submitted = true;
-    if(this.orgForm.invalid){
+    if (this.orgForm.invalid) {
       return;
     }
     if (this.organizerDetails) {
-      console.log(data)
-      console.log("Form submitted")
       data['password'] = this.organizerDetails['password'];
       this.httpService.put(UrlDetails.createOrganization + '/' + this.organizerDetails['orgId'], data).subscribe((response) => {
 
@@ -89,6 +90,7 @@ export class UpdateOrganizerComponent implements OnInit {
     StorageService.set(StorageService.CURRENT_ORGANIZATION_NAME, response.organization);
     StorageService.set(StorageService.ORGANIZER_EMAIL, response.email);
     StorageService.set(StorageService.ORGANIZER_CONTACT, response.contactNo);
+    StorageService.set(StorageService.ORGANIZER_IMAGE, response.logo);
     StorageService.set(StorageService.USER_TYPE, "organizer");
     this.router.navigate(['/organizer']);
   }
@@ -100,8 +102,29 @@ export class UpdateOrganizerComponent implements OnInit {
       name: this.organizerDetails['name'],
       contactNo: this.organizerDetails['contactNo']
     });
+
   }
 
   get f() { return this.orgForm.controls; }
 
+
+  handleInputChange(e) {
+    var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+    if (file) {
+      var pattern = /image-*/;
+      var reader = new FileReader();
+      if (!file.type.match(pattern)) {
+        alert('invalid format');
+        return;
+      }
+      reader.onload = this._handleReaderLoaded.bind(this);
+      reader.readAsDataURL(file);
+    }
+  }
+  _handleReaderLoaded(e) {
+    let reader = e.target;
+    this.imageSrc = reader.result;
+    this.isLogoSelected = true;
+    this.orgForm.controls['logo'].setValue(this.imageSrc);
+  }
 }

@@ -17,6 +17,9 @@ export class OrganizerRegistrationComponent implements OnInit {
   submitted: boolean;
   isVisiblePassword: boolean = false;
   public max = new Date();
+  isLogoSelected: boolean = false;
+  private imageSrc: string = '';
+
   constructor(private httpService: HttpService, private StorageService: StorageService,
     private toaster: ToasterService, private router: Router) {
     this.orgForm = new FormGroup({
@@ -64,5 +67,25 @@ export class OrganizerRegistrationComponent implements OnInit {
     StorageService.set(StorageService.ORGANIZER_IMAGE, response.logo);
     StorageService.set(StorageService.USER_TYPE, "organizer");
     this.router.navigate(['/organizer']);
+  }
+
+  handleInputChange(e) {
+    var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+    if(file){
+    var pattern = /image-*/;
+    var reader = new FileReader();
+    if (!file.type.match(pattern)) {
+      alert('invalid format');
+      return;
+    }
+    reader.onload = this._handleReaderLoaded.bind(this);
+    reader.readAsDataURL(file);
+  }
+  }
+  _handleReaderLoaded(e) {
+    let reader = e.target;
+    this.imageSrc = reader.result;
+    this.isLogoSelected=true;
+    this.orgForm.controls['logo'].setValue(this.imageSrc);
   }
 }
