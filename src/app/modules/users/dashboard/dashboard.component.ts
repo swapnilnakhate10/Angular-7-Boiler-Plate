@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit {
   events = [];
   teams = [];
   selectedTeam : any;
-
+  kaushal = "Tsing";
   eventDetails: any;
 
   constructor(private router: Router,
@@ -45,6 +45,9 @@ export class DashboardComponent implements OnInit {
     this.getAllTeamsForUser(this.userId);
   }
 
+showEvent(index) {
+  this.eventDetails = this.events[index];
+}
   getAllEventsByOrganizationId() {
     this.httpService.get(UrlDetails.events + 'active').subscribe((response) =>{
       this.getAllEventsByOrganizationIdSuccess(response);
