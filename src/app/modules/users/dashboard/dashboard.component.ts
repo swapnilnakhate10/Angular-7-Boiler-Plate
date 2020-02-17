@@ -109,16 +109,17 @@ showEvent(index) {
   enrollForEvent(eventDetails) {
     console.log(this.selectedTeam);
     if(this.selectedTeam && this.selectedTeam._id) {
-      this.applyForAnEvent(eventDetails._id);
+      this.applyForAnEvent(eventDetails);
     } else {
       this.toaster.showWarning("Please select Team");
     }
   }
 
-  applyForAnEvent(evenId) {
+  applyForAnEvent(eventDetails) {
     let updateBody = {
-      "eventId" : evenId,
-      "teamId" : this.selectedTeam._id
+      "eventId" : eventDetails._id,
+      "teamId" : this.selectedTeam._id,
+      "nameSpaceId": eventDetails.nameSpaceId
     };
     this.httpService.put(UrlDetails.events + 'enroll', updateBody).subscribe((response:any) => {
       this.toaster.showSuccess("Successfully enrolled for an event.");

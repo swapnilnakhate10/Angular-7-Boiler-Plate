@@ -60,6 +60,7 @@ export class OrganizerRegistrationComponent implements OnInit {
   registerSuccess(response) {
     StorageService.set("isLoggedIn", 'true');
     StorageService.set(StorageService.ORGANIZER_ID, response._id);
+    StorageService.set(StorageService.ORGANIZER_GROUP_ID, response.groupId);
     StorageService.set(StorageService.ORGANIZER_NAME, response.name);
     StorageService.set(StorageService.CURRENT_ORGANIZATION_NAME, response.organization);
     StorageService.set(StorageService.ORGANIZER_EMAIL, response.email);

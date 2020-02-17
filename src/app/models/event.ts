@@ -3,6 +3,7 @@ export class Event {
     logo: String;
     shortDescription: String;
     organizerId: any;
+    organizerGroupId: any;
     githubRepoLink: String;
     maxTeamSize: number;
     startDateTime: Date;

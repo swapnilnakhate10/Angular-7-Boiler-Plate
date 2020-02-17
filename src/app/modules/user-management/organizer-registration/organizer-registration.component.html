@@ -41,13 +41,13 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="inputEmail" class="col-lg-4 control-label">Date Of Birth*</label>
+                <label for="inputEmail" class="col-lg-4 control-label">Since*</label>
                 <div class="col-lg-8">
 
                   <input class="form-control" formControlName="dob" placeholder="Your date of birth"
                    [owlDateTimeTrigger]="dt3" [owlDateTime]="dt3" [max]="max">
                    <div *ngIf="submitted && f.dob.errors" class="invalid-feedback text-danger">
-                    <div *ngIf="f.dob.errors.required">Birthdate is required</div>
+                    <div *ngIf="f.dob.errors.required">Organization reg date is required</div>
                   </div>
                   <owl-date-time [pickerType]="'calendar'" #dt3></owl-date-time>
                 </div>

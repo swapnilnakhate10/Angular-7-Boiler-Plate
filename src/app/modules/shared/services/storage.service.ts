@@ -18,6 +18,7 @@ export class StorageService {
     public static USER_IMAGE: string = 'user_image';
     public static CURRENT_TEAM_MEMBERS_GITID: string = 'current_team_members_gitid';
     public static ORGANIZER_ID: string = 'organizer_id';
+    public static ORGANIZER_GROUP_ID: string = 'organizer_group_id';
     public static ORGANIZER_NAME: string = 'organizer_name';
     public static CURRENT_ORGANIZATION_NAME: string = 'current_organization';
     public static ORGANIZER_EMAIL: string = 'organizer_email';

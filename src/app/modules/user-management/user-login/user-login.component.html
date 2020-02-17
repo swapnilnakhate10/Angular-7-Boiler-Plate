@@ -1,9 +1,9 @@
 <app-header></app-header>
 <div class="switch-field">
 		<input type="radio" id="radio-one" name="switch-one" (click)="toggleLogin($event)" value="yes" checked/>
-		<label for="radio-one">User Login</label>
+		<label for="radio-one">User</label>
 		<input type="radio" id="radio-two" (click)="toggleLogin($event)" name="switch-one" value="no" />
-		<label for="radio-two">Organizer Login</label>
+		<label for="radio-two">Organizer</label>
 	</div>
 
 <div *ngIf="showuserSignIn" class="container">

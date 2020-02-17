@@ -57,6 +57,7 @@ export class EventFormComponent implements OnInit {
 
   addOrUpdateEvent(eventData: Event) {
     eventData.organizerId = StorageService.get(StorageService.ORGANIZER_ID);
+    eventData.organizerGroupId = StorageService.get(StorageService.ORGANIZER_GROUP_ID);
     this.httpService.post(UrlDetails.events, eventData).subscribe((response) => {
       this.addOrUpdateEventSuccess(response);
     }, (error)=> {
