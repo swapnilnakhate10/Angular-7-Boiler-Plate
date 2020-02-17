@@ -12,6 +12,12 @@
  .roundImg{
      border-radius: 50%;
  }
+ .eventSelected {
+     background-color: #abc;
+ }
+ .eventSelected:hover {
+     background-color: #ffaa00;
+ }
 .published {
     width: 20px;
     background-color: #FF5900;
