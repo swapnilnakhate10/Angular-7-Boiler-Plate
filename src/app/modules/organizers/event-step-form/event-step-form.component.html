@@ -1,9 +1,16 @@
-<div *ngIf="currentStep === 1">
-  <app-event-form [eventData]="eventData" (eventForm)="onSubmitEventForm($event)"></app-event-form>
-</div>
-<div *ngIf="currentStep === 2">
-  <app-prize-form [eventId]="eventId" (prizeFormSubmit)="onSubmitPrizes($event)"></app-prize-form>
-</div>
-<div *ngIf="currentStep === 3">
-    <app-evaluation [eventId]="eventId" (formSubmit)="onEvaluationSubmit($event)"></app-evaluation>
+<div id="msform" >
+  <ul id="progressbar">
+    <li [ngClass]="{ 'active': currentStep <= 1 ? true : false }">Event Details</li>
+    <li [ngClass]="{ 'active': currentStep <= 2 ? true : false }">Add Prizes</li>
+    <li [ngClass]="{ 'active': currentStep <= 3 ? true : false }">Evaluation Configuration</li>
+  </ul>
+  <div *ngIf="currentStep === 1">
+    <app-event-form [eventData]="eventData" (eventForm)="onSubmitEventForm($event)"></app-event-form>
+  </div>
+  <div *ngIf="currentStep === 2">
+    <app-prize-form [eventId]="eventId" (prizeFormSubmit)="onSubmitPrizes($event)"></app-prize-form>
+  </div>
+  <div *ngIf="currentStep === 3">
+      <app-evaluation [eventId]="eventId" (formSubmit)="onEvaluationSubmit($event)"></app-evaluation>
+  </div>
 </div>
