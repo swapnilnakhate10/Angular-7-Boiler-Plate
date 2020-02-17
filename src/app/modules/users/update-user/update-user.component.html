@@ -123,8 +123,8 @@
           </div>
           <div class="col-lg-4"> 
              
-            <img  *ngIf="!userDetails.image" src="assets/images/user.png" id="userImage" 
-            alt="user_image.png" style="width:150px;height:150px;">
+            <!--<img  *ngIf="!organizerDetails.image && !isLogoSelected" src="assets/images/user.png" id="userImage" 
+            alt="user_image.png" style="width:150px;height:150px;">-->
             <img *ngIf="isLogoSelected" [src]="imageSrc" style="width:150px;height:150px;"/>
             <img *ngIf="!isLogoSelected && userDetails.image" [src]="userDetails.image" style="width:150px;height:150px;"/>
             

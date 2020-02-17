@@ -22,7 +22,7 @@ export class UpdateUserComponent implements OnInit {
   userDetails = {};
   public max = new Date();
   isLogoSelected: boolean = false;
-  private imageSrc: string = '';
+  private imageSrc: string = 'assets/images/user.png';
 
   constructor(private httpService: HttpService, private StorageService: StorageService,
     private toaster: ToasterService, private router: Router) {
@@ -69,7 +69,8 @@ export class UpdateUserComponent implements OnInit {
         dob: new Date(response['dob']),
         type: StorageService.get(StorageService.USER_TYPE),
         password: response['password']
-      }
+      };
+      this.imageSrc = response['image'];
       this.setFormValues();
     }, (error) => {
       StorageService.removeAll();

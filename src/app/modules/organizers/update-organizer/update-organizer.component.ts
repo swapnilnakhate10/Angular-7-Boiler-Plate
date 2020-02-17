@@ -33,7 +33,7 @@ export class UpdateOrganizerComponent implements OnInit {
   submitted: boolean;
   public max = new Date();
   isLogoSelected: boolean = false;
-  private imageSrc: string = '';
+  private imageSrc: string = 'assets/images/user.png';
 
   ngOnInit() {
     this.submitted = false;
@@ -58,6 +58,7 @@ export class UpdateOrganizerComponent implements OnInit {
         dob: response['dob'],   
         logo: response['logo']
       }
+       this.imageSrc = response['logo'];
       this.setFormValues();
     }, (error) => {
       StorageService.removeAll();
