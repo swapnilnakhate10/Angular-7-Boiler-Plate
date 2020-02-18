@@ -53,8 +53,8 @@ export class UserLoginComponent implements OnInit {
   }
 
   onOrgLogin(value: any) {
-    console.log('userType : '+value);
-    if(value.userType == 'organizer') {
+    console.log('userType : ' + value);
+    if ( value.userType === 'organizer') {
       this.organizerLogin(value);
     } else {
       this.judgeLogin(value);

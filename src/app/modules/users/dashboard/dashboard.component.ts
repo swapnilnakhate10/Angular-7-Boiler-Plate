@@ -1,5 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
+
+
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { StorageService } from './../../shared/services/storage.service';
@@ -9,6 +11,7 @@ import { HttpService } from './../../shared/services/http.service';
 import { Success, Error } from '../../../constants/messages';
 import { UrlDetails } from '../../../constants/url-details';
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -17,14 +20,14 @@ import { UrlDetails } from '../../../constants/url-details';
 export class DashboardComponent implements OnInit {
 
   teamForm;
-  submitted:boolean;
-  teamCreate:boolean;
-  userId:any;
+  submitted: boolean;
+  teamCreate: boolean;
+  userId: any;
   events = [];
   teams = [];
   selectedTeam : any;
-  kaushal = "Tsing";
   eventDetails: any;
+  isOpen = true;
 
   constructor(private router: Router,
             private httpService: HttpService,
@@ -32,7 +35,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.userId = StorageService.get(StorageService.USER_ID);
-     if(!StorageService.get("isLoggedIn")) {
+     if (!StorageService.get('isLoggedIn')) {
       this.router.navigate(['/landing']);
       return;
     }
@@ -45,11 +48,12 @@ export class DashboardComponent implements OnInit {
     this.getAllTeamsForUser(this.userId);
   }
 
+
 showEvent(index) {
   this.eventDetails = this.events[index];
 }
   getAllEventsByOrganizationId() {
-    this.httpService.get(UrlDetails.events + 'active').subscribe((response) =>{
+    this.httpService.get(UrlDetails.events + 'active').subscribe((response) => {
       this.getAllEventsByOrganizationIdSuccess(response);
     }, (error) => {
       this.getAllEventsByOrganizationIdError(error);
@@ -91,7 +95,7 @@ showEvent(index) {
   }
 
   viewResult(eventId) {
-    this.router.navigateByUrl('user/result/'+eventId);
+    this.router.navigateByUrl('user/result/' + eventId);
   }
 
   setTeamMemberDetails(teamDetails) {

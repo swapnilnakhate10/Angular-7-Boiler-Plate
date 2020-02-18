@@ -3,7 +3,9 @@
   bottom: 8px;
   padding-left: 0.7em;
 }
-
+:host {
+  display: block;
+}
 .endEvent {
   position: absolute;
   bottom: 8px;
@@ -13,7 +15,7 @@
      border-radius: 50%;
  }
  .eventSelected {
-     background-color: #abc;
+     background-color: #77dd99;
  }
  .eventSelected:hover {
      background-color: #ffaa00;
@@ -23,6 +25,12 @@
     background-color: #FF5900;
     border-radius: 5px;
     padding: 5px;
+}
+.eventdetails-preview{
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    padding: 20px 20px 0px 20px;
+    color: #000000;
 }
 
 .duration-date {

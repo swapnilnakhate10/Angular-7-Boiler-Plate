@@ -9,55 +9,61 @@
           </div>
     </div>
   </div>
-  <div class="row" *ngIf="eventDetails">    
+   <hr/>
+  <div class="row eventdetails-preview" *ngIf="eventDetails">    
     <div class="col-md-12">
-        <hr/>
         <div class="col-md-3 text-center">
           <img *ngIf="!eventDetails || !eventDetails.logo" src="/assets/images/hackathon-logo.png" width="200px" height="200px">
           <img *ngIf="eventDetails && eventDetails.logo" [src]="eventDetails.logo" alt="user.png" width="200px" height="200px">
-            <br/>
-            <br/>
-            <a (click)="enrollForEvent(eventDetails)" class="btn btn-primary">Register for an Event</a>
-          </div>
-          <div class="col-md-6">
+          <br/>
+          <br/>
+          <a (click)="enrollForEvent(eventDetails)" class="btn btn-success">Register for an Event</a>
+        </div>
+        <div class="col-md-6">
             <div class="row">
               <h1>{{eventDetails.name}}: {{eventDetails.shortDescription}}</h1>
-              <span class="label label-info" *ngFor="let technology of eventDetails.technologies">
-                {{technology.display}}
-              </span>&nbsp;&nbsp;
+              <div *ngFor="let technology of eventDetails.technologies">
+                <span class="label label-info" >
+                  {{technology.display}}
+                </span>&nbsp;&nbsp;
+              </div>
+              <hr/>
               <div>
-                <b>{{eventDetails.difficulty}} </b>
-                <br> Max Team Size allowed :: <b>{{eventDetails.maxTeamSize}}</b>
+               <span class="label label-danger" >Difficulty Level</span>&nbsp;<b style="text-align:center">{{eventDetails.difficulty}}</b>
+                <br>
+                <span class="label label-warning" >Max Team Size</span>&nbsp;<b>{{eventDetails.maxTeamSize}}</b>
               </div>
             </div>
-           <br/>
+            <br/>
             <div class="row">
               <div class="col-md-6">
                 <h4>Exela, Pune<i class="material-icons">place</i></h4>
               </div>
-           </div>
+            </div>
+            <br/>
           </div> 
           <div class="col-md-3">
-            <label style="padding-left:1em">Starts</label>
-              <label style="padding-left:5em">Ends</label>
-              <br/>
-              <span>
-                  <img src="/assets/images/calender_icon.png" width="40%" height="40%">
-                  <div class="startEvent">
+            <label style="padding-left:2em">Starts</label>
+            <label style="padding-left:5em">Ends</label>
+            <br/>
+            <span>
+               <img src="/assets/images/calender_icon.png" width="40%" height="40%">
+               <div class="startEvent">
                       {{eventDetails.startDateTime | date : 'mediumDate'}}
                       <br>{{eventDetails.endDateTime | date:'shortTime'}}
-                  </div>    
-              </span>
-              <span>
-                  <img src="/assets/images/calender_icon.png" width="40%" height="40%">
-                  <div class="endEvent">
-                    {{eventDetails.endDateTime | date : 'mediumDate'}}
-                    <br>{{eventDetails.endDateTime | date:'shortTime'}} 
-                  </div>
-              </span>
+               </div>    
+            </span>&nbsp;
+            <span>
+              <img src="/assets/images/calender_icon.png" width="40%" height="40%">
+              <div class="endEvent">
+                 {{eventDetails.endDateTime | date : 'mediumDate'}}
+                <br>{{eventDetails.endDateTime | date:'shortTime'}} 
+              </div>
+            </span>
           </div>  
-       
+      
     </div> 
+   
     <div *ngIf="events.length == 0">
         No Event created yet.
     </div>
