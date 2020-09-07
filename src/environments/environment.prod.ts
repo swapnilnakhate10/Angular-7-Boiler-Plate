@@ -1,5 +1,5 @@
 
 export const environment = {
   production: false,
-  hackathonCore : 'https://cb-hck-core.exela.global/api/'
+  hackathonCore : 'http://cb-hck-core.exela.global/api/'
 };
