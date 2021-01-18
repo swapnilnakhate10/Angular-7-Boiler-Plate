@@ -100,14 +100,16 @@ showEvent(index) {
 
   setTeamMemberDetails(teamDetails) {
     let teamMemberGitIds = [];
-    const teamMembers = teamDetails.members;
-    teamMembers.forEach(element => {
-      if(element && element.gitId) {
-        teamMemberGitIds.push(element.gitId);
-      }
-    });
-    StorageService.set(StorageService.USER_CURRENT_TEAM_ID, teamDetails._id);
-    StorageService.set(StorageService.CURRENT_TEAM_MEMBERS_GITID, teamMemberGitIds);
+    if(teamDetails && teamDetails.members && teamDetails.members.length > 0) {
+      const teamMembers = teamDetails.members;
+      teamMembers.forEach(element => {
+        if(element && element.gitId) {
+          teamMemberGitIds.push(element.gitId);
+        }
+      });
+      StorageService.set(StorageService.USER_CURRENT_TEAM_ID, teamDetails._id);
+      StorageService.set(StorageService.CURRENT_TEAM_MEMBERS_GITID, teamMemberGitIds);
+    }
   }
 
   enrollForEvent(eventDetails) {
